@@ -1,11 +1,10 @@
 header {
   padding: 50px 0 20px;
   margin: 0 auto;
-  background: $white;
+  @include section-color($white);
 }
 
 .logo {
-  color: $dark-grey;
   float: right;
   font: {
     family: $logo-font-family;

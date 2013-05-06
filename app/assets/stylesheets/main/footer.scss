@@ -1,4 +1,19 @@
 footer {
-  max-width: $viewport-width;
   margin: 0 auto;
+  background: $white;
+  color: $text-grey;
+  padding-top: ($footer-height - $default-font-size) / 2;
+  line-height: $default-font-size * 2;
+  .social-links {
+    float: right;
+  }
+}
+
+.facebook {
+  font-size: $default-font-size + 4px;
+  padding: 5px;
+  &:hover {
+    @include section-color($dark-grey);
+    @include border-radius(50%);
+  }
 }

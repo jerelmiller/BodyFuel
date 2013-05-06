@@ -1,11 +1,10 @@
-@include sticky-footer(40px, '.wrapper', '.push', 'footer');
+@include sticky-footer($footer-height, '.wrapper', '.push', 'footer');
 
 body {
-  background: $dark-grey;
-  color: $silver;
+  @include section-color($dark-grey);
   font: {
     family: $default-font-family;
-    size: 16px;
+    size: $default-font-size;
   }
 }
 
@@ -32,8 +31,28 @@ h4 { font-size: 18px; }
 h5 { font-size: 14px; }
 h6 { font-size: 12px; }
 
+section {
+  margin-top: 20px;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
 .container {
   max-width: $viewport-width;
   margin: 0 auto;
   @include clearfix;
+}
+
+// Color Classes
+.orange {
+  color: $orange;
+}
+
+.leaf-green {
+  color: $leaf-green;
+}
+
+.yellow {
+  color: $yellow;
 }

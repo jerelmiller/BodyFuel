@@ -7,6 +7,8 @@ $default-border-radius: 3px;
 
 // Sizes
 $viewport-width: 1280px;
+$footer-height: 40px;
+$default-font-size: 16px;
 
 // Fonts
 $logo-font-family: 'Impact Label', Helvetica, sans-serif;
@@ -14,6 +16,16 @@ $default-font-family: DISCO, Helvetica, sans-serif;
 
 // Colors
 $dark-grey: #474D57;
+$text-grey: #989898;
 $silver: #ECF0F1;
 $green: #C2CBAB;
 $white: #FFF;
+$orange: #E69E22;
+$leaf-green: #21EF11;
+$yellow: #FBF27D;
+
+// Extra mixins
+@mixin section-color($background-color) {
+  background: $background-color;
+  color: contrast-color($background-color, $text-grey, $silver, 50%);
+}

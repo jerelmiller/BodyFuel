@@ -1,10 +1,37 @@
+$info-padding: 10px;
+$info-margin: 20px;
+$num-columns: 3;
+$info-width: (($viewport-width / $num-columns) - (2 * $info-padding)) - (($info-margin / $num-columns) * ($num-columns - 1));
+
 .hero-unit {
   margin: 20px 0;
-  padding: 80px;
+  padding: 80px 0 50px;
   text-align: center;
   @include border-radius;
   h1 {
     font-size: 50px;
     letter-spacing: -1px;
+  }
+}
+
+.slogan {
+  @include section-color($white);
+  text-align: center;
+  padding: 40px;
+}
+
+.info-section {
+  width: $info-width;
+  padding: $info-padding;
+  margin-right: $info-margin;
+  float: left;
+  &:last-child {
+    margin-right: 0;
+  }
+  h3 {
+    text-align: center;
+  }
+  .details {
+    margin-top: 15px;
   }
 }
