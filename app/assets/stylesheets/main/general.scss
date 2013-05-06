@@ -1,6 +1,8 @@
 @include sticky-footer(40px, '.wrapper', '.push', 'footer');
 
 body {
+  background: $dark-grey;
+  color: $silver;
   font: {
     family: $default-font-family;
     size: 16px;
@@ -29,11 +31,6 @@ h3 { font-size: 24px; }
 h4 { font-size: 18px; }
 h5 { font-size: 14px; }
 h6 { font-size: 12px; }
-
-section {
-  background: $dark-grey;
-  color: $silver;
-}
 
 .container {
   max-width: $viewport-width;
