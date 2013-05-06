@@ -1,0 +1,18 @@
+// Compass defaults
+$default-border-radius: 3px;
+
+@import 'compass';
+@import 'compass/layout';
+@import 'compass/utilities';
+
+// Sizes
+$viewport-width: 1280px;
+
+// Fonts
+$logo-font-family: 'Impact Label', Helvetica, sans-serif;
+$default-font-family: DISCO, Helvetica, sans-serif;
+
+// Colors
+$dark-grey: #474D57;
+$silver: #ECF0F1;
+$green: #C2CBAB;

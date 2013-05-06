@@ -1,0 +1,10 @@
+.hero-unit {
+  margin: 20px 0;
+  padding: 80px;
+  text-align: center;
+  @include border-radius;
+  h1 {
+    font-size: 50px;
+    letter-spacing: -1px;
+  }
+}
