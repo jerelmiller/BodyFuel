@@ -1,21 +1,20 @@
 header {
-  padding: 50px 0 20px;
+  padding: 15px 0;
   margin: 0 auto;
   @include section-color($white);
 }
 
 .logo {
-  float: right;
-  font: {
-    family: $logo-font-family;
-    size: 56px;
-  }
+  float: left;
+  background: url(logo.png);
+  width: image-width('logo.png');
+  height: image-height('logo.png');
 }
 
 nav {
   float: left;
+  margin: 125px 0 0 40px;
   ul {
-    margin-top: 30px;
     li {
       display: inline-block;
       font-size: 24px;
@@ -25,7 +24,7 @@ nav {
         margin-left: 0;
       }
       &:hover {
-        border-bottom: 2px solid $green;
+        border-bottom: 3px solid $green;
       }
     }
   }
