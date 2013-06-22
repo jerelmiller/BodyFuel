@@ -56,6 +56,45 @@ section {
   float: right;
 }
 
+blockquote {
+  position: relative;
+  width: 470px;
+  float: left;
+  padding: 20px;
+  padding-left: 85px;
+  box-sizing: border-box;
+  background: white;
+  border: 1px solid #CCC;
+  h3 {
+    text-align: left;
+    margin-top: 0;
+  }
+  p {
+    font-size: 18px;
+    color: #878787;
+  }
+  &:before {
+   content: "\201C";
+    font: {
+      family: Baskerville, 'Goudy Old Style', Palatino, 'Book Antiqua', serif;
+      size: 105px;
+    }
+    position: absolute;
+    top: 6px;
+    left: 15px;
+    color: #878787;
+  }
+  + div {
+    float: right;
+    width: 750px;
+    text-align: justify;
+    h3 {
+      text-align: center;
+      margin-top: 0;
+    }
+  }
+}
+
 @for $i from 1 through 3 {
   $tile-width: ($viewport-width / $i) - (($tile-margin / $i) * ($i - 1));
   .tiles-#{$i} {
