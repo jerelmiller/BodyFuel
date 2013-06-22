@@ -9,6 +9,9 @@ $default-border-radius: 3px;
 $viewport-width: 1280px;
 $footer-height: 60px;
 $default-font-size: 16px;
+$content-width: 950px;
+$gutter-width: 30px;
+$sidebar-width: $viewport-width - $content-width - $gutter-width;
 
 // Fonts
 // $logo-font-family: 'Impact Label', Helvetica, sans-serif;

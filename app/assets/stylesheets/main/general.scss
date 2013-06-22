@@ -6,6 +6,7 @@ body {
     family: $default-font-family;
     size: $default-font-size;
   }
+  line-height: 22px;
 }
 
 a {
@@ -58,15 +59,9 @@ section {
 
 blockquote {
   position: relative;
-  width: 470px;
-  float: left;
-  padding: 20px;
-  padding-left: 85px;
+  padding-left: 70px;
   box-sizing: border-box;
-  background: white;
-  border: 1px solid #CCC;
   h3 {
-    text-align: left;
     margin-top: 0;
   }
   p {
@@ -80,20 +75,39 @@ blockquote {
       size: 105px;
     }
     position: absolute;
-    top: 6px;
-    left: 15px;
+    top: 27px;
+    left: 0;
     color: #878787;
   }
-  + div {
-    float: right;
-    width: 750px;
-    text-align: justify;
-    h3 {
-      text-align: center;
-      margin-top: 0;
-    }
+}
+
+.center {
+  text-align: center;
+}
+
+div {
+  > h3 {
+    margin: 0 0 20px;
   }
 }
+
+.sidebar {
+  width: $sidebar-width;
+  float: left;
+  box-sizing: border-box;
+  background: white;
+  border: 1px solid #CCC;
+  padding: 20px;
+  &.justify {
+    text-align: justify;
+  }
+}
+.content {
+  width: $content-width;
+  float: right;
+  box-sizing: border-box;
+}
+
 
 @for $i from 1 through 3 {
   $tile-width: ($viewport-width / $i) - (($tile-margin / $i) * ($i - 1));
