@@ -1,6 +1,12 @@
 footer {
-  margin: 0 auto;
+  margin: 30px auto 0;
+  @include section-color($dark-grey);
   line-height: $default-font-size * 2;
+  border-top: 1px solid #Ccc;
+  padding: 10px 0;
+  .copyright {
+    line-height: 40px;
+  }
   .social-links {
     float: right;
   }
@@ -9,6 +15,7 @@ footer {
 .facebook {
   font-size: $default-font-size + 4px;
   padding: 5px;
+  line-height: 40px;
   @include section-color($dark-grey);
   &:hover {
     @include section-color($white);

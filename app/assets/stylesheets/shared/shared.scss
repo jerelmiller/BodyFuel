@@ -1,0 +1,18 @@
+@import 'base';
+
+.slogan {
+  @include section-color($dark-grey);
+  text-align: center;
+  padding: 40px;
+  h1 {
+    font-size: 50px;
+    font-weight: normal;
+    font-family: DISCO, sans-serif;
+    span {
+      margin-right: 10px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

@@ -1,31 +1,47 @@
-%section.hero-unit
-  .container
-    %h1 FAST. HEALTHY. CONVENIENT.
-
 %section.slogan
   .container
-    %h2 Fuel for your body slogan here
+    %h1
+      %span FAST.
+      %span HEALTHY.
+      %span CONVENIENT.
 
-%section
+%section.meals
   .container
-    .info-section
-      %h3
-        %span.icon-fire.orange
-        %br
-        Benefit 1
-      .details
-        Donec eu lectus a dui fringilla adipiscing. Etiam faucibus rhoncus sollicitudin. Sed nec urna a eros vehicula convallis et sed leo. Morbi congue justo vel.
-    .info-section
-      %h3
-        %span.icon-leaf.leaf-green
-        %br
-        Benefit 2
-      .details
-        Donec eu lectus a dui fringilla adipiscing. Etiam faucibus rhoncus sollicitudin. Sed nec urna a eros vehicula convallis et sed leo. Morbi congue justo vel.
-    .info-section
-      %h3
-        %span.icon-tshirt.yellow
-        %br
-        Benefit 3
-      .details
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue, metus dignissim iaculis imperdiet, sem elit eleifend magna, ac tincidunt massa arcu at felis.
+    %h2 Fresh, healthy, on-the-go meals
+    .tiles-3.food-items
+      .tile-item
+        %h4 Grilled Salmon
+        = image_tag '6ozsalmon_medium.png'
+      .tile-item
+        %h4 Alfredo Chicken
+        = image_tag 'alfredo_chicken_medium.png'
+      .tile-item
+        %h4 BBQ Chicken
+        = image_tag 'bbqchickennew_medium.png'
+
+    = link_to 'View more &rarr;'.html_safe, '#', class: 'view-more'
+
+%section.about
+  .container
+    %h4 Your body and health is worth it
+    %h2 Let us help you
+    .tiles-2
+      .tile-item
+        %h3 No time? No problem!
+        %p
+          Ever find yourself pressed for time? We all have busy lives, but that’s no reason
+          to neglect your body and not give it the proper nutrients and fuel it need to keep
+          you running healthy and strong! That’s where we come in!
+        = link_to 'Learn more &rarr;'.html_safe, '#', class: 'view-more'
+      .tile-item
+        %h3 Fast. Healthy. Convenient.
+        %p
+          We make it easy to continue your busy life but still get proper nutrition! We shop
+          for the freshest ingredients, prepare your food, package it for easy on-the-go meals
+          then deliver them to you fresh! No more excuses! BodyFuel is a simple solution!
+        = link_to 'Learn more &rarr;'.html_safe, '#', class: 'view-more'
+
+:javascript
+  $(document).ready(function() {
+    Utils.adjustTileSize('.about');
+  });

@@ -11,18 +11,25 @@ $footer-height: 40px;
 $default-font-size: 16px;
 
 // Fonts
-$logo-font-family: 'Impact Label', Helvetica, sans-serif;
-$default-font-family: DISCO, Helvetica, sans-serif;
+// $logo-font-family: 'Impact Label', Helvetica, sans-serif;
+// $default-font-family: DISCO, Helvetica, sans-serif;
+$default-font-family: Corbert, sans-serif;
 
 // Colors
-$dark-grey: #474D57;
-$text-grey: #989898;
+// $dark-grey: #474D57;
+$dark-grey: #666D71;
+// $text-grey: #989898;
+$text-grey: #464646;
 $silver: #ECF0F1;
-$green: #C2CBAB;
-$white: #FFF;
+$green: #7EB348;
+$white: #ECF0F1;
 $orange: #E69E22;
 $leaf-green: #21EF11;
 $yellow: #FBF27D;
+
+// Tiles
+$tile-padding: 20px;
+$tile-margin: 20px;
 
 // Extra mixins
 @mixin section-color($background-color) {

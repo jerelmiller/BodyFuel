@@ -2,5 +2,6 @@
 *= require_self
 *= require main
 *= require home
+*= require shared/shared
 *= require glyphs
 */
