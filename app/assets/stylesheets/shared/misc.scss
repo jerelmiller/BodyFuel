@@ -1,7 +1,8 @@
 .slogan {
   @include section-color($dark-grey);
   text-align: center;
-  padding: 40px;
+  padding: 40px 0;
+  min-width: $viewport-width;
   h1 {
     font-size: 50px;
     font-weight: normal;

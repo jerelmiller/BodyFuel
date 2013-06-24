@@ -1,6 +1,7 @@
 footer {
   @include section-color($dark-grey);
   line-height: $footer-height;
+  min-width: $viewport-width;
   .copyright {
     line-height: 40px;
   }

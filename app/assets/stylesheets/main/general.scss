@@ -48,7 +48,7 @@ section {
 }
 
 .container {
-  max-width: $viewport-width;
+  width: $viewport-width;
   margin: 0 auto;
   @include clearfix;
 }
