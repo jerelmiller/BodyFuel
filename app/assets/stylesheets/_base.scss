@@ -35,3 +35,9 @@ $tile-margin: 20px;
   background: $background-color;
   color: contrast-color($background-color, $text-grey, $silver, 50%);
 }
+
+@mixin box-sizing($type: border-box) {
+  -webkit-box-sizing: $type;
+  -moz-box-sizing: $type;
+  box-sizing: $type;
+}

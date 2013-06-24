@@ -60,7 +60,7 @@ section {
 blockquote {
   position: relative;
   padding-left: 70px;
-  box-sizing: border-box;
+  @include box-sizing;
   h3 {
     margin-top: 0;
   }
@@ -94,7 +94,7 @@ div {
 .sidebar {
   width: $sidebar-width;
   float: left;
-  box-sizing: border-box;
+  @include box-sizing;
   background: white;
   border: 1px solid #CCC;
   padding: 20px;
@@ -105,5 +105,5 @@ div {
 .content {
   width: $content-width;
   float: right;
-  box-sizing: border-box;
+  @include box-sizing;
 }

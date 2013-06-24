@@ -19,7 +19,7 @@ nav {
       display: inline-block;
       font-size: 24px;
       margin-left: 80px;
-      box-sizing: border-box;
+      @include box-sizing;
       @include border-radius;
       @include transition(all 0.2s);
       &:first-child {

@@ -5,4 +5,6 @@ BodyFuel::Application.routes.draw do
   get '/fitness' => 'home#fitness'
   get '/order' => 'home#order'
   get '/nutrition' => 'home#nutrition'
+  get '/about' => 'home#about'
+  get '/contact' => 'home#contact'
 end

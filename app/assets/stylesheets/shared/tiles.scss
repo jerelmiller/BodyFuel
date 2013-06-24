@@ -4,7 +4,7 @@
     margin: 30px 0;
     @include clearfix;
     .tile-item {
-      box-sizing: border-box;
+      @include box-sizing;
       width: $tile-width;
       padding: $tile-padding;
       margin-right: $tile-margin;
