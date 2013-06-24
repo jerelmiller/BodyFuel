@@ -1,3 +1,20 @@
 %section
   .container
-    %h1 Ordering coming soon!
+    %h1.center Ordering coming soon!
+
+%section
+  .container
+    .tiles-2
+      .tile-item
+        %h3 T-shirts
+        %p
+          T-shirts with great designs and inspirational sayings
+      .tile-item
+        %h3 BodyFuel Food
+        %p
+          Order BodyFuel food services for a week at a time
+
+:javascript
+  $(document).ready(function() {
+    Utils.adjustTileSize('.tiles-2');
+  })

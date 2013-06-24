@@ -1,0 +1,8 @@
+- content_for :main do
+  %section.slogan
+    - if content_for? :slogan
+      .container
+        = yield :slogan
+  = yield
+
+= render template: 'layouts/application'

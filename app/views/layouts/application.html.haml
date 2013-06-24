@@ -8,6 +8,6 @@
   %body
     .wrapper
       = render 'layouts/header'
-      = yield
+      = yield :main if content_for? :main
       .push
     = render 'layouts/footer'
