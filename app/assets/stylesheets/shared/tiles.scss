@@ -1,0 +1,17 @@
+@for $i from 1 through 3 {
+  $tile-width: ($viewport-width / $i) - (($tile-margin / $i) * ($i - 1));
+  .tiles-#{$i} {
+    margin: 30px 0;
+    @include clearfix;
+    .tile-item {
+      box-sizing: border-box;
+      width: $tile-width;
+      padding: $tile-padding;
+      margin-right: $tile-margin;
+      float: left;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
