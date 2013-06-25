@@ -7,4 +7,5 @@ BodyFuel::Application.routes.draw do
   get '/nutrition' => 'home#nutrition'
   get '/about' => 'home#about'
   get '/contact' => 'home#contact'
+  post '/contact' => 'home#contact_submit'
 end

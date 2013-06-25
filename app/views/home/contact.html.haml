@@ -1,3 +1,22 @@
 %section
   .container
-    %h2 Contact form will go here
+    %h2 We would love to hear from you
+
+%section
+  .container
+    = form_tag '/contact', method: :post do
+      .input-container
+        .input.input-left
+          %label{ for: 'name' } Name
+          = text_field_tag :name
+
+        .input.input-right
+          %label{ for: 'email' } Email
+          = text_field_tag :email
+
+        .input
+          %label{ for: 'message' } Message
+          = text_area_tag :message
+
+      .submit
+        %button.button.green Submit

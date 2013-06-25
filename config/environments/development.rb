@@ -34,4 +34,13 @@ BodyFuel::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = false
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :user_name => 'bodyfuel-b7771d8aebfa3c8d',
+    :password => 'e901a59eaef0df5d',
+    :address => 'mailtrap.io',
+    :port => '2525',
+    :authentication => :plain
+  }
 end

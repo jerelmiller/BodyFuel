@@ -1,0 +1,64 @@
+$form-padding: 20px;
+$form-field-background: #F8F8F8;
+
+form {
+  width: 50%;
+  margin: 0 auto;
+  background: white;
+  border: 1px solid #CCC;
+}
+.input-container {
+  padding: $form-padding;
+}
+
+.input {
+  margin-bottom: 20px;
+  &.input-left {
+    width: 48%;
+    float: left;
+  }
+  &.input-right {
+    width: 48%;
+    float: right;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.submit {
+  background: #F8f8f8;
+  padding: $form-padding;
+  @include clearfix;
+  button {
+    float: right;
+  }
+}
+
+label {
+  display: block;
+  font-size: 18px;
+}
+
+%base-input-style {
+  margin-top: 15px;
+  padding: 15px;
+  @include box-sizing;
+  width: 100%;
+  border: 1px solid #CCC;
+  outline: 0;
+  font-size: $default-font-size;
+  background: #F8F8F8;
+  &:focus {
+    background: white;
+  }
+}
+
+input[type=text] {
+  @extend %base-input-style;
+}
+
+textarea {
+  @extend %base-input-style;
+  height: 150px;
+}
