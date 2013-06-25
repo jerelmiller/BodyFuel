@@ -4,7 +4,7 @@
 
 %section
   .container
-    = form_tag '/contact', method: :post do
+    = form_tag '/contact', method: :postf do
       .input-container
         .input.input-left
           %label{ for: 'name' } Name
@@ -19,4 +19,4 @@
           = text_area_tag :message
 
       .submit
-        %button.button.green Submit
+        %button.button Submit

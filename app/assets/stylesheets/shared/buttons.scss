@@ -1,9 +1,13 @@
+$button-background: #34495e;
+
 .button {
   padding: 15px 20px;
   border: 0;
   color: white;
   font-size: $default-font-size;
-  &.green {
-    background: #27AE60;
+  cursor: pointer;
+  background: $button-background;
+  &:hover {
+    background: lighten($button-background, 10%);
   }
 }
