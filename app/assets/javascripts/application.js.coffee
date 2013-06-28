@@ -1,4 +1,7 @@
 #= require jquery
 #= require jquery_ujs
-#= require_tree .
 #= require underscore
+#= require utils
+#= require fader
+#= require pages
+#= require_tree ./pages

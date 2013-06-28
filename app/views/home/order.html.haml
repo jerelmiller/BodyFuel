@@ -4,7 +4,7 @@
 
 %section
   .container
-    .tiles-4
+    .tiles-4.shirts
       - 15.times do |n|
         .tile-item
           %h3 T-shirt
@@ -15,14 +15,14 @@
               %h5 Size
               %span S
               %span M
-              %span.selected L
+              %span L
               %span XL
               %span XXL
             .colors
               %h5 Color
               .color
                 .white
-              .color.selected
+              .color
                 .orange
               .color
                 .green
@@ -32,10 +32,12 @@
                 .red
             %h5 Quantity
             = text_field_tag :quantity, nil, class: 'short'
-            %span.stock In Stock
+            %span.price $19.99
+            .stock In Stock
             = link_to 'Add to Cart', '#', class: 'button add-to-cart'
 
 :javascript
   $(document).ready(function() {
     Utils.adjustTileSize('.tiles-4');
+    new Pages.Order()
   })
