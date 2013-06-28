@@ -7,7 +7,20 @@ $button-background: #34495e;
   font-size: $default-font-size;
   cursor: pointer;
   background: $button-background;
+  text-align: center;
+  text-transform: uppercase;
   &:hover {
     background: lighten($button-background, 10%);
+  }
+
+  &.add-to-cart {
+    margin-top: 20px;
+    display: block;
+  }
+}
+
+a.button {
+  &:hover {
+    color: white;
   }
 }

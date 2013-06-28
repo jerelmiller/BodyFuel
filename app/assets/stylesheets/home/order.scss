@@ -1,0 +1,57 @@
+$dark-grey: #444;
+
+.product-box {
+  @include box-sizing;
+  width: 100%;
+  padding: 10px;
+  background: $light-background;
+  min-height: 150px;
+  margin-bottom: 10px;
+}
+
+.sizes {
+  margin-bottom: 20px;
+  span {
+    display: inline-block;
+    border: 2px solid $dark-grey;
+    padding: 3px 6px;
+    &.selected {
+      background: $dark-grey;
+      color: white;
+    }
+  }
+}
+
+.colors {
+  margin-bottom: 20px;
+  .color {
+    display: inline-block;
+    border: 2px solid $dark-grey;
+    div {
+      width: 28px;
+      height: 28px;
+      margin: 2px;
+      &.black {
+        background: #000;
+      }
+      &.green {
+        background: $green;
+      }
+      &.orange {
+        background: $orange;
+      }
+      &.red {
+        background: #e74c3c;
+      }
+    }
+    &.selected {
+      border: 4px solid $dark-grey;
+    }
+    @include box-sizing;
+  }
+}
+
+.stock {
+  margin-left: 15px;
+  text-transform: uppercase;
+}

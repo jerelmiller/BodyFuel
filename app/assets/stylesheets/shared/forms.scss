@@ -27,7 +27,7 @@ form {
 }
 
 .submit {
-  background: #F8f8f8;
+  background: $light-background;
   padding: $form-padding;
   @include clearfix;
   button {
@@ -38,10 +38,10 @@ form {
 label {
   display: block;
   font-size: 18px;
+  margin-bottom: 15px;
 }
 
 %base-input-style {
-  margin-top: 15px;
   padding: 15px;
   @include box-sizing;
   width: 100%;
@@ -56,6 +56,9 @@ label {
 
 input[type=text] {
   @extend %base-input-style;
+  &.short {
+    width: 30%;
+  }
 }
 
 textarea {

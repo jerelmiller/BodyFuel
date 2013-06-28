@@ -1,4 +1,4 @@
-@for $i from 1 through 3 {
+@for $i from 1 through 4 {
   $tile-width: ($viewport-width / $i) - (($tile-margin / $i) * ($i - 1));
   .tiles-#{$i} {
     margin: 30px 0;
@@ -8,6 +8,7 @@
       width: $tile-width;
       padding: $tile-padding;
       margin-right: $tile-margin;
+      margin-bottom: $tile-margin;
       float: left;
       background: white;
       border: 1px solid #CCC;
@@ -19,7 +20,7 @@
       p {
         line-height: 24px;
       }
-      &:last-child {
+      &:nth-child(#{$i}n) {
         margin-right: 0;
       }
     }

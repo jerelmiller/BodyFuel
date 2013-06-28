@@ -1,20 +1,41 @@
 %section
   .container
-    %h1.center Ordering coming soon!
+    %h1.center Products
 
 %section
   .container
-    .tiles-2
-      .tile-item
-        %h3 T-shirts
-        %p
-          T-shirts with great designs and inspirational sayings
-      .tile-item
-        %h3 BodyFuel Food
-        %p
-          Order BodyFuel food services for a week at a time
+    .tiles-4
+      - 15.times do |n|
+        .tile-item
+          %h3 T-shirt
+          .product-box
+            product image here
+          .product-details
+            .sizes
+              %h5 Size
+              %span S
+              %span M
+              %span.selected L
+              %span XL
+              %span XXL
+            .colors
+              %h5 Color
+              .color
+                .white
+              .color.selected
+                .orange
+              .color
+                .green
+              .color
+                .black
+              .color
+                .red
+            %h5 Quantity
+            = text_field_tag :quantity, nil, class: 'short'
+            %span.stock In Stock
+            = link_to 'Add to Cart', '#', class: 'button add-to-cart'
 
 :javascript
   $(document).ready(function() {
-    Utils.adjustTileSize('.tiles-2');
+    Utils.adjustTileSize('.tiles-4');
   })
