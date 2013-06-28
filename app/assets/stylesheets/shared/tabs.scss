@@ -1,0 +1,26 @@
+.tabs {
+  @include clearfix;
+}
+
+.tab {
+  float: left;
+  padding: 10px;
+  border: 1px solid $dark-highlight;
+  border-right: 0;
+  cursor: pointer;
+  &:first-child {
+    @include border-left-radius;
+  }
+  &:last-child {
+    border-right: 1px solid $dark-highlight;
+    @include border-right-radius;
+  }
+  &.selected {
+    background: $dark-highlight;
+    color: white;
+  }
+  span {
+    font-size: $h4-size;
+    text-transform: uppercase;
+  }
+}

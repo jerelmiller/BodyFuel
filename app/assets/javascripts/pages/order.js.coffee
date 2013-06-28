@@ -1,5 +1,3 @@
-# Pages.Order = {}
-
 class Pages.Order
   constructor: ->
     $('.sizes span').click @onSizeClick

@@ -4,7 +4,16 @@
 
 %section
   .container
-    .tiles-4.shirts
+    .tabs
+      = link_to '#food', class: 'tab selected', 'data-show' => 'food' do
+        %span Food
+      = link_to '#shirts', class: 'tab', 'data-show' => 'shirts' do
+        %span Shirts
+    .tiles-3.food.tab-section
+      - 10.times do |n|
+        .tile-item
+          %h3 Food
+    .tiles-4.shirts.tab-section
       - 15.times do |n|
         .tile-item
           %h3 T-shirt
@@ -40,4 +49,5 @@
   $(document).ready(function() {
     Utils.adjustTileSize('.tiles-4');
     new Pages.Order()
+    new Components.Tabs()
   })

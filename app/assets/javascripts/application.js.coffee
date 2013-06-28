@@ -5,3 +5,4 @@
 #= require fader
 #= require pages
 #= require_tree ./pages
+#= require_tree ./components
