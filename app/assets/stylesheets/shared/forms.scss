@@ -6,6 +6,7 @@ form {
   margin: 0 auto;
   background: white;
   border: 1px solid #CCC;
+  @include clearfix;
 }
 .input-container {
   padding: $form-padding;
@@ -54,7 +55,7 @@ label {
   }
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
   @extend %base-input-style;
   &.short {
     width: 30%;

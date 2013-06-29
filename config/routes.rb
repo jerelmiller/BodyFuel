@@ -8,4 +8,12 @@ BodyFuel::Application.routes.draw do
   get '/about' => 'home#about'
   get '/contact' => 'home#contact'
   post '/contact' => 'home#contact_submit'
+
+  get '/login' => 'sessions#new'
+  get '/logout' => 'sessions#destroy'
+  resources :sessions, only: :create
+
+  namespace :admin do
+    root to: 'admin#index'
+  end
 end
