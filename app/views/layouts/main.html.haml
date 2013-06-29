@@ -1,0 +1,12 @@
+- content_for :my_layout do
+  .wrapper
+    = render 'layouts/header'
+    %section.slogan
+      - if content_for? :slogan
+        .container
+          = yield :slogan
+    = yield
+    .push
+  = render 'layouts/footer'
+
+= render template: 'layouts/application'

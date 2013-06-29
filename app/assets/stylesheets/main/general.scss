@@ -45,12 +45,28 @@ section {
   h2 {
     text-align: center;
   }
+
+  .admin & {
+    .container {
+      background: white;
+      @include box-sizing;
+      border: 1px solid #CCC;
+      padding: 20px;
+    }
+  }
+}
+
+.clearfix {
+  @include clearfix;
 }
 
 .container {
   width: $viewport-width;
   margin: 0 auto;
-  @include clearfix;
+
+  .admin & {
+    width: $admin-viewport-width;
+  }
 }
 
 .view-more {

@@ -1,0 +1,19 @@
+%header.admin
+  .container
+    = link_to image_tag('logo_admin.png', alt: 'BodyFuel'), admin_root_path, class: 'logo'
+    %nav
+      %ul
+        %li= link_to 'ORDERS (22)', '#'
+        %li= link_to 'PRODUCTS', '#'
+        %li.dropdown-menu
+          = link_to '#' do
+            .icon-user
+          %ul
+            %li
+              = link_to '#' do
+                %span.icon-edit
+                EDIT PROFILE
+            %li
+              = link_to '#' do
+                %span.icon-exit
+                LOGOUT

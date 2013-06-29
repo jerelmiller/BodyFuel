@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  layout 'home_layout'
+  layout 'main'
 
   protected
 

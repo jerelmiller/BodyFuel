@@ -1,0 +1,11 @@
+- content_for :body_class do
+  admin
+
+- content_for :my_layout do
+  .wrapper
+    = render 'layouts/admin/header'
+    = yield
+    .push
+  = render 'layouts/admin/footer'
+
+= render template: 'layouts/application'

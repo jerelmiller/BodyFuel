@@ -2,19 +2,46 @@ header {
   padding: 15px 0;
   margin: 0 auto -30px;
   @include section-color($white);
+  .admin & {
+    margin: 0 auto;
+    padding: 0;
+    .container {
+      &:after {
+        clear: both;
+        display: block;
+        content: "";
+      }
+    }
+  }
 }
 
 .logo {
   float: left;
-  background: url(logo.png);
   width: image-width('logo.png');
   height: image-height('logo.png');
+
+  .admin & {
+    width: image-width('logo_admin.png');
+    height: image-height('logo_admin.png');
+  }
 }
 
 nav {
   float: right;
   margin: 82px 0 0 40px;
+  .admin & {
+    margin: 0;
+  }
   ul {
+    position: relative;
+    li.dropdown-menu {
+      position: relative;
+      &:hover {
+        > ul {
+          display: block
+        }
+      }
+    }
     li {
       display: inline-block;
       font-size: 24px;
@@ -28,12 +55,63 @@ nav {
       a {
         display: block;
         padding: 10px;
+        .admin & {
+          padding: 18px 22px;
+          color: white;
+        }
       }
       &:hover {
         background: $green;
         @include transition(all 0.5s);
         a {
           color: $silver;
+          .admin & {
+            color: white;
+          }
+        }
+        .admin & {
+          background: lighten($dark-grey, 10%);
+        }
+      }
+      .admin & {
+        font-size: 18px;
+        margin-left: 0;
+        display: block;
+        float: left;
+        @include border-radius(0);
+        background: $dark-grey;
+        border-right: 1px solid #CCC;
+        &:last-child {
+          border-right: 0;
+        }
+      }
+    }
+    ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: $dark-grey;
+      border-top: 1px solid #CCC;
+      min-width: 200px;
+      li {
+        float: none;
+        position: relative;
+        display: list-item !important;
+        border-right: 0 !important;
+        border-bottom: 1px solid #CCC;
+        width: 100%;
+        &:last-child {
+          border-bottom: 0;
+        }
+        a {
+          font-size: 16px;
+          padding: 14px 16px !important;
+          span[class^="icon-"] {
+            position: relative;
+            top: 3px;
+            margin-right: 5px;
+          }
         }
       }
     }

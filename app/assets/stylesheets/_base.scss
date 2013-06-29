@@ -7,6 +7,7 @@ $default-border-radius: 3px;
 
 // Sizes
 $viewport-width: 1280px;
+$admin-viewport-width: 1080px;
 $footer-height: 60px;
 $content-width: 950px;
 $gutter-width: 30px;
@@ -42,7 +43,14 @@ $tile-margin: 20px;
 // Extra mixins
 @mixin section-color($background-color) {
   background: $background-color;
-  color: contrast-color($background-color, $text-grey, $silver, 50%);
+  $color: contrast-color($background-color, $text-grey, $silver, 50%);
+  color: $color;
+  a {
+    color: $color;
+    &:hover {
+      color: $color;
+    }
+  }
 }
 
 @mixin box-sizing($type: border-box) {
