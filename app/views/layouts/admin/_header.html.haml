@@ -3,7 +3,7 @@
     = link_to image_tag('logo_admin.png', alt: 'BodyFuel'), admin_root_path, class: 'logo'
     %nav
       %ul
-        %li= link_to 'ORDERS (22)', '#'
+        %li= link_to "ORDERS (#{@orders.count})", '#'
         %li= link_to 'PRODUCTS', '#'
         %li.dropdown-menu
           = link_to '#' do

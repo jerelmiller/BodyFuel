@@ -11,7 +11,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130629051543) do
+ActiveRecord::Schema.define(:version => 20130629175550) do
+
+  create_table "cart_products", :force => true do |t|
+    t.integer "cart_id",                     :null => false
+    t.integer "product_id",                  :null => false
+    t.decimal "price",      :default => 0.0, :null => false
+    t.integer "quantity",   :default => 0,   :null => false
+  end
+
+  create_table "carts", :force => true do |t|
+    t.decimal "total_price", :default => 0.0, :null => false
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string "name", :null => false
+  end
+
+  create_table "customers", :force => true do |t|
+    t.string "first_name", :null => false
+    t.string "last_name",  :null => false
+  end
+
+  create_table "orders", :force => true do |t|
+    t.string  "order_number",                  :null => false
+    t.integer "customer_id",                   :null => false
+    t.integer "cart_id",                       :null => false
+    t.decimal "total",        :default => 0.0, :null => false
+  end
+
+  create_table "products", :force => true do |t|
+    t.string  "name",                         :null => false
+    t.decimal "price",       :default => 0.0, :null => false
+    t.integer "category_id",                  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "first_name"

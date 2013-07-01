@@ -91,13 +91,11 @@ nav {
       position: absolute;
       top: 100%;
       right: 0;
-      background: $dark-grey;
       border-top: 1px solid #CCC;
-      min-width: 200px;
+      white-space: nowrap;
       li {
-        float: none;
+        float: none !important;
         position: relative;
-        display: list-item !important;
         border-right: 0 !important;
         border-bottom: 1px solid #CCC;
         width: 100%;

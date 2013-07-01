@@ -11,6 +11,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'compass-rails'
+  gem 'angularjs-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
@@ -22,10 +23,21 @@ gem 'jquery-rails'
 
 group :development do
   gem 'sqlite3'
+  gem 'pry-rails'
 end
 
 group :production do
   gem 'pg'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'mocha', :require => false
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'database_cleaner'
 end
 
 # To use Jbuilder templates for JSON

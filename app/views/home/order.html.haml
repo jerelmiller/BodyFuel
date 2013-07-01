@@ -2,7 +2,7 @@
   .container
     %h1.center Products
 
-%section
+%section{ 'ng-app' => 'cartsApp', 'ng-controller' => 'CartsCtrl'}
   .container
     .tabs
       = link_to '#food', class: 'tab selected', 'data-show' => 'food' do
@@ -43,11 +43,11 @@
             = text_field_tag :quantity, nil, class: 'short'
             %span.price $19.99
             .stock In Stock
-            = link_to 'Add to Cart', '#', class: 'button add-to-cart'
+            %button.button.add-to-cart{ 'ng-click' => 'add_product()'} Add to Cart
 
 :javascript
   $(document).ready(function() {
     Utils.adjustTileSize('.tiles-4');
-    new Pages.Order()
-    new Components.Tabs()
+    new Pages.Order();
+    new Components.Tabs();
   })
