@@ -5,6 +5,7 @@ class CreateCartProducts < ActiveRecord::Migration
       t.integer :product_id,  null: false
       t.decimal :price,       null: false, scale: 6, default: 0
       t.integer :quantity,    null: false, default: 0
+      t.timestamps
     end
   end
 

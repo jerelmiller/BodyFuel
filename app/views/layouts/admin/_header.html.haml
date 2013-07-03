@@ -4,7 +4,7 @@
     %nav
       %ul
         %li= link_to "ORDERS (#{@orders.count})", '#'
-        %li= link_to 'PRODUCTS', '#'
+        %li= link_to 'PRODUCTS', admin_products_path
         %li.dropdown-menu
           = link_to '#' do
             .icon-user

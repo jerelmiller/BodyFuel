@@ -1,9 +1,9 @@
 class CreateProducts < ActiveRecord::Migration
   def up
     create_table :products do |t|
-      t.string  :name,          null: false
-      t.decimal :price,         null: false, scale: 2, default: 0
-      t.integer :category_id,   null: false
+      t.integer :content_id,      null: false
+      t.string  :content_type,    null: false
+      t.timestamps
     end
   end
 

@@ -20,6 +20,7 @@ $button-background: #34495e;
 }
 
 a.button {
+  display: inline-block;
   &:hover {
     color: white;
   }

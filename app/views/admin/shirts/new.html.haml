@@ -1,0 +1,9 @@
+%section
+  .container
+    = form_for [:admin, @shirt] do |f|
+      .input
+        = f.label :price
+        = f.text_field :price
+
+      .submit
+        %button.button Submit

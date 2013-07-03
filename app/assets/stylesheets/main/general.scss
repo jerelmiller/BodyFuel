@@ -63,6 +63,7 @@ section {
 .container {
   width: $viewport-width;
   margin: 0 auto;
+  position: relative;
 
   .admin & {
     width: $admin-viewport-width;
@@ -102,7 +103,7 @@ blockquote {
 }
 
 div {
-  > h3 {
+  h3:first-child {
     margin: 0 0 20px;
   }
 }

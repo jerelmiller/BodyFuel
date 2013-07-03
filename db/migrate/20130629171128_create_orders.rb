@@ -5,6 +5,7 @@ class CreateOrders < ActiveRecord::Migration
       t.integer :customer_id,     null: false
       t.integer :cart_id,         null: false
       t.decimal :total,           null: false, scale: 2, default: 0
+      t.timestamps
     end
   end
 

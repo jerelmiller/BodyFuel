@@ -11,39 +11,89 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130629175550) do
+ActiveRecord::Schema.define(:version => 20130703061025) do
 
   create_table "cart_products", :force => true do |t|
-    t.integer "cart_id",                     :null => false
-    t.integer "product_id",                  :null => false
-    t.decimal "price",      :default => 0.0, :null => false
-    t.integer "quantity",   :default => 0,   :null => false
+    t.integer  "cart_id",                     :null => false
+    t.integer  "product_id",                  :null => false
+    t.decimal  "price",      :default => 0.0, :null => false
+    t.integer  "quantity",   :default => 0,   :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   create_table "carts", :force => true do |t|
-    t.decimal "total_price", :default => 0.0, :null => false
+    t.decimal  "total_price", :default => 0.0, :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
-  create_table "categories", :force => true do |t|
-    t.string "name", :null => false
+  create_table "colors", :force => true do |t|
+    t.string   "name"
+    t.string   "hex_value",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "colors_shirts", :id => false, :force => true do |t|
+    t.integer "color_id", :null => false
+    t.integer "shirt_id", :null => false
   end
 
   create_table "customers", :force => true do |t|
-    t.string "first_name", :null => false
-    t.string "last_name",  :null => false
+    t.string   "first_name", :null => false
+    t.string   "last_name",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "food_items", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "food_products", :force => true do |t|
+    t.string   "name",                         :null => false
+    t.decimal  "price",       :default => 0.0, :null => false
+    t.text     "description"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "orders", :force => true do |t|
-    t.string  "order_number",                  :null => false
-    t.integer "customer_id",                   :null => false
-    t.integer "cart_id",                       :null => false
-    t.decimal "total",        :default => 0.0, :null => false
+    t.string   "order_number",                  :null => false
+    t.integer  "customer_id",                   :null => false
+    t.integer  "cart_id",                       :null => false
+    t.decimal  "total",        :default => 0.0, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "products", :force => true do |t|
-    t.string  "name",                         :null => false
-    t.decimal "price",       :default => 0.0, :null => false
-    t.integer "category_id",                  :null => false
+    t.integer  "content_id",   :null => false
+    t.string   "content_type", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "shirts", :force => true do |t|
+    t.string   "name"
+    t.decimal  "price",      :default => 0.0, :null => false
+    t.integer  "stock",      :default => 0,   :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "shirts_sizes", :id => false, :force => true do |t|
+    t.integer "shirt_id", :null => false
+    t.integer "size_id",  :null => false
+  end
+
+  create_table "sizes", :force => true do |t|
+    t.string   "size",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

@@ -16,7 +16,6 @@
     .tiles-4.shirts.tab-section
       - 15.times do |n|
         .tile-item
-          %h3 T-shirt
           .product-box
             product image here
           .product-details
@@ -43,11 +42,14 @@
             = text_field_tag :quantity, nil, class: 'short'
             %span.price $19.99
             .stock In Stock
-            %button.button.add-to-cart{ 'ng-click' => 'add_product()'} Add to Cart
+            = link_to 'Add to Cart', '', class: 'button add-to-cart', 'ng-click' => 'add_product()'
 
 :javascript
   $(document).ready(function() {
     Utils.adjustTileSize('.tiles-4');
     new Pages.Order();
     new Components.Tabs();
+    AngularDataSeed({
+      cart: #{current_cart.to_json}
+    });
   })

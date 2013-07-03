@@ -1,0 +1,10 @@
+%section
+  .container
+    %h2= "#{@products.length} Total Products"
+    / = link_to 'Create a new product', '#', class: 'button pull-right'
+    %h3
+      = "#{@shirts.length} shirt designs -"
+      = link_to 'Create a new shirt design', new_admin_shirt_path, class: 'button'
+    %h3
+      = "#{@food_products.length} products offering food"
+      = link_to 'Offer a new food product', '#', class: 'button'
