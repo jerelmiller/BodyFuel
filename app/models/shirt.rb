@@ -1,7 +1,9 @@
 class Shirt < ActiveRecord::Base
   has_one :product, as: :content
-  has_and_belongs_to_many :colors # create join model
-  has_and_belongs_to_many :sizes # create join model
+  has_many :color_shirts
+  has_many :shirt_sizes
+  has_many :colors, through: :color_shirts
+  has_many :sizes, through: :shirt_sizes
 
   attr_accessible :price
 

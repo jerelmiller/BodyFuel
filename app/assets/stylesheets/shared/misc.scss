@@ -15,3 +15,8 @@
     }
   }
 }
+
+a [class^="icon-"]:first-child {
+  position: relative;
+  top: 2px;
+}

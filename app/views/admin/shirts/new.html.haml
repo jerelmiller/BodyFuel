@@ -1,9 +1,55 @@
-%section
+%section{ "ng-app" => 'shirtsApp', 'ng-controller' => 'ShirtsCtrl' }
   .container
-    = form_for [:admin, @shirt] do |f|
-      .input
-        = f.label :price
-        = f.text_field :price
+    / = form_for [:admin, @shirt] do |f|
+    .input.clearfix
+      / = f.label :price
+      / = f.text_field :price
+      %label Price
+      / = text_field_tag :price
+      %input.short{ type: 'text', id: 'price', 'ng-model' => 'shirt.price' }
+    .input
+      %label Colors
+      .colors
+        .color-box
+          .color{ 'ng-repeat' => 'color in colors' }
+            %div{ 'ng-style' => '{"background-color": format_color(color.hex_value)}' }
+      = link_to '', 'ng-show' => '!is_editing_color', 'ng-click' => 'is_editing_color = true' do
+        %i.icon-plus
+        Add new shirt color
 
-      .submit
-        %button.button Submit
+    .input.clearfix{ 'ng-show' => 'is_editing_color' }
+      %h5 Please enter the color HEX value (e.g. #CCC )
+      %input.color-input{ type: 'text', id: 'color', 'ng-model' => 'new_color_value' }
+      .colors
+        .color.color-preview
+          %div{ 'ng-style' => '{"background-color": format_color(new_color_value)}' }
+
+
+      %button.button{ 'ng-click' => 'add_color()'} Save color
+
+
+
+    .input
+      %label Sizes
+      .sizes
+        %span S
+        %span M
+        %span L
+        %span XL
+        %span XXL
+      = link_to '#' do
+        %i.icon-plus
+        Add new size
+
+    .submit
+      %button.button Submit
+
+:javascript
+  $(document).ready(function() {
+    AngularDataSeed({
+      shirt: #{@shirt.to_json},
+      colors: #{@colors.to_json},
+      sizes: #{@sizes.to_json},
+      authenticity_token: '#{form_authenticity_token}'
+    });
+  })

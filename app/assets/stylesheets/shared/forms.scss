@@ -13,7 +13,7 @@ form {
 }
 
 .input {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   &.input-left {
     width: 48%;
     float: left;
@@ -60,6 +60,13 @@ input[type=text], input[type=password] {
   &.short {
     width: 30%;
   }
+}
+
+input[type=text] {
+  &.color-input {
+    width: 30%;
+  }
+  float: left;
 }
 
 textarea {

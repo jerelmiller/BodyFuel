@@ -28,16 +28,18 @@
               %span XXL
             .colors
               %h5 Color
-              .color
-                .white
-              .color
-                .orange
-              .color
-                .green
-              .color
-                .black
-              .color
-                .red
+              .color{ 'ng-repeat' => 'color in colors' }
+                %div{ 'ng-style' => '{"background-color": color.hex_value}' }
+              / .color
+              /   .white
+              / .color
+              /   .orange
+              / .color
+              /   .green
+              / .color
+              /   .black
+              / .color
+              /   .red
             %h5 Quantity
             = text_field_tag :quantity, nil, class: 'short'
             %span.price $19.99
@@ -50,6 +52,7 @@
     new Pages.Order();
     new Components.Tabs();
     AngularDataSeed({
-      cart: #{current_cart.to_json}
+      cart: #{current_cart.to_json},
+      colors: #{@colors.to_json}
     });
   })

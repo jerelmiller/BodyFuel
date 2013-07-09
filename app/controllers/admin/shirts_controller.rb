@@ -1,6 +1,8 @@
 class Admin::ShirtsController < Admin::AdminController
   def new
     @shirt = Shirt.new
+    @colors = Color.all
+    @sizes = Size.all
   end
 
   def create

@@ -4,4 +4,8 @@ class HomeController < ApplicationController
     puts params
     redirect_to contact_path
   end
+
+  def order
+    @colors = Color.all
+  end
 end

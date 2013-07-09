@@ -27,9 +27,24 @@
     display: inline-block;
     border: 2px solid #EEE;
     cursor: pointer;
+    margin-left: 5px;
+    &:first-child {
+      margin-left: 0;
+    }
     @include box-sizing;
     &:hover, &.selected {
       border: 2px solid $dark-highlight;
+    }
+    &.color-preview {
+      margin: 1px 0 0 20px;
+      div {
+        width: 44px;
+        height: 44px;
+        cursor: default;
+      }
+      &:hover {
+        border: 2px solid #EEE;
+      }
     }
     div {
       width: 28px;
