@@ -16,6 +16,9 @@ $button-background: #34495e;
   &.add-to-cart {
     margin-top: 20px;
     display: block;
+    position: absolute;
+    bottom: $tile-padding;
+    @include stretch-x($tile-padding, $tile-padding);
   }
 }
 

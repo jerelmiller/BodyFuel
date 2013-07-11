@@ -14,37 +14,25 @@
         .tile-item
           %h3 Food
     .tiles-4.shirts.tab-section
-      - 15.times do |n|
-        .tile-item
-          .product-box
-            product image here
-          .product-details
-            .sizes
-              %h5 Size
-              %span S
-              %span M
-              %span L
-              %span XL
-              %span XXL
-            .colors
-              %h5 Color
-              .color{ 'ng-repeat' => 'color in colors' }
-                %div{ 'ng-style' => '{"background-color": color.hex_value}' }
-              / .color
-              /   .white
-              / .color
-              /   .orange
-              / .color
-              /   .green
-              / .color
-              /   .black
-              / .color
-              /   .red
-            %h5 Quantity
-            = text_field_tag :quantity, nil, class: 'short'
-            %span.price $19.99
-            .stock In Stock
-            = link_to 'Add to Cart', '', class: 'button add-to-cart', 'ng-click' => 'add_product()'
+      .tile-item.shirt{ 'ng-repeat' => 'shirt in shirts' }
+        .product-box
+          product image here
+        .product-details
+          %h4.center {{ shirt.name }}
+          .sizes
+            %h5 Size
+            %span{ 'ng-repeat' => 'size in shirt.sizes' }
+              {{ size.size }}
+          .colors
+            %h5 Color
+            .color{ 'ng-repeat' => 'color in shirt.colors' }
+              %div{ 'ng-style' => '{"background-color": color.hex_value}' }
+          %h5 Quantity
+          = text_field_tag :quantity, nil, class: 'short'
+          %span.price {{ shirt.price | currency }}
+          .stock{ 'ng-show' => 'shirt.stock > 0'} In Stock
+          .stock{ 'ng-show' => 'shirt.stock < 1'} Out of Stock
+          = link_to 'Add to Cart', '', class: 'button add-to-cart', 'ng-click' => 'add_product()'
 
 :javascript
   $(document).ready(function() {
@@ -52,7 +40,7 @@
     new Pages.Order();
     new Components.Tabs();
     AngularDataSeed({
-      cart: #{current_cart.to_json},
-      colors: #{@colors.to_json}
+      shirts: #{render partial: 'shirts/shirts', locals: { shirts: @shirts }, formats: [:json]},
+      cart: #{current_cart.to_json}
     });
   })

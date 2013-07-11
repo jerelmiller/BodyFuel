@@ -17,6 +17,7 @@ BodyFuel::Application.routes.draw do
     root to: 'admin#index'
     resources :products, only: :index
     resources :colors, only: :create
+    resources :sizes, only: :create
     scope 'products' do
       resources :shirts
       resources :food_products

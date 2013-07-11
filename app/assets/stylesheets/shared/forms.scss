@@ -60,13 +60,17 @@ input[type=text], input[type=password] {
   &.short {
     width: 30%;
   }
+  &.extra-short {
+    width: 4%;
+    min-width: 50px;
+  }
 }
 
 input[type=text] {
   &.color-input {
     width: 30%;
+    float: left;
   }
-  float: left;
 }
 
 textarea {

@@ -7,5 +7,6 @@ class HomeController < ApplicationController
 
   def order
     @colors = Color.all
+    @shirts = Shirt.includes(:colors).all
   end
 end

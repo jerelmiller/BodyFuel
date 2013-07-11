@@ -1,21 +1,23 @@
 %section{ "ng-app" => 'shirtsApp', 'ng-controller' => 'ShirtsCtrl' }
   .container
-    / = form_for [:admin, @shirt] do |f|
-    .input.clearfix
-      / = f.label :price
-      / = f.text_field :price
+    .input
+      %label Name
+      %input.short{ type: 'text', id: 'name', 'ng-model' => 'shirt.name' }
+    .input
       %label Price
-      / = text_field_tag :price
       %input.short{ type: 'text', id: 'price', 'ng-model' => 'shirt.price' }
+    .input
+      %label Stock
+      %input.short{ type: 'text', id: 'stock', 'ng-model' => 'shirt.stock' }
     .input
       %label Colors
       .colors
         .color-box
-          .color{ 'ng-repeat' => 'color in colors' }
+          .color{ 'ng-repeat' => 'color in colors', 'ng-class' => '{ selected: shirt_has_color(color) }', 'ng-click' => 'toggle_color(color)' }
             %div{ 'ng-style' => '{"background-color": format_color(color.hex_value)}' }
       = link_to '', 'ng-show' => '!is_editing_color', 'ng-click' => 'is_editing_color = true' do
         %i.icon-plus
-        Add new shirt color
+        Offer new shirt color
 
     .input.clearfix{ 'ng-show' => 'is_editing_color' }
       %h5 Please enter the color HEX value (e.g. #CCC )
@@ -23,33 +25,30 @@
       .colors
         .color.color-preview
           %div{ 'ng-style' => '{"background-color": format_color(new_color_value)}' }
-
-
-      %button.button{ 'ng-click' => 'add_color()'} Save color
-
-
+      %button.button{ 'ng-click' => 'save_color()'} Save color
 
     .input
       %label Sizes
       .sizes
-        %span S
-        %span M
-        %span L
-        %span XL
-        %span XXL
-      = link_to '#' do
+        %span{ 'ng-repeat' => 'size in sizes', 'ng-class' => '{ selected: shirt_has_size(size)}', 'ng-click' => 'toggle_size(size)' }
+          {{ size.size }}
+      = link_to '' , 'ng-show' => '!is_editing_size', 'ng-click' => 'is_editing_size = true' do
         %i.icon-plus
-        Add new size
+        Offer new size
+
+    .input.clearfix{ 'ng-show' => 'is_editing_size' }
+      %h5 Please enter the size (e.g. XL )
+      %input.extra-short{ type: 'text', id: 'color', 'ng-model' => 'new_size' }
+      %button.button{ 'ng-click' => 'save_size()'} Save size
 
     .submit
-      %button.button Submit
+      %button.button{ 'ng-click' => 'save()' } Add Shirt
 
 :javascript
   $(document).ready(function() {
     AngularDataSeed({
-      shirt: #{@shirt.to_json},
-      colors: #{@colors.to_json},
-      sizes: #{@sizes.to_json},
+      colors: #{render partial: 'colors/colors', locals: { colors: @colors }, formats: [:json]},
+      sizes: #{render partial: 'sizes/sizes', locals: { sizes: @sizes }, formats: [:json]},
       authenticity_token: '#{form_authenticity_token}'
     });
   })

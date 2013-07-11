@@ -5,10 +5,7 @@ class Shirt < ActiveRecord::Base
   has_many :colors, through: :color_shirts
   has_many :sizes, through: :shirt_sizes
 
-  attr_accessible :price
-
-  accepts_nested_attributes_for :colors, allow_destroy: false
-  accepts_nested_attributes_for :sizes, allow_destroy: false
+  attr_accessible :price, :stock, :name
 
   after_create :create_product
 

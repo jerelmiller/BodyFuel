@@ -14,6 +14,10 @@
     border: 2px solid $dark-highlight;
     padding: 3px 6px;
     cursor: pointer;
+    margin-left: 5px;
+    &:first-child {
+      margin-left: 0;
+    }
     &:hover, &.selected {
       background: $dark-highlight;
       color: white;
@@ -23,14 +27,12 @@
 
 .colors {
   margin-bottom: 20px;
+  max-width: 450px;
   .color {
     display: inline-block;
     border: 2px solid #EEE;
     cursor: pointer;
     margin-left: 5px;
-    &:first-child {
-      margin-left: 0;
-    }
     @include box-sizing;
     &:hover, &.selected {
       border: 2px solid $dark-highlight;
@@ -67,11 +69,14 @@
   }
 }
 
+.shirt {
+  padding-bottom: 92px !important;
+}
+
 .stock {
   text-transform: uppercase;
   font-size: 14px;
-  width: 30%;
-  text-align: center;
+  width: 50%;
 }
 
 .price {

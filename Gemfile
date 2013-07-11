@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 gem 'haml'
 gem 'sorcery'
+gem 'jbuilder'
 
 
 # Gems used only for assets and not required

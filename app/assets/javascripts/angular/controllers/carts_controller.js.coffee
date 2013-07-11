@@ -19,3 +19,6 @@ angular.module('carts_controller', [])
       # cart_product.unit_cost = product.unit_cost
       cart_product.quantity = 1
       $scope.cart_products.push cart_product
+
+  $scope.format_price = (price) ->
+    price.toFixed(2)

@@ -1,0 +1,4 @@
+json.(size,
+  :id,
+  :size
+)
