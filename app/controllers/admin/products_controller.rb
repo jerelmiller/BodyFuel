@@ -4,5 +4,6 @@ class Admin::ProductsController < Admin::AdminController
     @products = Product.all
     @shirts = Shirt.all
     @food_products = FoodProduct.all
+    @shirts_sold = Shirt.num_sold
   end
 end

@@ -7,7 +7,6 @@ $default-border-radius: 3px;
 
 // Sizes
 $viewport-width: 1280px;
-$admin-viewport-width: 1080px;
 $footer-height: 60px;
 $content-width: 950px;
 $gutter-width: 30px;
@@ -57,4 +56,10 @@ $tile-margin: 20px;
   -webkit-box-sizing: $type;
   -moz-box-sizing: $type;
   box-sizing: $type;
+}
+
+@mixin hover-state($color) {
+  &:hover {
+    background: lighten($color, 10%);
+  }
 }

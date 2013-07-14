@@ -42,18 +42,6 @@ h6 { @extend %base-header; font-size: $h6-size; }
 
 section {
   margin: 30px 0;
-  h2 {
-    text-align: center;
-  }
-
-  .admin & {
-    .container {
-      background: white;
-      @include box-sizing;
-      border: 1px solid #CCC;
-      padding: 20px;
-    }
-  }
 }
 
 .clearfix {
@@ -64,9 +52,9 @@ section {
   width: $viewport-width;
   margin: 0 auto;
   position: relative;
-
-  .admin & {
-    width: $admin-viewport-width;
+  &.main {
+    background: white;
+    border: 1px solid #CCC;
   }
 }
 

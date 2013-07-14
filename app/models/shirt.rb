@@ -5,9 +5,16 @@ class Shirt < ActiveRecord::Base
   has_many :colors, through: :color_shirts
   has_many :sizes, through: :shirt_sizes
 
+  validates :name, presence: true, uniqueness: true
+  validates :price, presence: true
+
   attr_accessible :price, :stock, :name
 
   after_create :create_product
+
+  def self.num_sold
+    1
+  end
 
   private
 

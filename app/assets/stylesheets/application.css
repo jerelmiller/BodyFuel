@@ -1,6 +1,8 @@
 /*
 *= require_self
+*= require bootstrapper
 *= require main
+*= require admin
 *= require home
 *= require shared
 *= require glyphs

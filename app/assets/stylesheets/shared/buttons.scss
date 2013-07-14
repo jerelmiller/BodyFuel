@@ -9,9 +9,7 @@ $button-background: #34495e;
   background: $button-background;
   text-align: center;
   text-transform: uppercase;
-  &:hover {
-    background: lighten($button-background, 10%);
-  }
+  @include hover-state($button-background);
 
   &.add-to-cart {
     margin-top: 20px;
@@ -19,6 +17,10 @@ $button-background: #34495e;
     position: absolute;
     bottom: $tile-padding;
     @include stretch-x($tile-padding, $tile-padding);
+  }
+  &.grey {
+    background: $dark-grey;
+    @include hover-state($dark-grey);
   }
 }
 

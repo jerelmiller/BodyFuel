@@ -1,10 +1,32 @@
+/ %section
+/   .container
+/     %h2= "#{@products.length} Total Products"
+/     / = link_to 'Create a new product', '#', class: 'button pull-right'
+/     %h3
+/       = "#{@shirts.length} shirt designs -"
+/       = link_to 'Create a new shirt design', new_admin_shirt_path, class: 'button'
+/     %h3
+/       = "#{@food_products.length} products offering food"
+/       = link_to 'Offer a new food product', '#', class: 'button'
+
 %section
-  .container
-    %h2= "#{@products.length} Total Products"
-    / = link_to 'Create a new product', '#', class: 'button pull-right'
-    %h3
-      = "#{@shirts.length} shirt designs -"
-      = link_to 'Create a new shirt design', new_admin_shirt_path, class: 'button'
-    %h3
-      = "#{@food_products.length} products offering food"
-      = link_to 'Offer a new food product', '#', class: 'button'
+  .container.clearfix
+    .tiles-2
+      .tile-item
+        %h3.center Shirts
+        %div
+          %span.shirt-count= @shirts.length
+          %span shirts added
+        %div
+          %span.shirt-count= @shirts_sold
+          %span
+            = pluralize(@shirts_sold, 'shirt').gsub(/\d+/, '')
+            sold
+        = link_to 'New shirt design', new_admin_shirt_path, class: 'button new-shirt'
+      .tile-item
+        %h3.center Food
+
+:javascript
+  $(document).ready(function() {
+    Utils.adjustTileSize('.tiles-2');
+  });

@@ -1,0 +1,8 @@
+.shirt-count {
+  font-size: $h2-size;
+  line-height: $h2-size + 5px;
+  + span {
+    font-size: $h4-size;
+    line-height: $h2-size + 5px;
+  }
+}
