@@ -21,12 +21,14 @@
           .shirt-meta
             %span Stock:
             %span.data {{ shirt.stock }}
-          = link_to 'Edit Shirt', '{{ shirt.edit_link }}', class: 'button add-to-cart'
+          = link_to 'Edit', '{{ shirt.edit_link }}', class: 'button edit-button'
+          = link_to 'Delete', '', class: 'button red delete-button', 'fade-shirt-tile' => 'remove_shirt(shirt)'
 
 :javascript
   $(document).ready(function() {
     Utils.adjustTileSize('.tiles-4');
     AngularDataSeed({
-      shirts: #{render partial: 'shirts/shirts', locals: { shirts: @shirts }, formats: [:json]}
+      shirts: #{render partial: 'shirts/shirts', locals: { shirts: @shirts }, formats: [:json]},
+      dependencies: { authenticity_token: '#{form_authenticity_token}' }
     })
   })

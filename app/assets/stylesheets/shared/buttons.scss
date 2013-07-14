@@ -10,6 +10,7 @@ $button-background: #34495e;
   background: $button-background;
   text-align: center;
   text-transform: uppercase;
+  @include box-sizing;
   @include hover-state($button-background);
 
   &.add-to-cart {
@@ -26,10 +27,22 @@ $button-background: #34495e;
   &.red {
     background: darken($red, 5%);
   }
-}
+  + .button {
+    margin-left: 10px;
+  }
 
-.button + .button {
-  margin-left: 10px;
+  &.edit-button {
+    position: absolute;
+    bottom: $tile-padding;
+    left: $tile-padding;
+    width: 102px;
+  }
+  &.delete-button {
+    position: absolute;
+    bottom: $tile-padding;
+    right: $tile-padding;
+    width: 102px;
+  }
 }
 
 a.button {

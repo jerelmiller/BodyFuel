@@ -64,11 +64,20 @@ angular.module('shirts_controller', [])
       , ((response) -> window.location = response.path)
       , $scope.error)
 
-  $scope.delete = ->
+  $scope.redirect_callback = (response) ->
+    window.location = response.path
+
+  $scope.delete = (shirt, callback) ->
     Shirt.delete(
-      id: $scope.shirt.id
+      id: shirt.id
       authenticity_token: $scope.authenticity_token
-    , (response) -> window.location = response.path)
+    , callback)
+
+  $scope.remove_shirt = (shirt) ->
+    $scope.delete(shirt)
+    $scope.shirts = _.filter $scope.shirts, (s) ->
+      s.id != shirt.id
+
 
   $scope.update = ->
     $scope.reset_errors()
