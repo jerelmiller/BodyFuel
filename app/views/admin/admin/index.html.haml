@@ -5,24 +5,24 @@
         = link_to new_admin_shirt_path, class: 'button' do
           %i.icon-plus
           New shirt design
-/     .tiles-2
-/       .tile-item
-/         %h3.center Shirts
-/         %div
-/           %span.shirt-count= @shirts.count
-/           %span shirts added
-/         %div
-/           %span.shirt-count= @shirts_sold
-/           %span
-/             = pluralize(@shirts_sold, 'shirt').gsub(/\d+/, '')
-/             sold
-/         %div
-/           = link_to 'New shirt design', new_admin_shirt_path, class: 'button'
-/       .tile-item
-/         %h3.center Food
-/     .tiles-1
-/       .tile-item
-/         %h3.center Orders
+    / .tiles-2
+    /   .tile-item
+    /     %h3.center Shirts
+    /     %div
+    /       %span.shirt-count= @shirts.count
+    /       %span shirts added
+    /     %div
+    /       %span.shirt-count= @shirts_sold
+    /       %span
+    /         = pluralize(@shirts_sold, 'shirt').gsub(/\d+/, '')
+    /         sold
+    /     %div
+    /       = link_to 'New shirt design', new_admin_shirt_path, class: 'button'
+    /   .tile-item
+    /     %h3.center Food
+    / .tiles-1
+    /   .tile-item
+    /     %h3.center Orders
 
 :javascript
   $(document).ready(function() {

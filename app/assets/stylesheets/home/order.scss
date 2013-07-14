@@ -28,6 +28,9 @@
 .colors {
   margin-bottom: 20px;
   max-width: 450px;
+  &.no-margin {
+    margin-bottom: 0px;
+  }
   .color {
     display: inline-block;
     border: 2px solid #EEE;
@@ -38,7 +41,7 @@
       border: 2px solid $dark-highlight;
     }
     &.color-preview {
-      margin: 1px 0 0 20px;
+      margin: -1px 0 -5px 20px;
       div {
         width: 44px;
         height: 44px;
@@ -80,8 +83,9 @@
 }
 
 .price {
+  text-transform: uppercase;
   font-size: 24px;
-  width: 68%;
+  width: 66%;
   display: inline-block;
   text-align: center;
 }

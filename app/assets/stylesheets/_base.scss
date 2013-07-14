@@ -34,6 +34,7 @@ $orange: #E69E22;
 $leaf-green: #21EF11;
 $yellow: #FBF27D;
 $light-background: #F8F8F8;
+$red: #ED7669;
 
 // Tiles
 $tile-padding: 20px;
@@ -61,5 +62,12 @@ $tile-margin: 20px;
 @mixin hover-state($color) {
   &:hover {
     background: lighten($color, 10%);
+  }
+}
+
+@mixin alert-after-input($width: 100%) {
+  ~ .alert {
+    margin-top: -2px;
+    width: $width;
   }
 }

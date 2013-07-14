@@ -1,0 +1,32 @@
+%section{ 'ng-app' => 'shirtsApp', 'ng-controller' => 'ShirtsCtrl' }
+  .container
+    %h2.center Shirts
+    .tiles-4.shirts.tab-section
+      %h3.center{ 'ng-show' => 'shirts.length == 0'} No shirts yet!
+      .tile-item.shirt{ 'ng-repeat' => 'shirt in shirts' }
+        .product-box
+          product image here
+        .product-details
+          %h4.center {{ shirt.name }}
+          .sizes
+            %h5 Size
+            %span{ 'ng-repeat' => 'size in shirt.sizes' } {{ size.size }}
+          .colors
+            %h5 Color
+            .color{ 'ng-repeat' => 'color in shirt.colors' }
+              %div{ 'ng-style' => '{ background: color.hex_value }' }
+          .shirt-meta
+            %span Price:
+            %span.data {{ shirt.price }}
+          .shirt-meta
+            %span Stock:
+            %span.data {{ shirt.stock }}
+          = link_to 'Edit Shirt', '{{ shirt.edit_link }}', class: 'button add-to-cart'
+
+:javascript
+  $(document).ready(function() {
+    Utils.adjustTileSize('.tiles-4');
+    AngularDataSeed({
+      shirts: #{render partial: 'shirts/shirts', locals: { shirts: @shirts }, formats: [:json]}
+    })
+  })

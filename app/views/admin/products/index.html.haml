@@ -22,7 +22,8 @@
           %span
             = pluralize(@shirts_sold, 'shirt').gsub(/\d+/, '')
             sold
-        = link_to 'New shirt design', new_admin_shirt_path, class: 'button new-shirt'
+        = link_to 'New shirt design', new_admin_shirt_path, class: 'button shirt-button'
+        = link_to 'View shirts', admin_shirts_path, class: 'button shirt-button'
       .tile-item
         %h3.center Food
 

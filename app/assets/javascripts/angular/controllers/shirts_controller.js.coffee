@@ -1,71 +1,85 @@
 angular.module('shirts_controller', [])
-.controller 'ShirtsCtrl', ($scope, DataSeed, Color, Shirt, Size) ->
+.controller 'ShirtsCtrl', ($scope, DataSeed, Shirt) ->
   DataSeed.then (data) ->
-    _.extend $scope, data
+    _.extend $scope, shirt: data.shirt
+    _.extend $scope, shirts: data.shirts
+    _.extend $scope, data.dependencies
 
-    $scope.is_editing_color = false
-    $scope.shirt_colors ||= []
-    $scope.shirt_sizes ||= []
-    $scope.shirt ||= {
-      price: 0
-      stock: 0
-    }
+    $scope.errors = {}
+
+  $scope.has_errors = ->
+    !_.isEmpty $scope.errors
 
   $scope.shirt_has_color = (color) ->
-    _.any $scope.shirt_colors, (c) ->
+    _.any $scope.shirt.colors, (c) ->
       c.id == color.id
 
   $scope.shirt_has_size = (size) ->
-    _.any $scope.shirt_sizes, (s) ->
+    _.any $scope.shirt.sizes, (s) ->
       s.id == size.id
 
   $scope.toggle_color = (color) ->
-    return $scope.shirt_colors = _.without($scope.shirt_colors, color) if $scope.shirt_has_color(color)
-    $scope.shirt_colors.push color
+    if $scope.shirt_has_color(color)
+      return $scope.shirt.colors = _.filter $scope.shirt.colors, (c) ->
+        c.id != color.id
+
+    $scope.shirt.colors.push color
 
   $scope.toggle_size = (size) ->
-    return $scope.shirt_sizes = _.without($scope.shirt_sizes, size) if $scope.shirt_has_size(size)
-    $scope.shirt_sizes.push size
+    if $scope.shirt_has_size(size)
+      return $scope.shirt.sizes = _.filter $scope.shirt.sizes, (s) ->
+        s.id != size.id
 
-  $scope.save_color = ->
-    color = {}
-    color.hex_value = $scope.format_color $scope.new_color_value
-
-    $scope.is_editing_color = false
-    $scope.new_color_value = ''
-
-    Color.save(
-      color: color
-      authenticity_token: $scope.authenticity_token
-    , $scope.success, $scope.error)
-
-  $scope.save_size = ->
-    size = {}
-    size.size = $scope.new_size
-
-    $scope.is_editing_size = false
-    $scope.new_size = ''
-
-    Size.save(
-      size: size
-      authenticity_token: $scope.authenticity_token
-    , $scope.success, $scope.error)
-
-  $scope.success = (response) ->
-    $scope.colors.push response.color if response.color
-    $scope.sizes.push response.size if response.size
+    $scope.shirt.sizes.push size
 
   $scope.error = (response) ->
-    console.log 'error'
+    return $scope.errors = response.data.errors if response.status == 422
+    $scope.errors.general = 'There were errors trying to save the shirt. Please try again'
+
+  $scope.validate = ->
+    $scope.errors.name = "Name can't be blank" if _.isEmpty $scope.shirt.name
+    $scope.errors.price = 'Price must be greater than or equal to 0' if parseInt($scope.shirt.price) < 0
+    $scope.errors.price = 'Price is not a number' if !/^-?(\d|\.)+$/.test $scope.shirt.price.toString()
+    $scope.errors.stock = 'Stock must be greater than or equal to 0' if parseInt($scope.shirt.stock) < 0
+    $scope.errors.stock = 'Stock is not a number' if !/^-?(\d|\.)+$/.test $scope.shirt.stock.toString()
+
+    $scope.errors.colors = 'You must select at least one color' if _.isEmpty $scope.shirt.colors
+    $scope.errors.sizes = 'You must select at least one size' if _.isEmpty $scope.shirt.sizes
+
+  $scope.is_valid = ->
+    $scope.validate()
+    _.isEmpty $scope.errors
+
+  $scope.reset_errors = ->
+    $scope.errors = {}
 
   $scope.save = ->
-    Shirt.save(
-      shirt: $scope.shirt
-      colors: $scope.shirt_colors
-      sizes: $scope.shirt_sizes
-      authenticity_token: $scope.authenticity_token
-    , (response) -> window.location = response.path )
+    $scope.reset_errors()
+    if $scope.is_valid()
+      Shirt.save(
+        shirt: _format_shirt_params()
+        colors: $scope.shirt.colors
+        sizes: $scope.shirt.sizes
+        authenticity_token: $scope.authenticity_token
+      , ((response) -> window.location = response.path)
+      , $scope.error)
 
+  $scope.update = ->
+    $scope.reset_errors()
+    if $scope.is_valid()
+      Shirt.update(
+        id: $scope.shirt.id
+        shirt: _format_shirt_params()
+        colors: $scope.shirt.colors
+        sizes: $scope.shirt.sizes
+        authenticity_token: $scope.authenticity_token
+      , ((response) -> window.location = response.path)
+      , $scope.error)
 
-  $scope.format_color = (hex_value) ->
-    "##{hex_value?.replace('#', '').toUpperCase()}"
+  _format_shirt_params = ->
+    attrs = _.clone $scope.shirt
+    delete attrs.id
+    delete attrs.colors
+    delete attrs.sizes
+    delete attrs.edit_link
+    attrs

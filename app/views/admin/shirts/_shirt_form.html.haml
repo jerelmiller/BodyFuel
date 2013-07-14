@@ -1,0 +1,81 @@
+%section{ "ng-app" => 'shirtsApp', 'ng-controller' => 'ShirtsCtrl' }
+  .container.main
+    .alert.error{ 'ng-show' => 'errors.general'} {{ errors.general }}
+    .input-container
+      .input
+        %label Name
+        %input.short{ type: 'text', id: 'name', 'ng-model' => 'shirt.name', 'ng-class' => '{ error: errors.name }' }
+        .alert.error{ 'ng-show' => 'errors.name' }
+          %button.close{ 'hide-alert' => 'errors.name = ""' } &times;
+          {{ errors.name }}
+      .input
+        %label Price
+        %input.short{ type: 'text', id: 'price', 'ng-model' => 'shirt.price', 'ng-class' => '{ error: errors.price }' }
+        .alert.error{ 'ng-show' => 'errors.price' }
+          %button.close{ 'hide-alert' => 'errors.price = ""' } &times;
+          {{ errors.price }}
+      .input
+        %label Stock
+        %input.short{ type: 'text', id: 'stock', 'ng-model' => 'shirt.stock', 'ng-class' => '{ error: errors.stock }' }
+        .alert.error{ 'ng-show' => 'errors.stock' }
+          %button.close{ 'hide-alert' => 'errors.stock = ""' } &times;
+          {{ errors.stock }}
+      .angular-controller{ 'ng-controller' => 'ColorsCtrl'}
+        .input
+          %label Colors
+          .alert.error.short{ 'ng-show' => 'errors.colors' }
+            %button.close{ 'hide-alert' => 'errors.colors = ""' } &times;
+            {{ errors.colors }}
+          .colors
+            .color-box
+              .color{ 'ng-repeat' => 'color in colors', 'ng-class' => '{ selected: shirt_has_color(color) }', 'ng-click' => 'toggle_color(color)' }
+                %div{ 'ng-style' => '{"background-color": format_color(color.hex_value)}' }
+          = link_to '', 'ng-show' => '!is_editing_color', 'ng-click' => 'is_editing_color = true' do
+            %i.icon-plus
+            Offer new shirt color
+
+        .input.keep-margin.clearfix{ 'ng-show' => 'is_editing_color' }
+          %h5 Please enter the color HEX value (e.g. #CCC )
+          %input.color-input{ type: 'text', id: 'color', 'ng-model' => 'new_color_value', 'ng-class' => '{ error: color_errors.hex_value }' }
+          .colors.no-margin
+            .color.color-preview
+              %div{ 'ng-style' => '{"background-color": format_color(new_color_value)}' }
+          .alert.error{ 'ng-show' => '!is_valid()' }
+            %button.close{ 'hide-alert' => 'reset_errors()' } &times;
+            {{ full_error_messages() }}
+          %button.button.save{ 'ng-click' => 'save_color()'} Save color
+
+      .angular-controller{ 'ng-controller' => 'SizesCtrl' }
+        .input
+          %label Sizes
+          .alert.error.short{ 'ng-show' => 'errors.sizes' }
+            %button.close{ 'hide-alert' => 'errors.sizes = ""' } &times;
+            {{ errors.sizes }}
+          .sizes
+            %span{ 'ng-repeat' => 'size in sizes', 'ng-class' => '{ selected: shirt_has_size(size)}', 'ng-click' => 'toggle_size(size)' }
+              {{ size.size }}
+          = link_to '' , 'ng-show' => '!is_editing_size', 'ng-click' => 'is_editing_size = true' do
+            %i.icon-plus
+            Offer new size
+
+        .input.clearfix{ 'ng-show' => 'is_editing_size' }
+          %h5 Please enter the size (e.g. XL )
+          %input.extra-short{ type: 'text', id: 'color', 'ng-model' => 'new_size', 'ng-class' => '{ error: !is_valid() }' }
+          %button.button{ 'ng-click' => 'save_size()'} Save size
+          .alert.error.short{ 'ng-show' => '!is_valid()' }
+            %button.close{ 'hide-alert' => 'reset_errors()' } &times;
+            {{ full_error_messages() }}
+
+    .submit
+      = link_to 'Cancel', request.referer, class: 'button grey'
+      %button.button{ 'ng-click' => action.eql?('new') ? 'save()' : 'update()' } Save Shirt
+
+:javascript
+  $(document).ready(function() {
+    AngularDataSeed({
+      shirt: #{render partial: 'shirts/shirt', locals: { shirt: @shirt }, formats: [:json]},
+      colors: #{render partial: 'colors/colors', locals: { colors: @colors }, formats: [:json]},
+      sizes: #{render partial: 'sizes/sizes', locals: { sizes: @sizes }, formats: [:json]},
+      dependencies: { authenticity_token: '#{form_authenticity_token}' }
+    });
+  })

@@ -14,6 +14,7 @@
         .tile-item
           %h3 Food
     .tiles-4.shirts.tab-section
+      %h3.center{ 'ng-show' => 'shirts.length == 0'} We are currently working on our inventory. Check back soon!
       .tile-item.shirt{ 'ng-repeat' => 'shirt in shirts' }
         .product-box
           product image here

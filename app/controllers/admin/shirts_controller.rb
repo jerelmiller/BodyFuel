@@ -1,8 +1,25 @@
 class Admin::ShirtsController < Admin::AdminController
+  before_filter :get_colors, :get_sizes, only: [:edit, :new]
+  before_filter :get_shirt, only: [:edit, :update, :destroy]
+
+  def index
+    @shirts = Shirt.all
+  end
+
+  def update
+    Shirt.transaction do
+      if @shirt.update_attributes params[:shirt]
+        @shirt.colors = filtered_colors
+        @shirt.sizes = filtered_sizes
+      else
+        return render json: { errors: shirt_errors(@shirt) }, status: :unprocessable_entity
+      end
+    end
+    render json: { path: admin_shirts_path }, status: :ok
+  end
+
   def new
     @shirt = Shirt.new
-    @colors = Color.all
-    @sizes = Size.all
   end
 
   def create
@@ -10,11 +27,33 @@ class Admin::ShirtsController < Admin::AdminController
     Shirt.transaction do
       if @shirt.save
         @shirt.colors = Color.where(id: Array(params[:colors]).map{ |color| color[:id] }).all
-        @shirt.sizes = Size.where(id: Array(params[:sizes]).map{ |size| size[:id] }).all
+        @shirt.sizes = filtered_sizes
       else
-        return render json: { error: @shirt.errors.full_messages }, status: :unprocessable_entity
+        return render json: { errors: model_errors(@shirt) }, status: :unprocessable_entity
       end
     end
-    render json: { path: admin_products_path }, status: :ok
+    render json: { path: admin_shirts_path }, status: :ok
+  end
+
+  private
+
+  def filtered_colors
+    Color.where(id: Array(params[:colors]).map{ |color| color[:id] }).all
+  end
+
+  def filtered_sizes
+    Size.where(id: Array(params[:sizes]).map{ |size| size[:id] }).all
+  end
+
+  def get_shirt
+    @shirt = Shirt.find params[:id]
+  end
+
+  def get_colors
+    @colors = Color.all
+  end
+
+  def get_sizes
+    @sizes = Size.all
   end
 end

@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     redirect_to login_path
   end
 
+  def model_errors(model)
+    model.errors.messages.reduce({}) { |hash, (attr, error)|  hash[attr] = model.errors.full_message(attr, error.join(',')); hash }
+  end
+
   private
 
   def current_cart

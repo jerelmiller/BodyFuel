@@ -1,0 +1,42 @@
+.alert {
+  padding: 10px 30px 10px 15px;
+  color: white;
+  position: relative;
+  @include box-sizing;
+  .close {
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: 18px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  &.error {
+    background: $red;
+  }
+  &.short {
+    display: inline-block;
+  }
+  &.warning {
+    color: #C09853;
+    background: #f7ECB5;
+    .close {
+      color: #C09853;
+    }
+  }
+
+  + .colors {
+    margin-top: 15px;
+  }
+
+  + .sizes {
+    margin-top: 15px;
+  }
+
+}

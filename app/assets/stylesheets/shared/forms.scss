@@ -25,6 +25,9 @@ form {
   &:last-child {
     margin-bottom: 0;
   }
+  &.keep-margin {
+    margin-bottom: 30px;
+  }
 }
 
 .submit {
@@ -56,20 +59,30 @@ label {
 }
 
 input[type=text], input[type=password] {
+  $input-width: 100%;
+  margin: 0;
   @extend %base-input-style;
   &.short {
-    width: 30%;
+    $input-width: 30%;
+    width: $input-width;
+    @include alert-after-input($input-width);
+  }
+  &.color-input {
+    width: $input-width;
+    float: left;
+    @include alert-after-input($input-width);
   }
   &.extra-short {
-    width: 4%;
+    $input-width: 7%;
+    width: $input-width;
     min-width: 50px;
   }
-}
+  &.error {
+    border: 1px solid $red;
+  }
 
-input[type=text] {
-  &.color-input {
-    width: 30%;
-    float: left;
+  ~ .save {
+    margin-top: 10px;
   }
 }
 
