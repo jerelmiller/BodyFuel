@@ -64,6 +64,12 @@ angular.module('shirts_controller', [])
       , ((response) -> window.location = response.path)
       , $scope.error)
 
+  $scope.delete = ->
+    Shirt.delete(
+      id: $scope.shirt.id
+      authenticity_token: $scope.authenticity_token
+    , (response) -> window.location = response.path)
+
   $scope.update = ->
     $scope.reset_errors()
     if $scope.is_valid()

@@ -23,6 +23,13 @@ $button-background: #34495e;
     background: $dark-grey;
     @include hover-state($dark-grey);
   }
+  &.red {
+    background: darken($red, 5%);
+  }
+}
+
+.button + .button {
+  margin-left: 10px;
 }
 
 a.button {

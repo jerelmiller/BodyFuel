@@ -69,6 +69,8 @@
     .submit
       = link_to 'Cancel', request.referer, class: 'button grey'
       %button.button{ 'ng-click' => action.eql?('new') ? 'save()' : 'update()' } Save Shirt
+      - if action.eql? 'edit'
+        %button.button.red{ 'ng-click' => 'delete()'} Delete
 
 :javascript
   $(document).ready(function() {

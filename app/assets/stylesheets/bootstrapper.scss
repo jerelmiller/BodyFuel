@@ -32,7 +32,7 @@
         @extend %base-tile;
         @include box-sizing;
         width: $tile-width;
-        &:nth-child(#{$i}n) {
+        &:nth-child(#{$i}n+1) {
           margin-right: 0;
         }
       }

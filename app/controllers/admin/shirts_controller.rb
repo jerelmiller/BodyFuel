@@ -35,6 +35,11 @@ class Admin::ShirtsController < Admin::AdminController
     render json: { path: admin_shirts_path }, status: :ok
   end
 
+  def destroy
+    @shirt.destroy
+    render json: { path: admin_shirts_path }, status: :ok
+  end
+
   private
 
   def filtered_colors
