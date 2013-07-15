@@ -2,11 +2,13 @@ $form-padding: 20px;
 $form-field-background: #F8F8F8;
 
 form {
-  width: 50%;
-  margin: 0 auto;
-  background: white;
-  border: 1px solid #CCC;
-  @include clearfix;
+  &.contact {
+    width: 50%;
+    margin: 0 auto;
+    background: white;
+    border: 1px solid #CCC;
+    @include clearfix;
+  }
 }
 .input-container {
   padding: $form-padding;

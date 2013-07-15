@@ -1,11 +1,12 @@
 %section{ 'ng-app' => 'shirtsApp', 'ng-controller' => 'ShirtsCtrl' }
   .container
     %h2.center Shirts
+    %h3.center{ 'ng-show' => 'shirts.length == 0'} No shirts yet!
     .tiles-4.shirts.tab-section
-      %h3.center{ 'ng-show' => 'shirts.length == 0'} No shirts yet!
       .tile-item.shirt{ 'ng-repeat' => 'shirt in shirts' }
         .product-box
-          product image here
+          %img.design{ 'ng-src' => '{{ shirt.design_medium }}', 'ng-show' => 'shirt.design_medium' }
+          %i.icon-tshirt.default-shirt{ 'ng-hide' => 'shirt.design_medium'}
         .product-details
           %h4.center {{ shirt.name }}
           .sizes

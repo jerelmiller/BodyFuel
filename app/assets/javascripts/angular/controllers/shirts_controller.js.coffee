@@ -47,6 +47,7 @@ angular.module('shirts_controller', [])
     $scope.errors.sizes = 'You must select at least one size' if _.isEmpty $scope.shirt.sizes
 
   $scope.is_valid = ->
+    $scope.reset_errors()
     $scope.validate()
     _.isEmpty $scope.errors
 

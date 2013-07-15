@@ -13,11 +13,12 @@
       - 10.times do |n|
         .tile-item
           %h3 Food
+    %h3.center{ 'ng-show' => 'shirts.length == 0'} We are currently working on our inventory. Check back soon!
     .tiles-4.shirts.tab-section
-      %h3.center{ 'ng-show' => 'shirts.length == 0'} We are currently working on our inventory. Check back soon!
       .tile-item.shirt{ 'ng-repeat' => 'shirt in shirts' }
         .product-box
-          product image here
+          %img.design{ 'ng-src' => '{{ shirt.design_medium }}', 'ng-show' => 'shirt.design_medium' }
+          %i.icon-tshirt.default-shirt{ 'ng-hide' => 'shirt.design_medium'}
         .product-details
           %h4.center {{ shirt.name }}
           .sizes
@@ -37,6 +38,7 @@
 
 :javascript
   $(document).ready(function() {
+    Utils.adjustTileSize('.tiles-3');
     Utils.adjustTileSize('.tiles-4');
     new Pages.Order();
     new Components.Tabs();

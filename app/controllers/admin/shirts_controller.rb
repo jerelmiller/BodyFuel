@@ -15,7 +15,10 @@ class Admin::ShirtsController < Admin::AdminController
         return render json: { errors: shirt_errors(@shirt) }, status: :unprocessable_entity
       end
     end
-    render json: { path: admin_shirts_path }, status: :ok
+    respond_to do |format|
+      format.json { render json: { path: admin_shirts_path }, status: :ok }
+      format.html { redirect_to admin_shirts_path }
+    end
   end
 
   def new
@@ -43,11 +46,11 @@ class Admin::ShirtsController < Admin::AdminController
   private
 
   def filtered_colors
-    Color.where(id: Array(params[:colors]).map{ |color| color[:id] }).all
+    Color.where(id: Array(JSON.parse(params[:colors])).map(&:with_indifferent_access).map{ |color| color[:id] }).all
   end
 
   def filtered_sizes
-    Size.where(id: Array(params[:sizes]).map{ |size| size[:id] }).all
+    Size.where(id: Array(JSON.parse(params[:sizes])).map(&:with_indifferent_access).map{ |size| size[:id] }).all
   end
 
   def get_shirt

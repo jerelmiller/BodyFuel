@@ -9,9 +9,18 @@ class Shirt < ActiveRecord::Base
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :stock, presence: true, numericality: { greater_than_or_equal_to: 0, only_interger: true }
 
-  attr_accessible :price, :stock, :name
+  attr_accessible :price, :stock, :name, :design
 
   after_create :create_product
+
+  has_attached_file :design,
+    storage: :dropbox,
+    styles: { thumb: '300x300>', medium: '270x270>', large: '500x500>' },
+    default_url: nil,
+    dropbox_credentials: "#{Rails.root}/config/dropbox.yml",
+    dropbox_options: { path: proc { |style| "bodyfuel/#{Rails.env}/designs/#{style}/#{id}/#{design.original_filename}"} }
+
+  validates_attachment :design, content_type: { content_type: ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'] }
 
   def self.num_sold
     1
