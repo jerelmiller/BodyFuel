@@ -17,8 +17,8 @@
     .tiles-4.shirts.tab-section
       .tile-item.shirt{ 'ng-repeat' => 'shirt in shirts' }
         .product-box
-          %img.design{ 'ng-src' => '{{ shirt.design_medium }}', 'ng-show' => 'shirt.design_medium' }
-          %i.icon-tshirt.default-shirt{ 'ng-hide' => 'shirt.design_medium'}
+          %img.design{ 'ng-src' => '{{ shirt.design_normal }}', 'ng-show' => 'shirt.design_normal' }
+          %i.icon-tshirt.default-shirt{ 'ng-hide' => 'shirt.design_normal'}
         .product-details
           %h4.center {{ shirt.name }}
           .sizes
