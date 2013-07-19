@@ -73,3 +73,13 @@
   margin: 0 auto;
   @include box-sizing;
 }
+
+.shirts, .meals {
+  margin-top: 40px;
+}
+
+.new-shirt, .new-meal {
+  position: absolute;
+  top: -10px;
+  left: 0;
+}

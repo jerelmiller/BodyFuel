@@ -1,18 +1,9 @@
 %section
   .container
-    %h1.center Products
+    %h1.center Shirts
 
 %section{ 'ng-app' => 'cartsApp', 'ng-controller' => 'CartsCtrl'}
   .container
-    .tabs
-      = link_to '#food', class: 'tab selected', 'data-show' => 'food' do
-        %span Food
-      = link_to '#shirts', class: 'tab', 'data-show' => 'shirts' do
-        %span Shirts
-    .tiles-3.food.tab-section
-      - 10.times do |n|
-        .tile-item
-          %h3 Food
     %h3.center{ 'ng-show' => 'shirts.length == 0'} We are currently working on our inventory. Check back soon!
     .tiles-4.shirts.tab-section
       .tile-item.shirt{ 'ng-repeat' => 'shirt in shirts' }
@@ -30,18 +21,15 @@
             .color{ 'ng-repeat' => 'color in shirt.colors' }
               %div{ 'ng-style' => '{"background-color": color.hex_value}' }
           %h5 Quantity
-          = text_field_tag :quantity, nil, class: 'short'
+          = text_field_tag :quantity, nil, class: 'short', 'ng-model' => 'shirt.quantity'
           %span.price {{ shirt.price | currency }}
           .stock{ 'ng-show' => 'shirt.stock > 0'} In Stock
           .stock{ 'ng-show' => 'shirt.stock < 1'} Out of Stock
-          = link_to 'Add to Cart', '', class: 'button add-to-cart', 'ng-click' => 'add_product()'
+          = link_to 'Add to Cart', '', class: 'button add-to-cart', 'ng-click' => 'add_product(shirt)'
 
 :javascript
   $(document).ready(function() {
-    Utils.adjustTileSize('.tiles-3');
     Utils.adjustTileSize('.tiles-4');
-    new Pages.Order();
-    new Components.Tabs();
     AngularDataSeed({
       shirts: #{render partial: 'shirts/shirts', locals: { shirts: @shirts }, formats: [:json]},
       cart: #{current_cart.to_json}

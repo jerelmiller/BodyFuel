@@ -12,15 +12,13 @@ BodyFuel::Application.routes.draw do
   get '/login' => 'sessions#new'
   get '/logout' => 'sessions#destroy'
   resources :sessions, only: :create
+  resources :cart_products, only: :create
 
   namespace :admin do
     root to: 'admin#index'
-    resources :products, only: :index
     resources :colors, only: :create
     resources :sizes, only: :create
-    scope 'products' do
-      resources :shirts
-      resources :food_products
-    end
+    resources :meals
+    resources :shirts
   end
 end

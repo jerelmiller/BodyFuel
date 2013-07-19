@@ -1,0 +1,4 @@
+json.(meal,
+  :id,
+  :name
+)

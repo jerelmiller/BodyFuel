@@ -29,13 +29,16 @@ class Admin::ShirtsController < Admin::AdminController
     @shirt = Shirt.new params[:shirt]
     Shirt.transaction do
       if @shirt.save
-        @shirt.colors = Color.where(id: Array(params[:colors]).map{ |color| color[:id] }).all
+        @shirt.colors = filtered_colors
         @shirt.sizes = filtered_sizes
       else
         return render json: { errors: model_errors(@shirt) }, status: :unprocessable_entity
       end
     end
-    render json: { path: admin_shirts_path }, status: :ok
+    respond_to do |format|
+      format.json { render json: { path: admin_shirts_path }, status: :ok }
+      format.html { redirect_to admin_shirts_path }
+    end
   end
 
   def destroy

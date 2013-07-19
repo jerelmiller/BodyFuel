@@ -17,11 +17,11 @@ class ApplicationController < ActionController::Base
   private
 
   def current_cart
-    @_current_cart ||= if Cart.exists?(session[:cart_id])
-      Cart.find session[:cart_id]
+    @_current_cart ||= if Cart.exists?(cookies[:cart_id])
+      Cart.find cookies[:cart_id]
     else
       cart ||= Cart.create
-      session[:cart_id] = cart.id
+      cookies[:cart_id] = cart.id
       cart
     end
   end

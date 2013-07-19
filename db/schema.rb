@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130715013042) do
+ActiveRecord::Schema.define(:version => 20130719063433) do
 
-  create_table "cart_products", :force => true do |t|
-    t.integer  "cart_id",                     :null => false
-    t.integer  "product_id",                  :null => false
-    t.decimal  "price",      :default => 0.0, :null => false
-    t.integer  "quantity",   :default => 0,   :null => false
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+  create_table "cart_shirts", :force => true do |t|
+    t.integer  "cart_id",                   :null => false
+    t.integer  "shirt_id",                  :null => false
+    t.integer  "quantity",   :default => 0, :null => false
+    t.integer  "color_id",                  :null => false
+    t.integer  "size_id",                   :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "carts", :force => true do |t|
@@ -46,18 +47,12 @@ ActiveRecord::Schema.define(:version => 20130715013042) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "food_items", :force => true do |t|
-    t.string   "name",       :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "food_products", :force => true do |t|
-    t.string   "name",                         :null => false
-    t.decimal  "price",       :default => 0.0, :null => false
-    t.text     "description"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+  create_table "meals", :force => true do |t|
+    t.string   "name",               :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "orders", :force => true do |t|
@@ -69,19 +64,12 @@ ActiveRecord::Schema.define(:version => 20130715013042) do
     t.datetime "updated_at",                    :null => false
   end
 
-  create_table "products", :force => true do |t|
-    t.integer  "content_id",   :null => false
-    t.string   "content_type", :null => false
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
   create_table "shirts", :force => true do |t|
     t.string   "name"
-    t.decimal  "price",               :default => 0.0, :null => false
-    t.integer  "stock",               :default => 0,   :null => false
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
+    t.decimal  "price",               :default => 0.0,   :null => false
+    t.boolean  "stock",               :default => false, :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "design_file_name"
     t.string   "design_content_type"
     t.integer  "design_file_size"
