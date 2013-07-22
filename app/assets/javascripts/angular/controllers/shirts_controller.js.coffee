@@ -40,8 +40,6 @@ angular.module('shirts_controller', [])
     $scope.errors.name = "Name can't be blank" if _.isEmpty $scope.shirt.name
     $scope.errors.price = 'Price must be greater than or equal to 0' if parseInt($scope.shirt.price) < 0
     $scope.errors.price = 'Price is not a number' if !/^-?(\d|\.)+$/.test $scope.shirt.price.toString()
-    $scope.errors.stock = 'Stock must be greater than or equal to 0' if parseInt($scope.shirt.stock) < 0
-    $scope.errors.stock = 'Stock is not a number' if !/^-?(\d|\.)+$/.test $scope.shirt.stock.toString()
 
     $scope.errors.colors = 'You must select at least one color' if _.isEmpty $scope.shirt.colors
     $scope.errors.sizes = 'You must select at least one size' if _.isEmpty $scope.shirt.sizes
@@ -49,7 +47,7 @@ angular.module('shirts_controller', [])
   $scope.is_valid = ->
     $scope.reset_errors()
     $scope.validate()
-    _.isEmpty $scope.errors
+    !$scope.has_errors()
 
   $scope.reset_errors = ->
     $scope.errors = {}

@@ -24,11 +24,9 @@
             %button.close{ 'hide-alert' => 'errors.price = ""', 'eat-click' => '' } &times;
             {{ errors.price }}
         .input
-          %label Stock
-          %input.short{ type: 'text', id: 'stock', 'ng-model' => 'shirt.stock', 'ng-class' => '{ error: errors.stock }' }
-          .alert.error{ 'ng-show' => 'errors.stock' }
-            %button.close{ 'hide-alert' => 'errors.stock = ""', 'eat-click' => '' } &times;
-            {{ errors.stock }}
+          %label.checkbox In Stock
+          %span.unchecked{ 'ng-hide' => 'shirt.stock', 'ng-click' => 'shirt.stock = true' } &#10004;
+          %span.checked{ 'ng-show' => 'shirt.stock', 'ng-click' => 'shirt.stock = false' } &#10004;
         .angular-controller{ 'ng-controller' => 'ColorsCtrl'}
           .input
             %label Colors
@@ -95,20 +93,4 @@
       sizes: #{render partial: 'sizes/sizes', locals: { sizes: @sizes }, formats: [:json]},
       dependencies: { authenticity_token: '#{form_authenticity_token}' }
     });
-
-    $('#design').change(function() {
-      readURL(this);
-    });
-
-    function readURL(input) {
-      if(input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function(e) {
-          $('#preview').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
   })

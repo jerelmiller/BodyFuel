@@ -4,9 +4,11 @@
     = link_to 'Add new meal', new_admin_meal_path, class: 'button new-meal'
     .tiles-3.meals
       .tile-item.shirt{ 'ng-repeat' => 'meal in meals' }
-        / Cool!
-        = link_to 'Edit', '', class: 'button edit-button'
-        = link_to 'Delete', '', class: 'button red delete-button'
+        .product-box
+          %img.design{ 'ng-src' => '{{ meal.meal_normal }}' }
+        %h4.center {{ meal.name }}
+        = link_to 'Edit', '{{ meal.edit_link }}', class: 'button edit-button'
+        = link_to 'Delete', '', class: 'button red delete-button', 'fade-tile' => 'remove_meal(meal)'
 
 :javascript
   $(document).ready(function() {

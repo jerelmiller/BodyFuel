@@ -6,6 +6,7 @@ gem 'sorcery'
 gem 'jbuilder'
 gem 'paperclip'
 gem 'paperclip-dropbox'
+gem 'squeel'
 
 
 # Gems used only for assets and not required

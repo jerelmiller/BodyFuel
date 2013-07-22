@@ -7,46 +7,18 @@
 %section.meals
   .container
     %h2 Fresh, healthy, on-the-go meals
-    .tiles-3.food-items
-      .tile-item.fader#fader1
-        .slide
-          %h4 Grilled Salmon
-          = image_tag '6ozsalmon_medium.png'
-        .slide
-          %h4 Alfredo Chicken
-          = image_tag 'alfredo_chicken_medium.png'
-        .slide
-          %h4 BBQ Chicken
-          = image_tag 'bbqchickennew_medium.png'
-        .slide
-          %h4 Salmon
-          = image_tag 'BulkSalmon_medium.png'
-      .tile-item.fader#fader2
-        .slide
-          %h4 Asparagus
-          = image_tag 'bulkasparagusspears_medium.png'
-        .slide
-          %h4 Brown Rice
-          = image_tag 'BulkBrownRice_medium.png'
-        .slide
-          %h4 Gourmet Hamburger
-          = image_tag 'BulkBunlessGourmetHamburger_medium.png'
-        .slide
-          %h4 Spinach
-          = image_tag 'BulkSpinach_medium.png'
-      .tile-item.fader#fader3
-        .slide
-          %h4 Cinammon Sweet Potato
-          = image_tag 'BulkCinnamonSweetPotato_medium.png'
-        .slide
-          %h4 Multigrain Pancakes
-          = image_tag 'BulkMultigrainPancakes_medium.png'
-        .slide
-          %h4 Red Potatoes
-          = image_tag 'BulkRedPotatos_medium.png'
-        .slide
-          %h4 Steak
-          = image_tag 'BulkSteak_medium.png'
+    .food-items{ class: "tiles-#{@tiles}"}
+      - if @meals_one.present?
+        .tile-item.fader#fader1
+          = render 'meal_slide', meals: @meals_one
+
+      - if @meals_two.present?
+        .tile-item.fader#fader2
+          = render 'meal_slide', meals: @meals_two
+
+      - if @meals_three.present?
+        .tile-item.fader#fader3
+          = render 'meal_slide', meals: @meals_three
 
     = link_to 'View more &rarr;'.html_safe, '#', class: 'view-more'
 

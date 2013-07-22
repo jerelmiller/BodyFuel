@@ -37,17 +37,18 @@
           $slides.eq(activeIdx).css 'z-index', 3
           $slides.eq(newIdx).css 'z-index', 2
 
-          if prefix
-            styles = {}
-            styles["#{browserPrefix}transition"] = "opacity #{config.fadeDuration}ms"
-            styles.opacity = 0
-            $slides.eq(activeIdx).css styles
-            styles.opacity = 1
-            $slides.eq(newIdx).css styles
-            fadeTimer = setTimeout (-> cleanup()), config.fadeDuration
-          else
-            $slides.eq(activeIdx).animate { opacity: 0 }, config.fadeDuration, -> cleanup()
-            $slides.eq(newIdx).animate { opacity: 1 }, config.fadeDuration, -> cleanup()
+          unless activeIdx == newIdx
+            if prefix
+              styles = {}
+              styles["#{browserPrefix}transition"] = "opacity #{config.fadeDuration}ms"
+              styles.opacity = 0
+              $slides.eq(activeIdx).css styles
+              styles.opacity = 1
+              $slides.eq(newIdx).css styles
+              fadeTimer = setTimeout (-> cleanup()), config.fadeDuration
+            else
+              $slides.eq(activeIdx).animate { opacity: 0 }, config.fadeDuration, -> cleanup()
+              $slides.eq(newIdx).animate { opacity: 1 }, config.fadeDuration, -> cleanup()
 
         changeSlides = (target) ->
           if target == 'next'

@@ -23,8 +23,8 @@
           %h5 Quantity
           = text_field_tag :quantity, nil, class: 'short', 'ng-model' => 'shirt.quantity'
           %span.price {{ shirt.price | currency }}
-          .stock{ 'ng-show' => 'shirt.stock > 0'} In Stock
-          .stock{ 'ng-show' => 'shirt.stock < 1'} Out of Stock
+          .stock{ 'ng-show' => 'shirt.stock'} In Stock
+          .stock{ 'ng-hide' => 'shirt.stock'} Out of Stock
           = link_to 'Add to Cart', '', class: 'button add-to-cart', 'ng-click' => 'add_product(shirt)'
 
 :javascript

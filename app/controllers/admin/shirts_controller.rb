@@ -12,7 +12,7 @@ class Admin::ShirtsController < Admin::AdminController
         @shirt.colors = filtered_colors
         @shirt.sizes = filtered_sizes
       else
-        return render json: { errors: shirt_errors(@shirt) }, status: :unprocessable_entity
+        return render json: { errors: model_errors(@shirt) }, status: :unprocessable_entity
       end
     end
     respond_to do |format|

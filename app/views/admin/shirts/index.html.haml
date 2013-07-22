@@ -19,12 +19,12 @@
               %div{ 'ng-style' => '{ background: color.hex_value }' }
           .shirt-meta
             %span Price:
-            %span.data {{ shirt.price }}
+            %span.data {{ shirt.price | currency }}
           .shirt-meta
-            %span Stock:
-            %span.data {{ shirt.stock }}
+            %span{ 'ng-show' => 'shirt.stock' } In Stock
+            %span{ 'ng-hide' => 'shirt.stock' } Out of Stock
           = link_to 'Edit', '{{ shirt.edit_link }}', class: 'button edit-button'
-          = link_to 'Delete', '', class: 'button red delete-button', 'fade-shirt-tile' => 'remove_shirt(shirt)'
+          = link_to 'Delete', '', class: 'button red delete-button', 'fade-tile' => 'remove_shirt(shirt)'
 
 :javascript
   $(document).ready(function() {
