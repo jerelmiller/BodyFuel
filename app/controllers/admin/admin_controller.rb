@@ -5,7 +5,6 @@ class Admin::AdminController < ApplicationController
 
   def index
     @shirts = Shirt.all
-    @shirts_sold = Shirt.num_sold
   end
 
   private
