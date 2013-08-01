@@ -11,16 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130719063433) do
+ActiveRecord::Schema.define(:version => 20130801045500) do
 
   create_table "cart_shirts", :force => true do |t|
-    t.integer  "cart_id",                   :null => false
-    t.integer  "shirt_id",                  :null => false
-    t.integer  "quantity",   :default => 0, :null => false
-    t.integer  "color_id",                  :null => false
-    t.integer  "size_id",                   :null => false
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.integer  "cart_id",                                                   :null => false
+    t.integer  "shirt_id",                                                  :null => false
+    t.integer  "quantity",                                 :default => 0,   :null => false
+    t.integer  "color_id",                                                  :null => false
+    t.integer  "size_id",                                                   :null => false
+    t.datetime "created_at",                                                :null => false
+    t.datetime "updated_at",                                                :null => false
+    t.decimal  "price",      :precision => 6, :scale => 2, :default => 0.0, :null => false
   end
 
   create_table "carts", :force => true do |t|

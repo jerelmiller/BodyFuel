@@ -15,6 +15,16 @@ header {
   }
 }
 
+.cart {
+  position: absolute;
+  top: 0;
+  right: 0;
+  i {
+    position: relative;
+    top: 2px;
+  }
+}
+
 .logo {
   float: left;
   width: image-width('logo.png');

@@ -11,4 +11,7 @@ class CartShirt < ActiveRecord::Base
                   :size_id,
                   :color_id
 
+  def total
+    price * quantity
+  end
 end

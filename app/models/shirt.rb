@@ -18,4 +18,8 @@ class Shirt < ActiveRecord::Base
     dropbox_options: { path: proc { |style| "bodyfuel/#{Rails.env}/designs/#{style}/#{id}/#{design.original_filename}"} }
 
   validates_attachment :design, content_type: { content_type: ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'] }
+
+  def self.most_recent
+    order 'created_at desc'
+  end
 end

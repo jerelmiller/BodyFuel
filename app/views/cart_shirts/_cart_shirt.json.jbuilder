@@ -1,0 +1,9 @@
+json.(cart_shirt,
+  :id,
+  :price,
+  :shirt_id,
+  :cart_id,
+  :quantity,
+  :color_id,
+  :size_id
+)

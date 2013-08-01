@@ -1,8 +1,14 @@
+- content_for :angular_app do
+  cartsApp
+
+- content_for :angular_controller do
+  CartsCtrl
+
 %section
   .container
     %h1.center Shirts
 
-%section{ 'ng-app' => 'cartsApp', 'ng-controller' => 'CartsCtrl'}
+%section
   .container
     %h3.center{ 'ng-show' => 'shirts.length == 0'} We are currently working on our inventory. Check back soon!
     .tiles-4.shirts.tab-section
@@ -12,26 +18,35 @@
           %i.icon-tshirt.default-shirt{ 'ng-hide' => 'shirt.design_normal'}
         .product-details
           %h4.center {{ shirt.name }}
+          %h5 Size
+          .alert.error{ 'ng-show' => 'errors[shirt.id].size' }
+            %button.close{ 'hide-alert' => 'hide_shirt_alert(shirt, "size")', 'eat-click' => '' } &times;
+            {{ errors[shirt.id].size }}
           .sizes
-            %h5 Size
-            %span{ 'ng-repeat' => 'size in shirt.sizes' }
+            %span{ 'ng-repeat' => 'size in shirt.sizes', 'ng-class' => '{ selected: shirt.size_id == size.id }', 'ng-click' => 'shirt.size_id = size.id' }
               {{ size.size }}
+          %h5 Color
+          .alert.error{ 'ng-show' => 'errors[shirt.id].color' }
+            %button.close{ 'hide-alert' => 'hide_shirt_alert(shirt, "color")', 'eat-click' => '' } &times;
+            {{ errors[shirt.id].color }}
           .colors
-            %h5 Color
-            .color{ 'ng-repeat' => 'color in shirt.colors' }
+            .color{ 'ng-repeat' => 'color in shirt.colors', 'ng-class' => '{ selected: shirt.color_id == color.id }', 'ng-click' => 'shirt.color_id = color.id' }
               %div{ 'ng-style' => '{"background-color": color.hex_value}' }
           %h5 Quantity
+          .alert.error{ 'ng-show' => 'errors[shirt.id].quantity' }
+            %button.close{ 'hide-alert' => 'hide_shirt_alert(shirt, "quantity")', 'eat-click' => '' } &times;
+            {{ errors[shirt.id].quantity }}
           = text_field_tag :quantity, nil, class: 'short', 'ng-model' => 'shirt.quantity'
           %span.price {{ shirt.price | currency }}
           .stock{ 'ng-show' => 'shirt.stock'} In Stock
           .stock{ 'ng-hide' => 'shirt.stock'} Out of Stock
-          = link_to 'Add to Cart', '', class: 'button add-to-cart', 'ng-click' => 'add_product(shirt)'
+          = link_to 'Add to Cart', '', class: 'button add-to-cart', 'ng-click' => 'add_shirt(shirt)'
 
 :javascript
   $(document).ready(function() {
     Utils.adjustTileSize('.tiles-4');
     AngularDataSeed({
       shirts: #{render partial: 'shirts/shirts', locals: { shirts: @shirts }, formats: [:json]},
-      cart: #{current_cart.to_json}
+      cart: #{render partial: 'carts/cart', locals: { cart: current_cart }, formats: [:json]}
     });
   })

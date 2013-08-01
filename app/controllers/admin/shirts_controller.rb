@@ -3,7 +3,7 @@ class Admin::ShirtsController < Admin::AdminController
   before_filter :get_shirt, only: [:edit, :update, :destroy]
 
   def index
-    @shirts = Shirt.all
+    @shirts = Shirt.most_recent
   end
 
   def update
