@@ -61,3 +61,21 @@ application_directives.directive 'fadeTile', ->
           duration: 300,
           complete: ->
             _.delay (-> scope.$apply attrs.fadeTile ), 300
+
+application_directives.directive 'fadeOut', ($parse) ->
+  (scope, element, attrs) ->
+    fn = $parse attrs.slideRow
+    tr = element.parents('tr')
+    element.bind 'click', (e) ->
+      if confirm('Are you sure?')
+        tr.animate { opacity: 0 },
+          duration: 300,
+          complete: ->
+            tr.hide()
+            _.delay (-> scope.$apply -> fn scope)
+
+application_directives.directive 'textBlur', ($parse) ->
+  (scope, element, attrs) ->
+    fn = $parse attrs.textBlur
+    element.bind 'blur', (event) ->
+      scope.$apply -> fn scope, $event: event

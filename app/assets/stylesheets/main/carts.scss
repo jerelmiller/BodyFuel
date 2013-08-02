@@ -1,0 +1,47 @@
+.cart-summary {
+  background: white;
+  border: 1px solid #CCC;
+  padding: 20px;
+}
+
+table.cart-shirts {
+  border: 1px solid #CCC;
+  @include box-sizing;
+  width: 100%;
+  thead {
+    background: $light-background;
+    td {
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+  td {
+    padding: 10px 20px;
+    &.name {
+      width: 250px;
+    }
+    &.trash {
+      width: 50px;
+      padding-right: 20px;
+      text-align: right;
+    }
+    &.total {
+      width: 100px;
+    }
+    &.quantity {
+      width: 150px;
+    }
+  }
+  .colors, .sizes, .color {
+    margin: 0;
+  }
+  .sizes {
+    margin-top: -6px;
+    span {
+      margin: 0;
+    }
+  }
+  .icon-trash {
+    color: $red;
+  }
+}

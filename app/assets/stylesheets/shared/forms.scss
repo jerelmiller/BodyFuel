@@ -73,6 +73,11 @@ input[type=text], input[type=password] {
     width: $input-width;
     @include alert-after-input($input-width);
   }
+  &.medium {
+    $input-width: 80%;
+    width: $input-width;
+    @include alert-after-input($input-width);
+  }
   &.color-input {
     width: $input-width;
     float: left;

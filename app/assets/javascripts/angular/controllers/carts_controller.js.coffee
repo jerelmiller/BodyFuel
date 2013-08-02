@@ -42,8 +42,11 @@ angular.module('carts_controller', [])
 
   $scope.validate_shirt = (shirt) ->
     $scope.errors[shirt.id].quantity = 'Quantity must be greater than 0' if parseInt(shirt.quantity) < 1
-    $scope.errors[shirt.id].quantity = 'Quantity must be a number' if isNaN parseInt(shirt.quantity)
+    $scope.errors[shirt.id].quantity = 'Quantity must be a number' unless _isValidNumber(shirt.quantity)
     $scope.errors[shirt.id].color = 'Invalid color for shirt' unless _.contains _.map(shirt.colors, (color) -> color.id), shirt.color_id
     $scope.errors[shirt.id].color = 'You must select a color' if _.isUndefined shirt.color_id
     $scope.errors[shirt.id].size = 'Invalid size for shirt' unless _.contains _.map(shirt.sizes, (size) -> size.id), shirt.size_id
     $scope.errors[shirt.id].size = 'You must select a size' if _.isUndefined shirt.size_id
+
+  _isValidNumber = (num) ->
+    _.isNumber(parseFloat(num)) && !isNaN(parseFloat(num))

@@ -12,7 +12,8 @@ BodyFuel::Application.routes.draw do
   get '/login' => 'sessions#new'
   get '/logout' => 'sessions#destroy'
   resources :sessions, only: :create
-  resources :cart_shirts, only: :create
+  resources :cart_shirts, only: [:create, :update]
+  resource :carts, only: :show, path: 'cart'
 
   namespace :admin do
     root to: 'admin#index'

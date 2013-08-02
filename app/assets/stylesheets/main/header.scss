@@ -19,9 +19,44 @@ header {
   position: absolute;
   top: 0;
   right: 0;
+  background: $dark-grey;
+  color: white !important;
+  padding: 3px 1px 4px 7px;
+  z-index: 9999;
+  @include border-radius(3px);
+  .cart-description {
+    text-align: center;
+    @include border-radius(2px);
+    background: white;
+    color: $text-grey;
+    padding: 5px 10px;
+    z-index: 999;
+    position: relative;
+    @include transition(all 0.5s);
+  }
+  .arrow {
+    padding: 0 5px;
+    position: absolute;
+    top: 0;
+    right: 2px;
+    line-height: 32px;
+    height: 30px;
+    @include border-right-radius(2px);
+    z-index: 0;
+  }
   i {
     position: relative;
     top: 2px;
+    padding: 5px;
+    line-height: 20px;
+  }
+  @include transition(all 0.5s);
+
+  &:hover {
+    background: $red;
+    .cart-description {
+      right: 37px;
+    }
   }
 }
 

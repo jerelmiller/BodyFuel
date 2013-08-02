@@ -1,12 +1,13 @@
 %header
   .container.clearfix
     = link_to image_tag('logo.png', alt: 'BodyFuel'), root_path, class: 'logo'
-    .cart
+    = link_to carts_path, class: 'cart' do
       %i.icon-shopping-cart
-      - present(current_cart) do |cart_presenter|
-        = cart_presenter.num_products
-        |
-        = cart_presenter.total
+      %span.cart-description
+        - present(current_cart) do |cart_presenter|
+          = cart_presenter.num_products
+          = cart_presenter.total
+      %span.arrow &rarr;
     %nav
       %ul
         %li= link_to 'NUTRITION', nutrition_path

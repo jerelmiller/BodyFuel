@@ -2,8 +2,8 @@ class CartPresenter < BasePresenter
   presents :cart
 
   def num_products
-    return 'Cart ({{ cart.cart_shirts.length }})' if content_for? :angular_controller
-    "Cart (#{cart.cart_shirts.length})"
+    return '{{ cart.cart_shirts.length }} items' if content_for? :angular_controller
+    "#{cart.cart_shirts.length} items"
   end
 
   def total
