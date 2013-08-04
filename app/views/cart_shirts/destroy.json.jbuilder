@@ -1,0 +1,1 @@
+json.partial! @cart_shirt.cart

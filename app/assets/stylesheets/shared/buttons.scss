@@ -23,7 +23,9 @@
     @include hover-state($dark-grey);
   }
   &.red {
-    background: darken($red, 5%);
+    $red-background: darken($red, 5%);
+    background: $red-background;
+    @include hover-state($red-background);
   }
   + .button {
     margin-left: 10px;

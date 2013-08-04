@@ -64,7 +64,6 @@ application_directives.directive 'fadeTile', ->
 
 application_directives.directive 'fadeOut', ($parse) ->
   (scope, element, attrs) ->
-    fn = $parse attrs.slideRow
     tr = element.parents('tr')
     element.bind 'click', (e) ->
       if confirm('Are you sure?')
@@ -72,7 +71,12 @@ application_directives.directive 'fadeOut', ($parse) ->
           duration: 300,
           complete: ->
             tr.hide()
-            _.delay (-> scope.$apply -> fn scope)
+            _.delay (-> scope.$apply attrs.fadeOut)
+
+application_directives.directive 'enterPressed', ->
+  (scope, element, attrs) ->
+    element.bind 'keyup', (e) ->
+      element[attrs.enterPressed]() if e.keyCode == 13
 
 application_directives.directive 'textBlur', ($parse) ->
   (scope, element, attrs) ->

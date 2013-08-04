@@ -5,7 +5,7 @@
   CartShirtsCtrl
 
 %section
-  .container.cart-summary
+  .container.cart-summary.clearfix
     %h3 Cart
     %table.cart-shirts
       %thead
@@ -19,7 +19,9 @@
           %td.trash
       %tbody
         %tr{ 'ng-repeat' => 'shirt in cart.cart_shirts' }
-          %td {{ shirt.name }}
+          %td
+            %i.icon-tshirt
+            {{ shirt.name }}
           %td {{ shirt.price | currency }}
           %td
             .colors
@@ -29,7 +31,7 @@
             .sizes
               %span {{ shirt.size }}
           %td
-            %input.medium{ type: 'text', 'ng-model' => 'shirt.quantity', 'text-blur' => 'validate_shirt(shirt)', 'ng-class' => '{ error: errors[shirt.id].quantity }' }
+            %input.medium{ type: 'text', 'ng-model' => 'shirt.quantity', 'text-blur' => 'update_shirt(shirt)', 'enter-pressed' => 'blur', 'ng-class' => '{ error: errors[shirt.id].quantity }' }
             .alert.error{ 'ng-show' => 'errors[shirt.id].quantity' }
               %button.close{ 'hide-alert' => 'hide_shirt_alert(shirt, "quantity")', 'eat-click' => '' } &times;
               {{ errors[shirt.id].quantity }}
@@ -37,6 +39,12 @@
           %td.trash
             = link_to '', 'fade-out' => 'delete(shirt)' do
               %i.icon-trash
+    .cart-total.pull-right
+      %h3.inline Total
+      %span {{ cart.total | currency }}
+    .buttons.clear
+      = link_to '&larr; Back to shopping'.html_safe, order_path, class: 'button'
+      = link_to 'Check out', '', class: 'button pull-right red'
 
 :javascript
   $(document).ready(function() {

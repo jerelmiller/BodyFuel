@@ -31,6 +31,9 @@ a {
   .tile-item &:last-child {
     margin-bottom: 0;
   }
+  &.inline {
+    display: inline;
+  }
 }
 
 h1 { @extend %base-header; font-size: $h1-size; }
@@ -46,6 +49,10 @@ section {
 
 .clearfix {
   @include clearfix;
+}
+
+.clear {
+  clear: both;
 }
 
 .container {

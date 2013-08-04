@@ -14,6 +14,18 @@ angular.module('cart_shirts_controller', [])
   $scope.reset_errors = (shirt) ->
     $scope.errors[shirt.id] = {}
 
+  $scope.is_valid_shirt = (shirt) ->
+    _.isEmpty $scope.errors[shirt.id]
+
+  $scope.update_shirt = (shirt) ->
+    console.log shirt
+    $scope.validate_shirt(shirt)
+    if $scope.is_valid_shirt(shirt)
+      CartShirt.update(
+        id: shirt.id,
+        cart_shirt: shirt
+      , $scope.success)
+
   $scope.validate_shirt = (shirt) ->
     $scope.reset_errors(shirt)
     $scope.errors[shirt.id].quantity = 'Quantity must be a number' unless _isValidNumber(shirt.quantity)
@@ -23,6 +35,12 @@ angular.module('cart_shirts_controller', [])
 
   $scope.delete = (shirt) ->
     console.log 'deleting shirt'
+    CartShirt.destroy(
+      id: shirt.id
+    , $scope.success)
+
+  $scope.success = (cart) ->
+    $scope.cart = cart
 
   $scope.$watch 'cart.cart_shirts', $scope.update_total, true
 

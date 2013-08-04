@@ -12,7 +12,7 @@ class CartShirt < ActiveRecord::Base
                   :color_id
 
   def self.checked_attributes
-    [:cart_id, :shirt_id, :size_id, :color_id]
+    [:cart_id, :shirt_id, :size_id, :color_id, :quantity]
   end
 
   def total
