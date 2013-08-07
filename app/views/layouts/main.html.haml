@@ -5,7 +5,7 @@
       - if content_for? :slogan
         .container
           = yield :slogan
-    = yield
+    = content_for?(:main) ? yield(:main) : yield
     .push
   = render 'layouts/footer'
 

@@ -17,6 +17,10 @@ a {
   }
 }
 
+.required {
+  color: red;
+}
+
 %base-header {
   font: {
     weight: bold;

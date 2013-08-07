@@ -5,8 +5,9 @@
   CartShirtsCtrl
 
 %section
-  .container.cart-summary.clearfix
-    %h3 Cart
+  .container.checkout.clearfix
+    .checkout-inner
+      = render 'steps', step: 1
     %table.cart-shirts
       %thead
         %tr
@@ -39,12 +40,13 @@
           %td.trash
             = link_to '', 'fade-out' => 'delete(shirt)' do
               %i.icon-trash
-    .cart-total.pull-right
-      %h3.inline Total
-      %span {{ cart.total | currency }}
-    .buttons.clear
-      = link_to '&larr; Back to shopping'.html_safe, order_path, class: 'button'
-      = link_to 'Check out', '', class: 'button pull-right red'
+    .checkout-inner
+      .cart-total.pull-right
+        %h3.inline Total
+        %span {{ cart.total | currency }}
+    .submit.clear
+      = link_to '&larr; Back to shopping'.html_safe, order_path, class: 'button grey'
+      = link_to 'Checkout &rarr;'.html_safe, checkout_path, class: 'button pull-right red'
 
 :javascript
   $(document).ready(function() {

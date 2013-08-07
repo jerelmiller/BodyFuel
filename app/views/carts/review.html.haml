@@ -1,0 +1,9 @@
+- content_for :step do
+  3
+
+- content_for :cart_contents do
+  Stuff here
+
+- content_for :buttons do
+  = link_to '&larr; Checkout'.html_safe, checkout_path, class: 'button grey'
+  = link_to 'Payment &rarr;'.html_safe, payment_path, class: 'button pull-right red'

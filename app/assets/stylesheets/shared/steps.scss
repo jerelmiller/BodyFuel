@@ -1,0 +1,58 @@
+$step-size: 30px;
+
+ul.steps {
+  margin: 0 auto 30px;
+  counter-reset: step;
+  li {
+    text-transform: uppercase;
+    width: 24%;
+    @include box-sizing;
+    float: left;
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    &:before {
+      content: counter(step);
+      counter-increment: step;
+      padding: 5px;
+      width: $step-size;
+      @include border-radius($step-size);
+      margin: 0 auto 10px;
+      line-height: $step-size;
+      display: block;
+      background: $dark-grey;
+      color: white;
+      text-align: center;
+      font-size: 16px;
+      position: relative;
+      z-index: 999;
+    }
+    &:after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      background: $dark-grey;
+      position: absolute;
+      top: 18px;
+      left: -50%;
+      z-index: 1;
+    }
+    &:first-child {
+      &:after {
+        content: none;
+      }
+    }
+
+    &.completed, &.active {
+      &:before, &:after {
+        background: $red;
+
+      }
+    }
+    &.active {
+      &:before {
+        background: lighten($red, 10%);
+      }
+    }
+  }
+}

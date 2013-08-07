@@ -14,6 +14,10 @@ BodyFuel::Application.routes.draw do
   resources :sessions, only: :create
   resources :cart_shirts, only: [:create, :update, :destroy]
   resource :carts, only: :show, path: 'cart'
+  resources :customers, only: :create
+  get '/checkout' => 'carts#checkout'
+  get '/review' => 'carts#review'
+  get '/payment' => 'carts#payment'
 
   namespace :admin do
     root to: 'admin#index'

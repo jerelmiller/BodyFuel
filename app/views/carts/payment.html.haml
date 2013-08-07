@@ -1,0 +1,9 @@
+- content_for :step do
+  4
+
+- content_for :cart_contents do
+  Payment
+
+- content_for :buttons do
+  = link_to '&larr; Review'.html_safe, review_path, class: 'button grey'
+  = link_to 'Submit order', '', class: 'button pull-right red'

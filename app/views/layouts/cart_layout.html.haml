@@ -1,0 +1,11 @@
+- content_for :main do
+  %section
+    .container.checkout.clearfix
+      .checkout-inner
+        = render 'steps', step: yield(:step)
+        = yield :cart_contents
+
+      .submit.clear
+        = yield :buttons
+
+= render template: 'layouts/main'

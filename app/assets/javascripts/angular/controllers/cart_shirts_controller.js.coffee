@@ -18,7 +18,6 @@ angular.module('cart_shirts_controller', [])
     _.isEmpty $scope.errors[shirt.id]
 
   $scope.update_shirt = (shirt) ->
-    console.log shirt
     $scope.validate_shirt(shirt)
     if $scope.is_valid_shirt(shirt)
       CartShirt.update(
@@ -34,7 +33,6 @@ angular.module('cart_shirts_controller', [])
     $scope.cart?.total = _.reduce cart_shirts, ((memo, shirt) -> memo + $scope.total(shirt)), 0
 
   $scope.delete = (shirt) ->
-    console.log 'deleting shirt'
     CartShirt.destroy(
       id: shirt.id
     , $scope.success)
