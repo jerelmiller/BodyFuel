@@ -1,26 +1,70 @@
 - content_for :step do
   2
 
+- content_for :angular_app do
+  cartCheckoutApp
+
+- content_for :angular_controller do
+  CartCheckoutCtrl
+
 - content_for :cart_contents do
-  = form_for @customer do |f|
-    .input.input-left
-      %label
-        First Name
-        %span.required *
-      = f.text_field :first_name
+  .alert.error{ 'ng-show' => 'errors.server' }
+    %button.close{ 'hide-alert' => 'errors.server = ""', 'eat-click' => '', tabindex: 0 } &times;
+    {{ errors.server }}
+  .clearfix
+    .left-inputs
+      .input
+        %label
+          First Name
+          %span.required *
+        %input{ type: 'text', 'ng-model' => 'customer.first_name', 'ng-class' => '{ error: errors.first_name }', tabindex: 1 }
+        .alert.error{ 'ng-show' => 'errors.first_name' }
+          %button.close{ 'hide-alert' => 'errors.first_name = ""', 'eat-click' => '', tabindex: 0 } &times;
+          {{ errors.first_name }}
 
-    .input.input-right
-      %label
-        Last Name
-        %span.required *
-      = text_field_tag :last_name
+      .input
+        %label
+          Email
+          %span.required *
+        %input{ type: 'text', 'ng-model' => 'customer.email', 'ng-class' => '{ error: errors.email }', tabindex: 3 }
+        .alert.error{ 'ng-show' => 'errors.email' }
+          %button.close{ 'hide-alert' => 'errors.email = ""', 'eat-click' => '', tabindex: 0 } &times;
+          {{ errors.email }}
 
-    .input.input-left
-      %label
-        Email
-        %span.required *
-      = text_field_tag :email
+    .right-inputs
+      .input
+        %label
+          Last Name
+          %span.required *
+        %input{ type: 'text', 'ng-model' => 'customer.last_name', 'ng-class' => '{ error: errors.last_name }', tabindex: 2 }
+        .alert.error{ 'ng-show' => 'errors.last_name' }
+          %button.close{ 'hide-alert' => 'errors.last_name = ""', 'eat-click' => '', tabindex: 0 } &times;
+          {{ errors.last_name }}
+
+  .order-details
+    %h4 Your Order
+    %table.cart-shirts
+      %thead
+        %tr
+          %td Product
+          %td.shirt-total Total
+      %tbody
+        %tr{ 'ng-repeat' => 'cart_shirt in cart.cart_shirts' }
+          %td {{ cart_shirt.name }}
+          %td {{ total(cart_shirt) | currency }}
+
+    .cart-total.pull-right
+      %h3.inline Total
+      %span {{ cart.total | currency }}
+
+  :javascript
+    $(document).ready(function() {
+      AngularDataSeed({
+        cart: #{render partial: 'carts/cart', locals: { cart: current_cart }, formats: [:json]},
+        customer: #{render partial: 'customers/customer', locals: { customer: @customer }, formats: [:json] }
+      });
+    });
 
 - content_for :buttons do
   = link_to '&larr; Cart'.html_safe, carts_path, class: 'button grey'
-  = link_to 'Review &rarr;'.html_safe, review_path, class: 'button pull-right red'
+  = link_to 'Payment &rarr;'.html_safe, '', class: 'button pull-right red', 'ng-click' => 'save_customer()'

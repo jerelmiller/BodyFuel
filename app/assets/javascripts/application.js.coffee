@@ -1,6 +1,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require underscore
+#= require checkout
 #= require angular
 #= require angular-resource
 #= require_tree ./angular

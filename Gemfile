@@ -7,6 +7,7 @@ gem 'jbuilder'
 gem 'paperclip'
 gem 'paperclip-dropbox'
 gem 'squeel'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 
 # Gems used only for assets and not required

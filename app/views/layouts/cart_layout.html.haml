@@ -2,7 +2,7 @@
   %section
     .container.checkout.clearfix
       .checkout-inner
-        = render 'steps', step: yield(:step)
+        = render 'carts/steps', step: yield(:step)
         = yield :cart_contents
 
       .submit.clear

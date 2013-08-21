@@ -5,7 +5,7 @@ ul.steps {
   counter-reset: step;
   li {
     text-transform: uppercase;
-    width: 24%;
+    width: 25%;
     @include box-sizing;
     float: left;
     font-size: 14px;

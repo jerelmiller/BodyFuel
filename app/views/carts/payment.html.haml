@@ -1,9 +1,56 @@
+- content_for :angular_app do
+  cartPaymentApp
+
+- content_for :angular_controller do
+  CartPaymentCtrl
+
 - content_for :step do
-  4
+  3
 
 - content_for :cart_contents do
-  Payment
+  .customer-info
+    %h4 Your Information
+    .customer-info-row
+      %span Name:
+      = @customer.full_name
+    .customer-info-row
+      %span Email:
+      = @customer.email
+
+    .cart-total
+      = number_to_currency current_cart.total
+
+  .payment
+    %button.button{ 'ng-click' => 'stripe_checkout()', 'ng-hide' => 'stripe.card' } Enter Payment Info
+    %button.button{ 'ng-click' => 'stripe_checkout()', 'ng-show' => 'stripe.card' } Renter Payment Info
+    .payment-info{ 'ng-show' => 'stripe.card' }
+      %h5 Billing Address
+      .customer-info-row
+        {{ stripe.card.name }}
+      .customer-info-row
+        {{ stripe.card.address_line1 }}
+      .customer-info-row{ 'ng-show' => 'stripe.card.address_line2' }
+        {{ stripe.card.address_line2 }}
+      .customer-info-row
+        {{ stripe.card.address_city }}, {{ stripe.card.address_state }}, {{ stripe.card.address_zip }}
+
+      %h5 Payment Information
+      .customer-info-row
+        **** **** **** {{ stripe.card.last4 }}
+      .customer-info-row
+        {{ stripe.card.type }}
+      .customer-info-row
+        Expires {{ stripe.card.exp_month | zeroPad:2 }}/{{ stripe.card.exp_year }}
+
+  :javascript
+    $(document).ready(function() {
+      AngularDataSeed({
+        cart: #{render partial: 'carts/cart', locals: { cart: current_cart }, formats: [:json]},
+        customer: #{render partial: 'customers/customer', locals: { customer: current_cart.customer }, formats: [:json]}
+      });
+    });
+
 
 - content_for :buttons do
-  = link_to '&larr; Review'.html_safe, review_path, class: 'button grey'
-  = link_to 'Submit order', '', class: 'button pull-right red'
+  = link_to '&larr; Review'.html_safe, checkout_path, class: 'button grey'
+  = link_to 'Submit order', '', class: 'button pull-right red', 'ng-click' => 'create_order()', 'ng-class' => '{ disabled: !stripe.card }'

@@ -43,6 +43,13 @@
     right: $tile-padding;
     width: 41%;
   }
+  &.disabled {
+    @include opacity(0.7);
+    cursor: not-allowed;
+    &:hover {
+      background: darken($red, 5%);
+    }
+  }
 }
 
 a.button {

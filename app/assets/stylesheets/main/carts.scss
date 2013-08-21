@@ -6,6 +6,17 @@
   }
 }
 
+.order-details {
+  margin-top: 50px;
+}
+
+.customer-info-row {
+  font-size: 14px;
+  span {
+    font-size: 16px;
+  }
+}
+
 .cart-total {
   font-size: 30px;
   margin: 0 0 30px;
@@ -61,6 +72,9 @@ table.cart-shirts {
     }
     &.quantity {
       width: 150px;
+    }
+    &.shirt-total {
+      width: 10%;
     }
   }
   .colors, .sizes, .color {

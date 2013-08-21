@@ -18,7 +18,7 @@ class CartShirtsController < ApplicationController
     return render json: { error: model_errors(@cart_shirt) }, status: :unprocessable_entity unless @cart_shirt.errors.empty?
   end
 
-private
+  private
 
   def get_cart_shirt
     @cart_shirt = CartShirt.find params[:id]

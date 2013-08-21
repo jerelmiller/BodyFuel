@@ -1,10 +1,15 @@
 class Order < ActiveRecord::Base
-  belongs_to :customer
   belongs_to :cart
-
-  validates :order_number, presence: true
+  has_one :customer, through: :cart
 
   before_validation :set_defaults, on: :create
+  validates :order_number, presence: true
+
+  attr_accessible :cart_id
+
+  def to_param
+    order_number
+  end
 
   private
 

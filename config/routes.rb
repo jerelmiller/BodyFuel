@@ -11,13 +11,16 @@ BodyFuel::Application.routes.draw do
 
   get '/login' => 'sessions#new'
   get '/logout' => 'sessions#destroy'
+  get '/checkout' => 'carts#checkout'
+  get '/payment' => 'carts#payment'
+  get '/confirmation' => 'orders#confirmation'
   resources :sessions, only: :create
   resources :cart_shirts, only: [:create, :update, :destroy]
   resource :carts, only: :show, path: 'cart'
-  resources :customers, only: :create
-  get '/checkout' => 'carts#checkout'
-  get '/review' => 'carts#review'
-  get '/payment' => 'carts#payment'
+  resources :customers, only: [:create, :update]
+  resources :orders, only: :create do
+    get :confirmation, on: :member
+  end
 
   namespace :admin do
     root to: 'admin#index'
