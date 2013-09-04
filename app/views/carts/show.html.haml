@@ -8,7 +8,8 @@
   .container.checkout.clearfix
     .checkout-inner
       = render 'steps', step: 1
-    %table.cart-shirts
+    %h4.center.spacious{ 'ng-hide' => 'has_shirts()' } There are currently no shirts in your cart
+    %table.cart-shirts{ 'ng-show' => 'has_shirts()'}
       %thead
         %tr
           %td.name Product
@@ -40,7 +41,7 @@
           %td.trash
             = link_to '', 'fade-out' => 'delete(shirt)' do
               %i.icon-trash
-    .checkout-inner
+    .checkout-inner{ 'ng-show' => 'has_shirts()'}
       .cart-total.pull-right
         %h3.inline Total
         %span {{ cart.total | currency }}
