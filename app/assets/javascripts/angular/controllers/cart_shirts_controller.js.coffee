@@ -5,6 +5,9 @@ angular.module('cart_shirts_controller', [])
 
     $scope.errors = {}
 
+  $scope.has_shirts = =>
+    !_.isEmpty $scope.cart?.cart_shirts
+
   $scope.total = (shirt) ->
     if _isValidNumber(shirt.quantity) && _isValidNumber(shirt.price) then parseInt(shirt.quantity) * parseFloat(shirt.price) else 0
 

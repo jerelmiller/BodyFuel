@@ -20,7 +20,6 @@ angular.module('cart_checkout_controller', [])
       ((data) -> window.location = data.path), $scope.saveError
 
   $scope.save_customer = ->
-    console.log _isNew $scope.customer
     if $scope.validate()
       return $scope.create_customer() if _isNew $scope.customer
       $scope.update_customer()
@@ -38,4 +37,4 @@ angular.module('cart_checkout_controller', [])
     _.isEmpty $scope.errors
 
   _isNew = (model) ->
-    _.isUndefined model.id || _.isNull model.id
+    _.isUndefined(model.id) || _.isNull(model.id)

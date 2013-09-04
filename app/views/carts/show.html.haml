@@ -45,8 +45,8 @@
         %h3.inline Total
         %span {{ cart.total | currency }}
     .submit.clear
-      = link_to '&larr; Back to shopping'.html_safe, order_path, class: 'button grey'
-      = link_to 'Checkout &rarr;'.html_safe, checkout_path, class: 'button pull-right red'
+      = link_to '&larr; Back to shopping'.html_safe, order_path, class: 'button grey pull-left'
+      .pull-right{ 'ng-class' => '{ disabled: !has_shirts() }' }= link_to 'Checkout &rarr;'.html_safe, checkout_path, class: 'button pull-right red', 'eat-click' => '!has_shirts()'
 
 :javascript
   $(document).ready(function() {

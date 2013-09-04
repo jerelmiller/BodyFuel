@@ -137,3 +137,18 @@ span + i {
 .pull-right {
   float: right;
 }
+
+.pull-left {
+  float: left;
+}
+
+.disabled {
+  @include opacity(0.7);
+  cursor: not-allowed;
+  a {
+    cursor: not-allowed;
+  }
+  &:hover {
+    background: darken($red, 5%);
+  }
+}

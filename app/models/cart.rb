@@ -5,7 +5,7 @@ class Cart < ActiveRecord::Base
 
   def total(options={})
     total = cart_shirts.map(&:total).reduce(:+) || 0
-    total = total * 100 if options[:as_cents]
+    total = (total * 100).to_i if options[:as_cents]
     total
   end
 

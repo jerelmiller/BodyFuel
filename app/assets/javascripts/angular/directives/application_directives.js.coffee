@@ -2,9 +2,11 @@ application_directives = angular.module('application_directives', [])
 
 application_directives.directive 'eatClick', ->
   restrict: 'A'
+  scope:
+    eatClick: '&'
   link: (scope, element, attrs) ->
     element.bind 'click', (e) ->
-      e.preventDefault()
+      e.preventDefault() if _.isEmpty(attrs.eatClick) || scope.eatClick()
 
 application_directives.directive 'submitForm', ->
   restrict: 'A'
