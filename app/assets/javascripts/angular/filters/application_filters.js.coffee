@@ -7,3 +7,7 @@ angular.module('application_filters', [])
 .filter 'dollarsToCents', ->
   (number) ->
     parseInt(number) * 100
+.filter 'pluralize', ->
+  (count, word) ->
+    return "#{count} #{word}s" unless parseInt(count) == 1
+    "#{count} #{word}"
