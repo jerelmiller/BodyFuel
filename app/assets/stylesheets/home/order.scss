@@ -74,16 +74,12 @@
   padding-bottom: 92px !important;
 }
 
-.stock {
-  text-transform: uppercase;
-  font-size: 14px;
-  width: 50%;
-}
-
 .price {
-  text-transform: uppercase;
-  font-size: 24px;
-  width: 66%;
-  display: inline-block;
+  font-size: 38px;
+  display: block;
+  background: $dark-grey;
+  padding: 19px;
+  @include border-radius(2px);
+  color: white;
   text-align: center;
 }

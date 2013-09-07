@@ -41,6 +41,11 @@ a {
   &.spacious {
     margin: 50px 0 100px;
   }
+  &.align-to-bottom {
+    position: absolute;
+    bottom: $tile-padding;
+    @include stretch-x($tile-padding, $tile-padding);
+  }
 }
 
 h1 { @extend %base-header; font-size: $h1-size; }
