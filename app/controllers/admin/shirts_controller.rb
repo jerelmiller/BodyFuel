@@ -3,7 +3,7 @@ class Admin::ShirtsController < Admin::AdminController
   before_filter :get_shirt, only: [:edit, :update, :destroy]
 
   def index
-    @shirts = Shirt.not_deleted.most_recent
+    @shirts = Shirt.includes(:colors).includes(:sizes).not_deleted.most_recent
   end
 
   def update
