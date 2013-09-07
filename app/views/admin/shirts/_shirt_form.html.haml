@@ -23,10 +23,10 @@
           .alert.error{ 'ng-show' => 'errors.price' }
             %button.close{ 'hide-alert' => 'errors.price = ""', 'eat-click' => '' } &times;
             {{ errors.price }}
-        .input
+        .input.stock
           %label.checkbox In Stock
-          %span.unchecked{ 'ng-hide' => 'shirt.stock', 'ng-click' => 'shirt.stock = true' } &#10004;
-          %span.checked{ 'ng-show' => 'shirt.stock', 'ng-click' => 'shirt.stock = false' } &#10004;
+          %i.icon-circleselection{ 'ng-hide' => 'shirt.stock', 'ng-click' => 'shirt.stock = true' }
+          %i.icon-circleselect{ 'ng-show' => 'shirt.stock', 'ng-click' => 'shirt.stock = false' }
         .angular-controller{ 'ng-controller' => 'ColorsCtrl'}
           .input
             %label Colors

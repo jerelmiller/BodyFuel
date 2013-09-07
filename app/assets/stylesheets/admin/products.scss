@@ -85,25 +85,15 @@
   left: 0;
 }
 
-%base-checked {
-  padding: 2px 4px;
-  width: 22px;
-  height: 23px;
-  @include box-sizing;
-  @include border-radius(3px);
-  display: inline-block;
-  cursor: pointer;
-  margin-left: 5px;
-}
+.input.stock {
+  [class*="icon-"] {
+    font-size: 18px;
+    position: relative;
+    top: 3px;
+    margin-left: 5px;
+  }
 
-.checked {
-  @extend %base-checked;
-  background: $red;
-  color: white;
-}
-
-.unchecked {
-  @extend %base-checked;
-  color: #CCC;
-  background: #CCC;
+  .icon-circleselect {
+    color: $green;
+  }
 }
