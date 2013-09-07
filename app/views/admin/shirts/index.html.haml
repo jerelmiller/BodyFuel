@@ -17,9 +17,7 @@
             %h5 Color
             .color{ 'ng-repeat' => 'color in shirt.colors' }
               %div{ 'ng-style' => '{ background: color.hex_value }' }
-          .shirt-meta
-            %span Price:
-            %span.data {{ shirt.price | currency }}
+          %span {{ shirt.price | currency }}
           .shirt-meta
             %span{ 'ng-show' => 'shirt.stock' } In Stock
             %span{ 'ng-hide' => 'shirt.stock' } Out of Stock
