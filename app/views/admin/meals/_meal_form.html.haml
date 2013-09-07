@@ -1,6 +1,7 @@
 %section{ "ng-app" => 'mealsApp', 'ng-controller' => 'MealsCtrl' }
   .container.main
     = form_for [:admin, @meal], html: { multipart: true, id: 'meal-form' } do |f|
+      %spin{ 'spin-on' => 'saving', 'dim' => '.input-container', 'center' => '' }
       .input-container
         .image-preview
           .input
@@ -21,7 +22,7 @@
 
       .submit
         = link_to 'Cancel', request.referer, class: 'button grey'
-        = link_to 'Save Meal', '', class: 'button pull-right', 'submit-form' => '#meal-form', 'valid' => 'is_valid()'
+        = link_to 'Save Meal', '', class: 'button pull-right', 'submit-form' => '#meal-form', 'valid' => 'is_valid()', 'saving' => 'saving'
         - if action.eql? 'edit'
           = link_to 'Delete', '', class: 'button red pull-right', 'ng-click' => 'delete(meal, redirect_callback, true)'
 
