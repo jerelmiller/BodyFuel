@@ -12,11 +12,12 @@ application_directives.directive 'submitForm', ->
   restrict: 'A'
   scope:
     valid: '&'
+    saving: '='
   link: (scope, element, attrs) ->
     element.bind 'click', ->
-      scope.$parent.$apply attrs.valid
       if scope.valid()
-        $(attrs.submitForm).submit()
+        scope.$apply -> scope.saving = true if attrs.saving
+        angular.element(attrs.submitForm).submit()
 
 
 application_directives.directive 'imagePreview', ->
@@ -107,3 +108,24 @@ application_directives.directive 'fadeInOut', =>
       element.animate { opacity: opacity },
         duration: duration,
         complete: callback
+
+application_directives.directive 'spin', =>
+  restrict: 'E'
+  template: '<div class="spinner"></div>'
+  replace: true
+  link: (scope, element, attrs) ->
+    unless  _.isUndefined attrs.center
+      element.css 'top', '50%'
+      element.css 'position', 'absolute'
+
+    scope.$watch attrs.spinOn, (spin) ->
+      spin = spin || false
+      opts =
+        radius: 14,
+        length: 12,
+        width: 6
+
+      element.spin opts if spin
+      element.spin spin unless spin
+      angular.element(attrs.dim).css 'opacity', ''
+      angular.element(attrs.dim).css 'opacity', '0.3' if spin

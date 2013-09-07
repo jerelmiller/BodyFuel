@@ -2,6 +2,7 @@
   .container.main
     = form_for [:admin, @shirt], html: { multipart: true, id: 'shirt-form' } do |f|
       .alert.error{ 'ng-show' => 'errors.general'} {{ errors.general }}
+      %spin{ 'spin-on' => 'saving', 'dim' => '.input-container', 'center' => '' }
       .input-container
         .image-preview
           .input
@@ -81,7 +82,7 @@
 
       .submit
         = link_to 'Cancel', request.referer, class: 'button grey'
-        = link_to 'Save shirt', '', class: 'button pull-right', 'submit-form' => '#shirt-form', 'valid' => 'is_valid()'
+        = link_to 'Save shirt', '', class: 'button pull-right', 'submit-form' => '#shirt-form', 'valid' => 'is_valid()', 'saving' => 'saving'
         - if action.eql? 'edit'
           = link_to 'Delete', '', class: 'button red pull-right', 'ng-click' => 'delete(shirt, redirect_callback)'
 
