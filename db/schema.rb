@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130821065045) do
+ActiveRecord::Schema.define(:version => 20130907084523) do
 
   create_table "cart_shirts", :force => true do |t|
     t.integer  "cart_id",                                                   :null => false
@@ -59,10 +59,11 @@ ActiveRecord::Schema.define(:version => 20130821065045) do
   end
 
   create_table "orders", :force => true do |t|
-    t.string   "order_number", :null => false
-    t.integer  "cart_id",      :null => false
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.string   "order_number",                    :null => false
+    t.integer  "cart_id",                         :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.boolean  "fulfilled_fl", :default => false, :null => false
   end
 
   create_table "shirts", :force => true do |t|
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20130821065045) do
     t.string   "design_content_type"
     t.integer  "design_file_size"
     t.datetime "design_updated_at"
+    t.boolean  "delete_fl",           :default => false, :null => false
   end
 
   create_table "shirts_sizes", :id => false, :force => true do |t|

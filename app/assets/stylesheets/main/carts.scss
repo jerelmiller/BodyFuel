@@ -26,7 +26,7 @@
   }
 }
 
-table.cart-shirts {
+table.full-width {
   @include box-sizing;
   width: 100%;
   [class^="icon-"] {
@@ -74,6 +74,25 @@ table.cart-shirts {
     }
     &.shirt-total {
       width: 10%;
+    }
+    &.order-number {
+      width: 150px;
+    }
+    &.email {
+      width: 205px;
+    }
+    &.customer-name {
+      width: 180px;
+    }
+    &.notes {
+      width: 300px;
+    }
+    &.fulfilled {
+      text-align: right;
+      [class*="icon-"] {
+        color: $green;
+        font-size: 24px;
+      }
     }
   }
   .colors, .sizes, .color {

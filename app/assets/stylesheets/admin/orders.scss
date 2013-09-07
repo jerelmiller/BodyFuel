@@ -1,0 +1,27 @@
+.orders {
+  .details {
+    margin: 20px;
+    background: $dark-grey;
+    color: white;
+    @include box-sizing;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  table {
+    &.order-details {
+      margin-top: 80px;
+    }
+    a {
+      color: $link-color;
+    }
+    thead {
+      [class*="icon-"] {
+        cursor: pointer;
+        color: $link-color;
+      }
+    }
+  }
+}

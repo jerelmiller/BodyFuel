@@ -5,10 +5,22 @@ class Order < ActiveRecord::Base
   before_validation :set_defaults, on: :create
   validates :order_number, presence: true
 
-  attr_accessible :cart_id
+  attr_accessible :cart_id, :fulfilled_fl
+
+  def self.most_recent
+    order('created_at desc')
+  end
 
   def to_param
     order_number
+  end
+
+  def fulfill!
+    update_attributes fulfilled_fl: true
+  end
+
+  def fulfilled?
+    fulfilled_fl
   end
 
   private

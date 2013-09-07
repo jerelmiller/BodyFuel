@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   def create
     user = login(params[:email], params[:password], false)
     if user
-      redirect_back_or_to admin_root_path
+      redirect_back_or_to admin_orders_path
     else
       flash[:error] = 'Email or password is invalid'
       render :new

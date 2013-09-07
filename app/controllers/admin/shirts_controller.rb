@@ -3,7 +3,7 @@ class Admin::ShirtsController < Admin::AdminController
   before_filter :get_shirt, only: [:edit, :update, :destroy]
 
   def index
-    @shirts = Shirt.most_recent
+    @shirts = Shirt.not_deleted.most_recent
   end
 
   def update
@@ -42,7 +42,7 @@ class Admin::ShirtsController < Admin::AdminController
   end
 
   def destroy
-    @shirt.destroy
+    @shirt.soft_delete
     render json: { path: admin_shirts_path }, status: :ok
   end
 

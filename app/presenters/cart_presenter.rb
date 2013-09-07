@@ -3,7 +3,7 @@ class CartPresenter < BasePresenter
 
   def num_products
     return '{{ cart.num_cart_shirts | pluralize:"item" }}' if content_for? :angular_controller
-    "#{cart.cart_shirts.length} items"
+    pluralize cart.num_items, 'item'
   end
 
   def total

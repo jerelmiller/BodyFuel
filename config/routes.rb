@@ -23,7 +23,9 @@ BodyFuel::Application.routes.draw do
   end
 
   namespace :admin do
-    root to: 'admin#index'
+    resources :orders, only: [:index, :show] do
+      put :fulfill, on: :member
+    end
     resources :colors, only: :create
     resources :sizes, only: :create
     resources :meals

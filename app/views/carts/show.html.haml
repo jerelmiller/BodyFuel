@@ -9,7 +9,7 @@
     .checkout-inner
       = render 'steps', step: 1
     %h4.center.spacious{ 'ng-hide' => 'has_shirts()' } There are no items in your cart
-    %table.cart-shirts{ 'ng-show' => 'has_shirts()'}
+    %table.full-width{ 'ng-show' => 'has_shirts()'}
       %thead
         %tr
           %td.name Product

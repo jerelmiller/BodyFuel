@@ -1,0 +1,46 @@
+%section.orders
+  .container.main
+    = form_tag fulfill_admin_order_path(@order), method: :put do
+      %h2.center.extra-padded
+        = "Order #{@order.order_number}"
+        - if @order.fulfilled?
+          %i.icon-ok.green
+      .details
+        %h4.inline Name:
+        %span= @order.customer
+        %br
+        %h4.inline Email:
+        %span= @order.customer.email
+
+      %table.full-width.order-details
+        %thead
+          %tr
+            %td.name Product
+            %td Price
+            %td Color
+            %td Size
+            %td.quantity Quantity
+        %tbody
+          - @order.cart.cart_shirts.each do |shirt|
+            %tr
+              %td
+                %i.icon-tshirt
+                = shirt.name
+                - if shirt.deleted?
+                  %span.required= "(removed)"
+              %td= number_to_currency shirt.price
+              %td
+                .colors
+                  .color
+                    %div{ style: "background-color: #{shirt.color.hex_value}" }
+              %td
+                .sizes
+                  %span= shirt.size.size
+              %td= shirt.quantity
+
+      .submit
+        = link_to '&larr; Back to Orders'.html_safe, admin_orders_path, class: 'button grey'
+        - if @order.fulfilled?
+          %h3.inline.pull-right Order fulfilled
+        - else
+          %button.button.pull-right Fulfill Order

@@ -14,4 +14,7 @@ class Cart < ActiveRecord::Base
     self.save
   end
 
+  def num_items
+    cart_shirts.map(&:quantity).reduce(:+) || 0
+  end
 end

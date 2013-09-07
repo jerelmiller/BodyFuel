@@ -11,6 +11,10 @@ class CartShirt < ActiveRecord::Base
                   :size_id,
                   :color_id
 
+  delegate :name,
+           :deleted?,
+           to: :shirt
+
   def self.checked_attributes
     [:cart_id, :shirt_id, :size_id, :color_id, :quantity]
   end

@@ -3,13 +3,9 @@ class Admin::AdminController < ApplicationController
   before_filter :get_orders
   layout 'admin'
 
-  def index
-    @shirts = Shirt.all
-  end
-
   private
 
   def get_orders
-    @orders = Order.all
+    @order_count = Order.count
   end
 end

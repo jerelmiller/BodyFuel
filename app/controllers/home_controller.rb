@@ -11,7 +11,6 @@ class HomeController < ApplicationController
   end
 
   def order
-    @colors = Color.all
-    @shirts = Shirt.includes(:colors).most_recent
+    @shirts = Shirt.not_deleted.includes(:colors).includes(:sizes).most_recent
   end
 end

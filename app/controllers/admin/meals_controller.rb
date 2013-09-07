@@ -15,8 +15,10 @@ class Admin::MealsController < Admin::AdminController
   end
 
   def create
-    @meal = Meal.create params[:meal]
-    redirect_to admin_meals_path
+    @meal = Meal.new params[:meal]
+    redirect_to admin_meals_path and return if @meal.save
+    flash[:error] = @meal.errors.full_messages
+    render :new
   end
 
   def destroy
