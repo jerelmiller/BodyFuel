@@ -11,6 +11,8 @@ angular.module('carts_controller', [])
     Utils.adjustTileSize '.tiles-4'
 
     if $scope.is_valid_shirt shirt
+      shirt.saving = true
+
       cart_shirt = {}
       cart_shirt.cart_id = $scope.cart.id
       cart_shirt.shirt_id = shirt.id
@@ -22,7 +24,9 @@ angular.module('carts_controller', [])
       $scope.cart.cart_shirts.push cart_shirt
       CartShirt.save
         cart_shirt: cart_shirt
-      , $scope.success
+      , (cart) ->
+        shirt.saving = false
+        $scope.success(cart)
 
   $scope.success = (cart) ->
     $scope.cart = cart

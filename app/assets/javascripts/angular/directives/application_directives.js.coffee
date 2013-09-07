@@ -85,3 +85,25 @@ application_directives.directive 'textBlur', ($parse) ->
     fn = $parse attrs.textBlur
     element.bind 'blur', (event) ->
       scope.$apply -> fn scope, $event: event
+
+application_directives.directive 'fadeInOut', =>
+  restrict: 'A'
+  scope:
+    fadeInOut: '='
+  link: (scope, element, attrs) ->
+    attrs.fadeInDuration ||= 200
+    attrs.fadeOutDuration ||= 500
+
+    element.css 'opacity', 0
+    scope.$watch 'fadeInOut', (shouldFade) =>
+      if shouldFade
+        element.show()
+        fade 1, attrs.fadeInDuration, ->
+          _.delay ->
+            fade 0, attrs.fadeOutDuration, -> element.hide()
+          , attrs.animationDuration
+
+    fade = (opacity, duration, callback) ->
+      element.animate { opacity: opacity },
+        duration: duration,
+        complete: callback

@@ -31,6 +31,10 @@
     margin-left: 10px;
   }
 
+  &.ignore-margin {
+    margin-left: 0;
+  }
+
   &.edit-button {
     position: absolute;
     bottom: $tile-padding;

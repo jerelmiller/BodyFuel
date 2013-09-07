@@ -41,6 +41,7 @@
           .stock{ 'ng-show' => 'shirt.stock'} In Stock
           .stock{ 'ng-hide' => 'shirt.stock'} Out of Stock
           = link_to 'Add to Cart', '', class: 'button add-to-cart', 'ng-click' => 'add_shirt(shirt)'
+          = link_to 'Added', '', class: 'button red add-to-cart ignore-margin', 'ng-hide' => 'true', 'fade-in-out' => 'shirt.saving', 'animation-duration' => '1000', 'fade-in-duration' => '50'
 
 :javascript
   $(document).ready(function() {
