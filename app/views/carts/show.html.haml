@@ -8,7 +8,7 @@
   .container.checkout.clearfix
     .checkout-inner
       = render 'steps', step: 1
-    %h4.center.spacious{ 'ng-hide' => 'has_shirts()' } There are currently no shirts in your cart
+    %h4.center.spacious{ 'ng-hide' => 'has_shirts()' } There are no items in your cart
     %table.cart-shirts{ 'ng-show' => 'has_shirts()'}
       %thead
         %tr

@@ -22,6 +22,7 @@ angular.module('carts_controller', [])
       cart_shirt.color_id = shirt.color_id
 
       $scope.cart.cart_shirts.push cart_shirt
+      $scope.clearShirtParams shirt
       CartShirt.save
         cart_shirt: cart_shirt
       , (cart) ->
@@ -51,6 +52,11 @@ angular.module('carts_controller', [])
     $scope.errors[shirt.id].color = 'You must select a color' if _.isUndefined shirt.color_id
     $scope.errors[shirt.id].size = 'Invalid size for shirt' unless _.contains _.map(shirt.sizes, (size) -> size.id), shirt.size_id
     $scope.errors[shirt.id].size = 'You must select a size' if _.isUndefined shirt.size_id
+
+  $scope.clearShirtParams = (shirt) ->
+    delete shirt.size_id
+    delete shirt.color_id
+    delete shirt.quantity
 
   _isValidNumber = (num) ->
     _.isNumber(parseFloat(num)) && !isNaN(parseFloat(num))
