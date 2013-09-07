@@ -12,7 +12,9 @@
               %img#preview{ 'ng-src' => '{{ meal.meal_large }}', 'ng-show' => 'meal.meal_large' }
               %i.icon-banana.default-shirt.default-preview{ 'ng-hide' => 'meal.meal_large' }
         .input
-          %label Name
+          %label
+            Name
+            %span.required *
           %input.short{ type: 'text', id: 'name', 'ng-model' => 'meal.name', 'ng-class' => '{ error: errors.name }' }
           .alert.error{ 'ng-show' => 'errors.name' }
             %button.close{ 'hide-alert' => 'errors.name = ""', 'eat-click' => '' } &times;

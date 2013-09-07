@@ -13,13 +13,17 @@
               %img#preview{ 'ng-src' => '{{ shirt.design_large }}', 'ng-show' => 'shirt.design_large' }
               %i.icon-tshirt.default-shirt.default-preview{ 'ng-hide' => 'shirt.design_large' }
         .input
-          %label Name
+          %label
+            Name
+            %span.required *
           %input.short{ type: 'text', id: 'name', 'ng-model' => 'shirt.name', 'ng-class' => '{ error: errors.name }' }
           .alert.error{ 'ng-show' => 'errors.name' }
             %button.close{ 'hide-alert' => 'errors.name = ""', 'eat-click' => '' } &times;
             {{ errors.name }}
         .input
-          %label Price
+          %label
+            Price
+            %span.required *
           %input.short{ type: 'text', id: 'price', 'ng-model' => 'shirt.price', 'ng-class' => '{ error: errors.price }' }
           .alert.error{ 'ng-show' => 'errors.price' }
             %button.close{ 'hide-alert' => 'errors.price = ""', 'eat-click' => '' } &times;
@@ -30,7 +34,9 @@
           %i.icon-circleselect{ 'ng-show' => 'shirt.stock', 'ng-click' => 'shirt.stock = false' }
         .angular-controller{ 'ng-controller' => 'ColorsCtrl'}
           .input
-            %label Colors
+            %label
+              Colors
+              %span.required *
             .alert.error.short{ 'ng-show' => 'errors.colors' }
               %button.close{ 'hide-alert' => 'errors.colors = ""', 'eat-click' => '' } &times;
               {{ errors.colors }}
@@ -55,7 +61,9 @@
 
         .angular-controller{ 'ng-controller' => 'SizesCtrl' }
           .input
-            %label Sizes
+            %label
+              Sizes
+              %span.required *
             .alert.error.short{ 'ng-show' => 'errors.sizes' }
               %button.close{ 'hide-alert' => 'errors.sizes = ""', 'eat-click' => '' } &times;
               {{ errors.sizes }}

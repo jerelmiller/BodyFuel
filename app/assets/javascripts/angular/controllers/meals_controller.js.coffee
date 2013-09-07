@@ -16,6 +16,7 @@ angular.module('meals_controller', [])
   $scope.is_valid = ->
     $scope.reset_errors()
     $scope.validate()
+    $scope.$apply() unless $scope.$$phase
     !$scope.has_errors()
 
   $scope.validate = ->
