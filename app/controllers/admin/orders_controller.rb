@@ -10,6 +10,11 @@ class Admin::OrdersController < Admin::AdminController
     redirect_to admin_orders_path
   end
 
+  def unfulfill
+    @order.unfulfill!
+    redirect_to admin_orders_path
+  end
+
   private
 
   def get_order

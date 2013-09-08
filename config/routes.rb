@@ -24,7 +24,10 @@ BodyFuel::Application.routes.draw do
 
   namespace :admin do
     resources :orders, only: [:index, :show] do
-      put :fulfill, on: :member
+      member do
+        put :fulfill
+        get :unfulfill
+      end
     end
     resources :colors, only: :create
     resources :sizes, only: :create

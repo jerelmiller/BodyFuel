@@ -12,7 +12,10 @@
             %td.customer-name Name
             %td.email Email
             %td.created Order Date
-            %td.fulfilled Fulfilled
+            %td.fulfilled
+              Fulfilled
+              %br
+              %span.small (click to unfulfill)
         %tbody
         - @orders.each do |order|
           %tr
@@ -22,7 +25,8 @@
             %td.created= format_time order.created_at
             %td.fulfilled
               - if order.fulfilled?
-                %i.icon-ok
+                = link_to unfulfill_admin_order_path(order) do
+                  %i.icon-ok
 
     = will_paginate @orders
 

@@ -21,6 +21,10 @@ class Order < ActiveRecord::Base
     update_attributes fulfilled_fl: true
   end
 
+  def unfulfill!
+    update_attributes fulfilled_fl: false
+  end
+
   def fulfilled?
     fulfilled_fl
   end
