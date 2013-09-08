@@ -21,7 +21,7 @@
           %tr
             %td.order-number= link_to order.order_number, admin_order_path(order)
             %td.customer-name= order.customer
-            %td.email= order.customer.email
+            %td.email= mail_to order.email, order.email, subject: "BodyFuel Inquiry for Order #{order.order_number}"
             %td.created= format_time order.created_at
             %td.fulfilled
               - if order.fulfilled?

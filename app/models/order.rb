@@ -7,6 +7,9 @@ class Order < ActiveRecord::Base
 
   attr_accessible :cart_id, :fulfilled_fl
 
+  delegate :email,
+           to: :customer
+
   self.per_page = 10
 
   def self.most_recent
