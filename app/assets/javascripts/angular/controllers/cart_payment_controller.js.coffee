@@ -22,6 +22,7 @@ angular.module('cart_payment_controller', [])
 
   $scope.create_order = ->
     return if _.isUndefined $scope.stripe
+    $scope.saving = true
     Order.save
       stripe_token: $scope.stripe.id
       authenticity_token: $scope.authenticity_token
