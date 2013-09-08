@@ -10,7 +10,8 @@
 
 %section
   .container
-    %h3.center{ 'ng-show' => 'shirts.length == 0'} We are currently working on our inventory. Check back soon!
+    - if @shirts.empty?
+      %h3.center We are currently working on our inventory. Check back soon!
     .tiles-4.shirts.tab-section
       .tile-item.padded{ 'ng-repeat' => 'shirt in shirts' }
         .product-box
@@ -47,6 +48,7 @@
     Utils.adjustTileSize('.tiles-4');
     AngularDataSeed({
       shirts: #{render partial: 'shirts/shirts', locals: { shirts: @shirts }, formats: [:json]},
-      cart: #{render partial: 'carts/cart', locals: { cart: current_cart }, formats: [:json]}
+      cart: #{render partial: 'carts/cart', locals: { cart: current_cart }, formats: [:json]},
+      authenticity_token: '#{form_authenticity_token}'
     });
   })

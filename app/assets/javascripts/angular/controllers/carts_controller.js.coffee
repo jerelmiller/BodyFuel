@@ -25,6 +25,7 @@ angular.module('carts_controller', [])
       $scope.clearShirtParams shirt
       CartShirt.save
         cart_shirt: cart_shirt
+        authenticity_token: $scope.authenticity_token
       , (cart) ->
         shirt.saving = false
         $scope.success(cart)

@@ -24,4 +24,5 @@ angular.module('cart_payment_controller', [])
     return if _.isUndefined $scope.stripe
     Order.save
       stripe_token: $scope.stripe.id
+      authenticity_token: $scope.authenticity_token
       (data) -> window.location = data.path

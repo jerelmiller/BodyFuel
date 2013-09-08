@@ -11,12 +11,14 @@ angular.module('cart_checkout_controller', [])
   $scope.create_customer = ->
     Customer.save
       customer: $scope.customer
+      authenticity_token: $scope.authenticity_token
       ((data) -> window.location = data.path), $scope.saveError
 
   $scope.update_customer = ->
     Customer.update
       id: $scope.customer.id
       customer: $scope.customer
+      authenticity_token: $scope.authenticity_token
       ((data) -> window.location = data.path), $scope.saveError
 
   $scope.save_customer = ->

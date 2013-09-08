@@ -26,6 +26,7 @@ angular.module('cart_shirts_controller', [])
       CartShirt.update(
         id: shirt.id,
         cart_shirt: shirt
+        authenticity_token: $scope.authenticity_token
       , $scope.success)
 
   $scope.validate_shirt = (shirt) ->
@@ -38,6 +39,7 @@ angular.module('cart_shirts_controller', [])
   $scope.delete = (shirt) ->
     CartShirt.destroy(
       id: shirt.id
+      authenticity_token: $scope.authenticity_token
     , $scope.success)
 
   $scope.success = (cart) ->
