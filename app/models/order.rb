@@ -16,6 +16,10 @@ class Order < ActiveRecord::Base
     order('created_at desc')
   end
 
+  def self.find(order_number)
+    where(order_number: order_number).first || super(order_number)
+  end
+
   def to_param
     order_number
   end

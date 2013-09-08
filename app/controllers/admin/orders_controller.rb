@@ -1,11 +1,18 @@
 class Admin::OrdersController < Admin::AdminController
-  before_filter :get_order, except: :index
+  before_filter :get_order, except: [:index, :show]
 
   def index
     @orders = Order.page(params[:page]).most_recent
+    @new_order_ids = Order.where{ (created_at > my{ current_user.last_login_at }) & (created_at == updated_at)}.pluck :id
   end
 
   def show
+    @order = Order.where(order_number: params[:id])
+                  .includes(:customer)
+                  .includes{ cart.cart_shirts.shirt }
+                  .includes{ cart.cart_shirts.color }
+                  .includes{ cart.cart_shirts.size }
+                  .first
     session[:return_to] = request.referer
   end
 
@@ -22,6 +29,6 @@ class Admin::OrdersController < Admin::AdminController
   private
 
   def get_order
-    @order = Order.where(order_number: params[:id]).first
+    @order = Order.find params[:id]
   end
 end

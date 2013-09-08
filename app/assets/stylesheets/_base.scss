@@ -73,3 +73,12 @@ $tile-margin: 20px;
     width: $width;
   }
 }
+
+@mixin arrow($direction, $color: #000, $width: 10px) {
+  border: $width solid transparent;
+  $opposite: opposite-position($direction);
+  border-#{$opposite}: $width solid $color;
+  border-#{$direction}: 0;
+  height: 0;
+  width: 0;
+}

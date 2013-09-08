@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130907084523) do
+ActiveRecord::Schema.define(:version => 20130908213159) do
 
   create_table "cart_shirts", :force => true do |t|
     t.integer  "cart_id",                                                   :null => false
@@ -98,6 +98,11 @@ ActiveRecord::Schema.define(:version => 20130907084523) do
     t.string   "salt"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.datetime "last_login_at"
+    t.datetime "last_logout_at"
+    t.datetime "last_activity_at"
   end
+
+  add_index "users", ["last_logout_at", "last_activity_at"], :name => "index_users_on_last_logout_at_and_last_activity_at"
 
 end
