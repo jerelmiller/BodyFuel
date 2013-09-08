@@ -5,14 +5,18 @@ class Admin::OrdersController < Admin::AdminController
     @orders = Order.page(params[:page]).most_recent
   end
 
+  def show
+    session[:return_to] = request.referer
+  end
+
   def fulfill
     @order.fulfill!
-    redirect_to admin_orders_path
+    redirect_to(session[:return_to]) and session.delete(:return_to)
   end
 
   def unfulfill
     @order.unfulfill!
-    redirect_to admin_orders_path
+    redirect_to request.referer
   end
 
   private
