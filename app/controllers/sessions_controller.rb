@@ -19,6 +19,6 @@ class SessionsController < ApplicationController
   private
 
   def check_current_user
-    redirect_to admin_root_path if current_user
+    redirect_to admin_orders_path if current_user
   end
 end

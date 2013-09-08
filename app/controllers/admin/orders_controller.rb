@@ -2,7 +2,7 @@ class Admin::OrdersController < Admin::AdminController
   before_filter :get_order, except: :index
 
   def index
-    @orders = Order.most_recent
+    @orders = Order.page(params[:page]).most_recent
   end
 
   def fulfill

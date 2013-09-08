@@ -11,4 +11,12 @@ module ApplicationHelper
     yield presenter if block_given?
     presenter
   end
+
+  def format_time(time, options = {})
+    options[:format] ||= :date
+
+    case options[:format]
+    when :date then time.strftime '%b %-d, %Y'
+    end
+  end
 end

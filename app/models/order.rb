@@ -7,6 +7,8 @@ class Order < ActiveRecord::Base
 
   attr_accessible :cart_id, :fulfilled_fl
 
+  self.per_page = 10
+
   def self.most_recent
     order('created_at desc')
   end

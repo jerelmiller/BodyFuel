@@ -1,0 +1,28 @@
+.pagination {
+  padding: 15px;
+
+  %link-filled {
+    background: $link-color;
+    color: white;
+  }
+
+  a, em, span {
+    padding: 3px 6px;
+    border: 1px solid #DFDFDF;
+  }
+  a {
+    color: $link-color;
+    &:hover {
+      @extend %link-filled;
+    }
+  }
+  .current {
+    @extend %link-filled;
+  }
+  .next_page, .previous_page {
+    border: none;
+  }
+  .disabled {
+    display: none;
+  }
+}

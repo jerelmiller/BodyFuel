@@ -2,44 +2,31 @@
   .container.main
     %h2.center.extra-padded Orders
     - if @orders.empty?
-      %h3.spacious.center No orders yet
+      %h3.spacious.center No orders to display
+    - else
 
-    %table.full-width
-      %thead
-        %tr
-          %td.order-number Order Number
-          %td.customer-name Name
-          %td.email Email
-          %td.notes Notes
-          %td.fulfilled Fulfilled
-          %td
-            %i.icon-minus
-            %i.icon-plus.hide
-      %tbody
-      - @orders.each do |order|
-        %tr
-          %td.order-number= link_to order.order_number, admin_order_path(order)
-          %td.customer-name= order.customer
-          %td.email= order.customer.email
-          %td.notes= "#{number_to_currency(order.cart.total)} for #{pluralize(order.cart.num_items, 'item')}"
-          %td.fulfilled
-            - if order.fulfilled?
-              %i.icon-ok
-          %td
+      %table.full-width
+        %thead
+          %tr
+            %td.order-number Order Number
+            %td.customer-name Name
+            %td.email Email
+            %td.created Order Date
+            %td.fulfilled Fulfilled
+        %tbody
+        - @orders.each do |order|
+          %tr
+            %td.order-number= link_to order.order_number, admin_order_path(order)
+            %td.customer-name= order.customer
+            %td.email= order.customer.email
+            %td.created= format_time order.created_at
+            %td.fulfilled
+              - if order.fulfilled?
+                %i.icon-ok
+
+    = will_paginate @orders
 
 :javascript
   $(document).ready(function() {
     Utils.adjustTileSize('.tiles-4');
-
-    $('.icon-plus').click(function() {
-      $(this).parents('thead').siblings('tbody').show();
-      $(this).hide();
-      $('.icon-minus').show();
-    });
-
-    $('.icon-minus').click(function() {
-      $(this).parents('thead').siblings('tbody').hide();
-      $(this).hide();
-      $('.icon-plus').show();
-    });
   })
