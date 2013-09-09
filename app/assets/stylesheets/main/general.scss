@@ -86,6 +86,10 @@ section {
   clear: both;
 }
 
+.green-text {
+  color: $green;
+}
+
 .container {
   width: $viewport-width;
   margin: 0 auto;

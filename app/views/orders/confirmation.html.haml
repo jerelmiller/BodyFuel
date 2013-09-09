@@ -2,54 +2,11 @@
   4
 
 - content_for :cart_contents do
-  %h2.center Thank you
-  %h4 Order Details
-  = number_to_currency @order.cart.total
-  .email
-    A confirmation email will be sent to
-    = @order.cart.customer.email
-/   .customer-info
-/     %h4 Your Information
-/     .customer-info-row
-/       %span Name:
-/       = @customer.full_name
-/     .customer-info-row
-/       %span Email:
-/       = @customer.email
-
-/     .cart-total
-/       = number_to_currency current_cart.total
-
-/   .payment
-/     %button.button{ 'ng-click' => 'stripe_checkout()', 'ng-hide' => 'stripe.card' } Enter Payment Info
-/     %button.button{ 'ng-click' => 'stripe_checkout()', 'ng-show' => 'stripe.card' } Renter Payment Info
-/     .payment-info{ 'ng-show' => 'stripe.card' }
-/       %h5 Billing Address
-/       .customer-info-row
-/         {{ stripe.card.name }}
-/       .customer-info-row
-/         {{ stripe.card.address_line1 }}
-/       .customer-info-row{ 'ng-show' => 'stripe.card.address_line2' }
-/         {{ stripe.card.address_line2 }}
-/       .customer-info-row
-/         {{ stripe.card.address_city }}, {{ stripe.card.address_state }}, {{ stripe.card.address_zip }}
-
-/       %h5 Payment Information
-/       .customer-info-row
-/         **** **** **** {{ stripe.card.last4 }}
-/       .customer-info-row
-/         {{ stripe.card.type }}
-/       .customer-info-row
-/         Expires {{ stripe.card.exp_month | zeroPad:2 }}/{{ stripe.card.exp_year }}
-
-/   :javascript
-/     $(document).ready(function() {
-/       AngularDataSeed({
-/         cart: #{render partial: 'carts/cart', locals: { cart: current_cart }, formats: [:json]},
-/         customer: #{render partial: 'customers/customer', locals: { customer: current_cart.customer }, formats: [:json]}
-/       });
-/     });
-
+  %h2.center.spacious Thank you
+  Your card has been charged
+  %span.green-text= number_to_currency @order.cart.total
+  and a confirmation email has been sent to
+  %span.green-text= @order.email
 
 - content_for :buttons do
   = link_to 'Back to Main'.html_safe, root_path, class: 'button grey pull-right'
