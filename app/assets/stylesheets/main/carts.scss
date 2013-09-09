@@ -59,7 +59,10 @@ table.full-width {
   td {
     padding: 10px 20px;
     &.name {
-      width: 250px;
+      width: 220px;
+    }
+    &.shirt-price {
+      width: 100px;
     }
     &.trash {
       width: 50px;

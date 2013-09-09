@@ -13,7 +13,7 @@
       %thead
         %tr
           %td.name Product
-          %td Price
+          %td.shirt-price Price
           %td Color
           %td Size
           %td.quantity Quantity
@@ -24,7 +24,7 @@
           %td
             %i.icon-tshirt
             {{ shirt.name }}
-          %td {{ shirt.price | currency }}
+          %td.shirt-price {{ shirt.price | currency }}
           %td
             .colors
               .color

@@ -46,11 +46,17 @@
     %table.full-width
       %thead
         %tr
-          %td Product
+          %td.name Product
+          %td.shirt-price Price
+          %td Quantity
           %td.shirt-total Total
       %tbody
         %tr{ 'ng-repeat' => 'cart_shirt in cart.cart_shirts' }
-          %td {{ cart_shirt.name }}
+          %td.name
+            %i.icon-tshirt
+            {{ cart_shirt.name }}
+          %td.shirt-price {{ cart_shirt.price | currency }}
+          %td {{ cart_shirt.quantity }}
           %td {{ total(cart_shirt) | currency }}
 
     .cart-total.pull-right
