@@ -62,6 +62,9 @@ a {
   &.extended-margin-bottom {
     margin-bottom: 40px;
   }
+  &.red {
+    color: $red;
+  }
 }
 
 h1 { @extend %base-header; font-size: $h1-size; }

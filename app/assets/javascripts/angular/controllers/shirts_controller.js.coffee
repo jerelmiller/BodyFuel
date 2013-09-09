@@ -78,7 +78,6 @@ angular.module('shirts_controller', [])
     $scope.shirts = _.filter $scope.shirts, (s) ->
       s.id != shirt.id
 
-
   $scope.update = ->
     $scope.reset_errors()
     if $scope.is_valid()

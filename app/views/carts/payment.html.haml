@@ -9,39 +9,39 @@
 
 - content_for :cart_contents do
   %spin{ 'spin-on' => 'saving', 'dim' => '.checkout-inner', 'center' => '' }
-  .customer-info
-    %h4 Your Information
-    .customer-info-row
-      %span Name:
-      = @customer.full_name
-    .customer-info-row
-      %span Email:
-      = @customer.email
-
-    .cart-total
-      = number_to_currency current_cart.total
-
-  .payment
-    %button.button{ 'ng-click' => 'stripe_checkout()', 'ng-hide' => 'stripe.card' } Enter Payment Info
-    %button.button{ 'ng-click' => 'stripe_checkout()', 'ng-show' => 'stripe.card' } Renter Payment Info
-    .payment-info{ 'ng-show' => 'stripe.card' }
+  %button.button{ 'ng-click' => 'stripe_checkout()', 'ng-hide' => 'stripe.card' } Enter Payment Info
+  %button.button.ignore-margin{ 'ng-click' => 'stripe_checkout()', 'ng-show' => 'stripe.card' } Renter Payment Info
+  .tiles-2.customer-info
+    .tile-item
+      %h4.center Shipping Information
+      .customer-info-row= @customer.full_name
+      .customer-info-row= @customer.address
+      .customer-info-row= "#{@customer.city}, #{@customer.state} #{@customer.zipcode}"
+    .tile-item.payment{ 'ng-show' => 'stripe.card' }
+      %h4.center Billing Information
       %h5 Billing Address
-      .customer-info-row
-        {{ stripe.card.name }}
-      .customer-info-row
-        {{ stripe.card.address_line1 }}
-      .customer-info-row{ 'ng-show' => 'stripe.card.address_line2' }
-        {{ stripe.card.address_line2 }}
-      .customer-info-row
-        {{ stripe.card.address_city }}, {{ stripe.card.address_state }}, {{ stripe.card.address_zip }}
-
+      .customer-info-row {{ stripe.card.name }}
+      .customer-info-row {{ stripe.card.address_line1 }}
+      .customer-info-row{ 'ng-show' => 'stripe.card.address_line2' } {{ stripe.card.address_line2 }}
       %h5 Payment Information
+      .customer-info-row {{ stripe.card.address_city }}, {{ stripe.card.address_state }}, {{ stripe.card.address_zip }}
+      .customer-info-row **** **** **** {{ stripe.card.last4 }}
+      .customer-info-row {{ stripe.card.type }}
+      .customer-info-row Expires {{ stripe.card.exp_month | zeroPad:2 }}/{{ stripe.card.exp_year }}
+  .tiles-1
+    .tile-item
+      %h4.center Order Summary
       .customer-info-row
-        **** **** **** {{ stripe.card.last4 }}
+        Items:
+        %span.pull-right= number_to_currency current_cart.total
       .customer-info-row
-        {{ stripe.card.type }}
+        Shipping:
+        %span.pull-right= number_to_currency 0
+      %hr
       .customer-info-row
-        Expires {{ stripe.card.exp_month | zeroPad:2 }}/{{ stripe.card.exp_year }}
+        %h3.inline
+          Order Total:
+        %span.order-total= number_to_currency current_cart.total
 
   :javascript
     $(document).ready(function() {
@@ -50,6 +50,8 @@
         customer: #{render partial: 'customers/customer', locals: { customer: current_cart.customer }, formats: [:json]},
         authenticity_token: "#{form_authenticity_token}"
       });
+
+      Utils.adjustTileSize('.tiles-3');
     });
 
 

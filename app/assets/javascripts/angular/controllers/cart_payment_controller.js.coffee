@@ -19,6 +19,7 @@ angular.module('cart_payment_controller', [])
     $scope.stripe.id = response.id
     $scope.stripe.card = response.card
     $scope.$apply $scope.stripe
+    Utils.adjustTileSize '.tiles-2'
 
   $scope.create_order = ->
     return if _.isUndefined $scope.stripe

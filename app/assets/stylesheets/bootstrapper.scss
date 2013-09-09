@@ -1,54 +1,14 @@
 @import 'base';
+@import 'shared/tiles';
 
-%base-tile-container {
-  @include clearfix;
-  h2 + & {
-    margin-top: 30px;
-  }
-}
-
-%base-tile {
-  padding: $tile-padding;
-  margin-right: $tile-margin;
-  margin-bottom: $tile-margin;
-  float: left;
-  background: white;
-  border: 1px solid #CCC;
-  position: relative;
-  h3 {
-    padding-bottom: 10px;
-  }
-  p {
-    line-height: 24px;
-  }
-}
-
-@mixin generate-tiles {
-  @for $i from 1 through 4 {
-    $tile-width: ($viewport-width / $i) - (($tile-margin / $i) * ($i - 1));
-    .tiles-#{$i} {
-      @extend %base-tile-container;
-      .tile-item {
-        @extend %base-tile;
-        @include box-sizing;
-        width: $tile-width;
-        &:nth-child(#{$i}n) {
-          margin-right: 0;
-        }
-      }
-    }
-  }
-}
-
-$viewport-width: 1280;
-@include generate-tiles;
+@include generate-tiles(1280px);
 .container {
   width: $viewport-width;
   @include box-sizing;
   .admin & {
-    $viewport-width: 1080px;
-    width: $viewport-width;
-    @include generate-tiles;
+    $width: 1080px;
+    width: $width;
+    @include generate-tiles($width);
   }
 }
 
