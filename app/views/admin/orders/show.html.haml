@@ -12,6 +12,11 @@
         %h4.inline Email:
         %span= @order.customer.email
 
+      .shipping-information
+        %h4 Shipping Information
+        .customer-info-row= @order.customer
+        .customer-info-row= @order.address
+        .customer-info-row= "#{@order.city}, #{@order.state} #{@order.zipcode}"
       %table.full-width.order-details
         %thead
           %tr

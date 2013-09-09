@@ -14,10 +14,12 @@
     font-size: 12px;
   }
 
+  .shipping-information {
+    margin-top: 80px;
+    padding: 0 20px;
+  }
+
   table {
-    &.order-details {
-      margin-top: 80px;
-    }
     a {
       color: $link-color;
     }

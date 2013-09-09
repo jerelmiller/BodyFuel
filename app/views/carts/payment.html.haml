@@ -23,8 +23,8 @@
       .customer-info-row {{ stripe.card.name }}
       .customer-info-row {{ stripe.card.address_line1 }}
       .customer-info-row{ 'ng-show' => 'stripe.card.address_line2' } {{ stripe.card.address_line2 }}
-      %h5 Payment Information
       .customer-info-row {{ stripe.card.address_city }}, {{ stripe.card.address_state }}, {{ stripe.card.address_zip }}
+      %h5 Payment Information
       .customer-info-row **** **** **** {{ stripe.card.last4 }}
       .customer-info-row {{ stripe.card.type }}
       .customer-info-row Expires {{ stripe.card.exp_month | zeroPad:2 }}/{{ stripe.card.exp_year }}
@@ -39,8 +39,7 @@
         %span.pull-right= number_to_currency 0
       %hr
       .customer-info-row
-        %h3.inline
-          Order Total:
+        %h3.inline Order Total:
         %span.order-total= number_to_currency current_cart.total
 
   :javascript

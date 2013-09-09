@@ -8,6 +8,10 @@ class Order < ActiveRecord::Base
   attr_accessible :cart_id, :fulfilled_fl
 
   delegate :email,
+           :address,
+           :city,
+           :state,
+           :zipcode,
            to: :customer
 
   self.per_page = 10
