@@ -2,12 +2,12 @@ class Customer < ActiveRecord::Base
   has_many :orders
   has_many :carts
 
-  validates :first_name, :last_name, :email, presence: true
+  validates :first_name, :last_name, :email, :address, :city, :state, :zipcode, presence: true
   validates :email, format: { with: /@/ }
-  attr_accessible :first_name, :last_name, :email
+  attr_accessible :first_name, :last_name, :email, :address, :city, :state, :zipcode
 
   def self.saveable_attributes
-    [:first_name, :last_name, :email]
+    [:first_name, :last_name, :email, :address, :city, :state, :zipcode]
   end
 
   def full_name

@@ -13,6 +13,7 @@
     {{ errors.server }}
   .clearfix
     .left-inputs
+      %h4.bottom-border.extended-margin-bottom Your Information
       .input
         %label
           First Name
@@ -21,17 +22,6 @@
         .alert.error{ 'ng-show' => 'errors.first_name' }
           %button.close{ 'hide-alert' => 'errors.first_name = ""', 'eat-click' => '', tabindex: 0 } &times;
           {{ errors.first_name }}
-
-      .input
-        %label
-          Email
-          %span.required *
-        %input{ type: 'text', 'ng-model' => 'customer.email', 'ng-class' => '{ error: errors.email }', tabindex: 3 }
-        .alert.error{ 'ng-show' => 'errors.email' }
-          %button.close{ 'hide-alert' => 'errors.email = ""', 'eat-click' => '', tabindex: 0 } &times;
-          {{ errors.email }}
-
-    .right-inputs
       .input
         %label
           Last Name
@@ -40,6 +30,53 @@
         .alert.error{ 'ng-show' => 'errors.last_name' }
           %button.close{ 'hide-alert' => 'errors.last_name = ""', 'eat-click' => '', tabindex: 0 } &times;
           {{ errors.last_name }}
+      .input
+        %label
+          Email
+          %span.required *
+        %input{ type: 'text', 'ng-model' => 'customer.email', 'ng-class' => '{ error: errors.email }', tabindex: 3 }
+        .alert.error{ 'ng-show' => 'errors.email' }
+          %button.close{ 'hide-alert' => 'errors.email = ""', 'eat-click' => '', tabindex: 0 } &times;
+          {{ errors.email }}
+      .input
+        %span.required *
+        \= Required
+
+    .right-inputs
+      %h4.bottom-border.extended-margin-bottom Shipping Information
+      .input
+        %label
+          Address
+          %span.required *
+        %input{ type: 'text', 'ng-model' => 'customer.address', 'ng-class' => '{ error: errors.address }', tabindex: 4 }
+        .alert.error{ 'ng-show' => 'errors.address' }
+          %button.close{ 'hide-alert' => 'errors.address = ""', 'eat-click' => '', tabindex: 0 } &times;
+          {{ errors.address }}
+      .input
+        %label
+          City
+          %span.required *
+        %input{ type: 'text', 'ng-model' => 'customer.city', 'ng-class' => '{ error: errors.city }', tabindex: 5 }
+        .alert.error{ 'ng-show' => 'errors.city' }
+          %button.close{ 'hide-alert' => 'errors.city = ""', 'eat-click' => '', tabindex: 0 } &times;
+          {{ errors.city }}
+      .input
+        .left-inputs
+          %label
+            State
+            %span.required *
+          %input{ type: 'text', 'ng-model' => 'customer.state', 'ng-class' => '{ error: errors.email }', tabindex: 6, maxlength: 2 }
+          .alert.error{ 'ng-show' => 'errors.state' }
+            %button.close{ 'hide-alert' => 'errors.state = ""', 'eat-click' => '', tabindex: 0 } &times;
+            {{ errors.state }}
+        .right-inputs
+          %label
+            Zip
+            %span.required *
+          %input{ type: 'text', 'ng-model' => 'customer.zipcode', 'ng-class' => '{ error: errors.zipcode }', tabindex: 7, maxlength: 5 }
+          .alert.error{ 'ng-show' => 'errors.zipcode' }
+            %button.close{ 'hide-alert' => 'errors.zipcode = ""', 'eat-click' => '', tabindex: 0 } &times;
+            {{ errors.zipcode }}
 
   .order-details
     %h4 Your Order

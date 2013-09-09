@@ -35,6 +35,10 @@ angular.module('cart_checkout_controller', [])
     $scope.errors.first_name = "First name can't be blank" if _.isEmpty $scope.customer.first_name
     $scope.errors.last_name = "Last name can't be blank" if _.isEmpty $scope.customer.last_name
     $scope.errors.email = "Email can't be blank" if _.isEmpty $scope.customer.email
+    $scope.errors.address = "Address can't be blank" if _.isEmpty $scope.customer.address
+    $scope.errors.city = "City can't be blank" if _.isEmpty $scope.customer.city
+    $scope.errors.state = "State can't be blank" if _.isEmpty $scope.customer.state
+    $scope.errors.zipcode = "Zip can't be blank" if _.isEmpty $scope.customer.zipcode
 
     _.isEmpty $scope.errors
 

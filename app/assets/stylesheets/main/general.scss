@@ -55,6 +55,13 @@ a {
     bottom: $tile-padding;
     @include stretch-x($tile-padding, $tile-padding);
   }
+  &.bottom-border {
+    border-bottom: 1px solid #CCC;
+    padding-bottom: 15px;
+  }
+  &.extended-margin-bottom {
+    margin-bottom: 40px;
+  }
 }
 
 h1 { @extend %base-header; font-size: $h1-size; }
