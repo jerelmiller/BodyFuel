@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   before_validation :set_defaults, on: :create
   validates :order_number, presence: true
 
-  attr_accessible :cart_id, :fulfilled_fl
+  attr_accessible :cart_id, :fulfilled_fl, :read_fl
 
   delegate :email,
            :address,
@@ -24,12 +24,20 @@ class Order < ActiveRecord::Base
     where(order_number: order_number).first || super(order_number)
   end
 
+  def self.unread
+    where(read_fl: false)
+  end
+
   def to_param
     order_number
   end
 
   def fulfill!
     update_attributes fulfilled_fl: true
+  end
+
+  def read!
+    update_attributes read_fl: true
   end
 
   def unfulfill!

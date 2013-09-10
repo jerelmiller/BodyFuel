@@ -3,7 +3,7 @@ class Admin::OrdersController < Admin::AdminController
 
   def index
     @orders = Order.page(params[:page]).most_recent
-    @new_order_ids = Order.where{ (created_at > my{ current_user.last_login_at }) & (created_at == updated_at)}.pluck :id
+    @new_order_ids = Order.unread.pluck :id
   end
 
   def show
@@ -13,6 +13,7 @@ class Admin::OrdersController < Admin::AdminController
                   .includes{ cart.cart_shirts.color }
                   .includes{ cart.cart_shirts.size }
                   .first
+    @order.read!
     session[:return_to] = request.referer
   end
 
