@@ -1,7 +1,7 @@
 %section.orders
   .container.main
     = form_tag fulfill_admin_order_path(@order), method: :put do
-      %h2.center.extra-padded
+      %h2.extra-padded
         = "Order #{@order.order_number}"
         - if @order.fulfilled?
           %i.icon-ok.green
