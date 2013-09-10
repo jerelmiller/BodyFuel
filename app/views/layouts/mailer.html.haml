@@ -8,8 +8,8 @@
               %table{cellspacing: 0, style: 'background: #FFF; border: 1px solid #DFDFDF; font-family: Arial, Verdana, san-serif;'}
                 %tr
                   %td{width: 600, style: 'padding: 20px 40px; text-align: left;'}
-                    %a{href: @rool_url, style: 'border: 0'}
-                      = image_tag 'logo.png'
+                    = link_to root_url, style: 'border: 0' do
+                      = image_tag attachments['logo.png'].url
                 %tr
                   %td{width: 600, style: 'padding: 20px 40px; font-size: 13px; text-align: left;'}
                     = yield
