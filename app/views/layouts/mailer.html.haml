@@ -9,7 +9,7 @@
                 %tr
                   %td{width: 600, style: 'padding: 20px 40px; text-align: left;'}
                     %a{href: @rool_url, style: 'border: 0'}
-                      %img{src: "#{@root_url}/images/logo.png"}
+                      = image_tag 'logo.png'
                 %tr
                   %td{width: 600, style: 'padding: 20px 40px; font-size: 13px; text-align: left;'}
                     = yield
