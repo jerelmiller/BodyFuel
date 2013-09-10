@@ -50,7 +50,7 @@
 
           .input.keep-margin.clearfix{ 'ng-show' => 'is_editing_color' }
             %h5 Please enter the color HEX value (e.g. #CCC )
-            %input.color-input{ type: 'text', id: 'color', 'ng-model' => 'new_color_value', 'ng-class' => '{ error: color_errors.hex_value }' }
+            %input.color-input.short{ type: 'text', id: 'color', 'ng-model' => 'new_color_value', 'ng-class' => '{ error: color_errors.hex_value }' }
             .colors.no-margin
               .color.color-preview
                 %div{ 'ng-style' => '{"background-color": format_color(new_color_value)}' }

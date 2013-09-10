@@ -96,9 +96,7 @@ input[type=text], input[type=password] {
     @include alert-after-input($input-width);
   }
   &.color-input {
-    width: $input-width;
     float: left;
-    @include alert-after-input($input-width);
   }
   &.extra-short {
     $input-width: 7%;

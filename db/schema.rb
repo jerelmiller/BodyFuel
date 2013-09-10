@@ -73,13 +73,13 @@ ActiveRecord::Schema.define(:version => 20130909041054) do
   create_table "shirts", :force => true do |t|
     t.string   "name"
     t.decimal  "price",               :default => 0.0,   :null => false
-    t.boolean  "stock",               :default => false, :null => false
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "design_file_name"
     t.string   "design_content_type"
     t.integer  "design_file_size"
     t.datetime "design_updated_at"
+    t.boolean  "stock",               :default => false, :null => false
     t.boolean  "delete_fl",           :default => false, :null => false
   end
 

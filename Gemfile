@@ -28,9 +28,10 @@ end
 gem 'jquery-rails'
 
 group :development do
-  gem 'sqlite3'
+  gem 'pg'
   gem 'pry-rails'
   gem 'better_errors'
+  # gem 'rack-mini-profiler'
 end
 
 group :production do

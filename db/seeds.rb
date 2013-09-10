@@ -5,8 +5,8 @@ User.create!([
     :password => 'default'
   },
   { :first_name => 'David',
-    :last_name => 'Dougherty',
-    :email => 'david@epicislife.com',
+    :last_name => 'Arriola',
+    :email => 'bodyfuel2u@gmail.com',
     :password => 'default'
   }
 ])
