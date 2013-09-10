@@ -37,10 +37,12 @@ BodyFuel::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :user_name => 'bodyfuel-b7771d8aebfa3c8d',
-    :password => 'e901a59eaef0df5d',
-    :address => 'mailtrap.io',
-    :port => '2525',
-    :authentication => :plain
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'gmail.com',
+    :user_name            => ENV['EMAIL_USER'],
+    :password             => ENV['EMAIL_PASSWORD'],
+    :authentication       => 'plain',
+    :enable_starttls_auto => true
   }
 end

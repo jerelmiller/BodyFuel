@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   end
 
   def contact_submit
-    puts params
+    ContactMailer.send_contact_email(params[:name], params[:email], params[:message]).deliver
     redirect_to contact_path
   end
 

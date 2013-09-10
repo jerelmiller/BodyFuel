@@ -13,7 +13,7 @@ class Admin::OrdersController < Admin::AdminController
                   .includes{ cart.cart_shirts.color }
                   .includes{ cart.cart_shirts.size }
                   .first
-    @order.read!
+    @order.read! unless @order.read?
     session[:return_to] = request.referer
   end
 

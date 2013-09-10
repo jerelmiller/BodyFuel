@@ -40,6 +40,10 @@ class Order < ActiveRecord::Base
     update_attributes read_fl: true
   end
 
+  def read?
+    read_fl
+  end
+
   def unfulfill!
     update_attributes fulfilled_fl: false
   end
