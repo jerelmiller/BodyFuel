@@ -7,8 +7,6 @@ class ContactMailer < ActionMailer::Base
     @email = email
     @message = message
 
-    attachments.inline['logo.png'] = File.read("#{Rails.root}/app/assets/images/logo.png")
-
     mail to: 'jerelmiller@gmail.com', subject: "New message from #{name}", from: 'jerelmiller@gmail.com', reply_to: 'jerelmiller@gmail.com'
   end
 end
