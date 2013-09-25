@@ -32,7 +32,6 @@ group :development do
   gem 'pg'
   gem 'pry-rails'
   gem 'better_errors'
-  # gem 'rack-mini-profiler'
 end
 
 group :production do

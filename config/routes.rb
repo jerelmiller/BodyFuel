@@ -33,5 +33,6 @@ BodyFuel::Application.routes.draw do
     resources :sizes, only: :create
     resources :meals
     resources :shirts
+    resource :users, only: [:edit, :update], path: :profile
   end
 end
