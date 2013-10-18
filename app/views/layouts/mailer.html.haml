@@ -1,15 +1,15 @@
-%body{style: 'background: #ECF0F1;'}
-  %table{width: '100%', style: 'color: #333;'}
+%body{ style: 'background: #ECF0F1;' }
+  %table{ width: '100%', style: 'color: #333;' }
     %tr
-      %td{style: 'text-align: center'}
-        %table{cellspacing: 0, style: 'margin-top: 20px; margin-left: auto; margin-right: auto;'}
+      %td{ style: 'text-align: center' }
+        %table{ cellspacing: 0, style: 'margin-top: 20px; margin-left: auto; margin-right: auto;' }
           %tr
-            %td{style: 'background: #FFF, border: 1px solid #DFDFDF;'}
-              %table{cellspacing: 0, style: 'background: #FFF; border: 1px solid #DFDFDF; font-family: Arial, Verdana, san-serif;'}
+            %td{ style: 'background: #FFF, border: 1px solid #DFDFDF;' }
+              %table{ cellspacing: 0, style: 'background: #FFF; border: 1px solid #DFDFDF; font-family: Arial, Verdana, san-serif;' }
                 %tr
-                  %td{width: 600, style: 'padding: 20px 40px; text-align: left;'}
+                  %td{ width: 600, style: 'padding: 20px 40px; text-align: left;' }
                     = link_to root_url, style: 'border: 0' do
                       = image_tag 'logo.png'
                 %tr
-                  %td{width: 600, style: 'padding: 20px 40px; font-size: 13px; text-align: left;'}
+                  %td{ width: 600, style: 'padding: 20px 40px; font-size: 13px; text-align: left;' }
                     = yield

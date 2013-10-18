@@ -7,8 +7,5 @@
 #= require_tree ./angular
 #= require utils
 #= require fader
-#= require pages
-#= require_tree ./pages
-#= require_tree ./components
 #= require spin
 #= require jquery.spin
