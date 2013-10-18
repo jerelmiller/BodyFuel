@@ -1,0 +1,18 @@
+<%= "Order #:#{@order.order_number}" %>
+
+<%= "Hello #{@order.customer}," %>
+Thank you for your order. We will be processing your order soon and shipping the items listed below.
+
+Shipping Details
+------------------------------------
+<%= @order.customer %>
+<%= @order.customer.address %>
+<%= "#{@order.customer.city}, #{@order.customer.state} #{@order.customer.zipcode}" %>
+
+Order Details
+------------------------------------
+<% @order.cart.cart_shirts.each do |shirt| %>
+<%= "#{number_to_currency shirt.total} for #{shirt.quantity} of #{shirt.size.size} #{shirt.name} @ #{number_to_currency(shirt.price)}" %>
+<% end %>
+------------------
+<%= "Total: #{number_to_currency @order.cart.total}" %>
