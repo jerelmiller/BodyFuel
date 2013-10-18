@@ -3,10 +3,11 @@
 
 - content_for :cart_contents do
   %h2.center.spacious Thank you
-  Your card has been charged
-  %span.green-text= number_to_currency @order.cart.total
-  and a confirmation email has been sent to
-  %span.green-text= @order.email
+  .confirmation-message
+    Your card has been charged
+    %span.green-text= number_to_currency @order.cart.total
+    and a confirmation email has been sent to
+    %span.green-text= @order.email
 
 - content_for :buttons do
   = link_to 'Back to Main'.html_safe, root_path, class: 'button grey pull-right'
