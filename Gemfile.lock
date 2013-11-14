@@ -91,7 +91,6 @@ GEM
     json (1.7.7)
     jwt (0.1.5)
       multi_json (>= 1.0)
-    libv8 (3.11.8.17)
     mail (2.5.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -154,7 +153,6 @@ GEM
     rake (10.0.4)
     rdoc (3.12.2)
       json (~> 1.4)
-    ref (1.0.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec-core (2.13.1)
@@ -187,9 +185,6 @@ GEM
       activerecord (~> 3.0)
       activesupport (~> 3.0)
       polyamorous (~> 0.5.0)
-    therubyracer (0.11.4)
-      libv8 (~> 3.11.8.12)
-      ref
     thor (0.18.1)
     tilt (1.4.0)
     treetop (1.4.12)
@@ -225,6 +220,5 @@ DEPENDENCIES
   sorcery
   squeel
   stripe!
-  therubyracer
   uglifier (>= 1.0.3)
   will_paginate
