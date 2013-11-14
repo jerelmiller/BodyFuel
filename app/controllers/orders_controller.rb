@@ -19,6 +19,9 @@ class OrdersController < ApplicationController
       rescue Stripe::CardError => e
         render json: { errors: [e] }, status: :unprocessable_entity and raise ActiveRecord::Rollback
       end
+
+      OrderMailer.send_confirmation_email(@order).deliver
+      OrderMailer.send_notification_email(@order).deliver
     end
   end
 
