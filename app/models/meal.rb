@@ -14,18 +14,17 @@ class Meal < ActiveRecord::Base
   validates_attachment :image, content_type: { content_type: ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'] }
 
   def self.get_random_meals
-    ids = []
-    num_meals = (count / 3.0).floor
+    random_meals = all.shuffle
+    num_meals = (random_meals.length / 3.0).floor
     num_meals = 1 if num_meals < 1
-    @meals_1 = Meal.random num_meals
-    ids << @meals_1.try(:map, &:id)
-    @meals_2 = Meal.where{ id << ids }.random num_meals
-    ids << @meals_2.try(:map, &:id)
-    @meals_3 = Meal.where{ id << ids }.random num_meals
-    ids << @meals_3.try(:map, &:id)
 
-    Meal.where{ id << ids }.each_with_index { |leftover, index| instance_variable_get("@meals_#{index + 1}") << leftover }
+    random_meals = random_meals.in_groups_of num_meals, false
+    meals_1 = random_meals.delete_at(0) || []
+    meals_2 = random_meals.delete_at(0) || []
+    meals_3 = random_meals.delete_at(0) || []
 
-    return @meals_1, @meals_2, @meals_3
+    meals_1 << random_meals if random_meals.present?
+
+    return meals_1.flatten, meals_2.flatten, meals_3.flatten
   end
 end
