@@ -1,15 +1,24 @@
 %header
   .container.clearfix
-    = link_to image_tag('logo.png', alt: 'BodyFuel'), root_path, class: 'logo'
-    = link_to carts_path, class: 'cart' do
-      %i.icon-shopping-cart
-      %span.cart-description
-        - present(current_cart) do |cart_presenter|
-          = cart_presenter.num_products
-          = cart_presenter.total
-      %span.arrow &rarr;
+    / = link_to carts_path, class: 'cart' do
+    /   %i.icon-shopping-cart
+    /   %span.cart-description
+    /     - present(current_cart) do |cart_presenter|
+    /       = cart_presenter.num_products
+    /       = cart_presenter.total
+    /   %span.arrow &rarr;
     %nav
       %ul
-        %li= link_to 'ORDER', order_path
-        %li= link_to 'ABOUT', about_path
-        %li= link_to 'CONTACT', contact_path
+        = link_to image_tag('logo.png', alt: 'BodyFuel'), root_path, class: 'logo'
+        %li>
+          = link_to order_path do
+            ORDER
+            %i.icon-chevron-right
+        %li>
+          = link_to about_path do
+            ABOUT
+            %i.icon-chevron-right
+        %li>
+          = link_to contact_path do
+            CONTACT
+            %i.icon-chevron-right

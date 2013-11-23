@@ -1,7 +1,8 @@
 header {
-  padding: 15px 0;
-  margin: 0 auto -30px;
+  // padding: 15px 0;
+  // margin: 0 auto -30px;
   @include section-color($white);
+  border-bottom: 1px solid #CCC;
   .admin & {
     margin: 0 auto;
     padding: 0;
@@ -62,6 +63,7 @@ header {
 
 .logo {
   float: left;
+  padding: 13px 60px;
   width: image-width('logo.png');
   height: image-height('logo.png');
 
@@ -72,8 +74,6 @@ header {
 }
 
 nav {
-  float: right;
-  margin: 82px 0 0 40px;
   .admin & {
     margin: 0;
   }
@@ -90,29 +90,41 @@ nav {
     li {
       display: inline-block;
       font-size: 24px;
-      margin-left: 80px;
+      border-left: 1px solid #CCC;
       @include box-sizing;
-      @include border-radius;
       @include transition(all 0.2s);
-      &:first-child {
-        margin-left: 0;
-      }
+      &:first-child { margin-left: 0; }
       a {
         display: block;
-        padding: 10px;
+        padding: 60px;
+        width: 60%;
+        @include transition(all 0.2s);
         .admin & {
           padding: 18px 22px;
           color: white;
         }
       }
+      [class*="icon-"] {
+        @include transition(transform 0.2s);
+        display: inline-block;
+      }
       &:hover {
-        background: $green;
+        // background: $green;
+        @include transform(translateX(-20px));
         @include transition(all 0.5s);
+        @include box-shadow(-5px 0px 10px -4px #CCC);
         a {
-          color: $silver;
+          color: $red;
+          // background: $green;
           .admin & {
             color: white;
           }
+        }
+        [class*="icon-"] {
+          @include transform(translateX(20px));
+          @include transition(transform 0.5s);
+          // margin-left: 20px;
+          // color: $red;
         }
         .admin & {
           background: lighten($dark-grey, 10%);
