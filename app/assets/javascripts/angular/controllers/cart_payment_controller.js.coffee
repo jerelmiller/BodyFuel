@@ -1,11 +1,11 @@
-angular.module('cart_payment_controller', [])
-.controller 'CartPaymentCtrl', ($scope, dollarsToCentsFilter, DataSeed, Order) ->
+angular.module('cart_payment_controller', ['stripe'])
+.controller 'CartPaymentCtrl', ($scope, dollarsToCentsFilter, DataSeed, Order, StripeKey) ->
   DataSeed.then (data) ->
     _.extend $scope, data
 
   $scope.stripe_checkout = ->
     StripeCheckout.open
-      key:         'pk_test_nPflNJOgcyF3rK7kQxuSarbF'
+      key:         StripeKey
       address:     true
       amount:      dollarsToCentsFilter($scope.cart.total)
       currency:    'usd'
