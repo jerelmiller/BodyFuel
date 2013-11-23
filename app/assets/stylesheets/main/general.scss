@@ -1,7 +1,8 @@
 @include sticky-footer($footer-height, '.wrapper', '.push', 'footer');
 
 body {
-  @include section-color($white);
+  // @include section-color($white);
+  background: #EEECED;
   font: {
     family: $default-font-family;
     size: $default-font-size;
