@@ -7,6 +7,13 @@
 %section
   .container
     %h1.center Shirts
+    = link_to carts_path, class: 'cart' do
+      %i.icon-shopping-cart
+      %span.cart-description
+        - present(current_cart) do |cart_presenter|
+          = cart_presenter.num_products
+          = cart_presenter.total
+      %span.arrow &rarr;
 
 %section
   .container
