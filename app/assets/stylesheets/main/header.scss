@@ -4,6 +4,7 @@ header {
   // @include section-color($white);
   background: #FAFAFA;
   border-bottom: 1px solid #CCC;
+  min-width: $viewport-width;
   .admin & {
     margin: 0 auto;
     padding: 0;
