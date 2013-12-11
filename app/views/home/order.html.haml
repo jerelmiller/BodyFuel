@@ -22,30 +22,31 @@
     .tiles-4.shirts.tab-section
       .tile-item.padded{ 'ng-repeat' => 'shirt in shirts' }
         .product-box
-          %img.design{ 'ng-src' => '{{ shirt.design_normal }}', 'ng-show' => 'shirt.design_normal' }
-          %i.icon-tshirt.default-shirt{ 'ng-hide' => 'shirt.design_normal'}
+          %img.design{ 'ng-src' => '{{ shirt.design_order }}', 'ng-show' => 'shirt.design_order' }
+          %i.icon-tshirt.default-shirt{ 'ng-hide' => 'shirt.design_order'}
         .product-details
           %h4.center {{ shirt.name }}
           %span.price {{ shirt.price | currency }}
-          %h5 Size
-          .alert.error{ 'ng-show' => 'errors[shirt.id].size' }
-            %button.close{ 'hide-alert' => 'hide_shirt_alert(shirt, "size")', 'eat-click' => '' } &times;
-            {{ errors[shirt.id].size }}
-          .sizes
-            %span{ 'ng-repeat' => 'size in shirt.sizes', 'ng-class' => '{ selected: shirt.size_id == size.id }', 'ng-click' => 'shirt.size_id = size.id' }
-              {{ size.size }}
-          %h5 Color
-          .alert.error{ 'ng-show' => 'errors[shirt.id].color' }
-            %button.close{ 'hide-alert' => 'hide_shirt_alert(shirt, "color")', 'eat-click' => '' } &times;
-            {{ errors[shirt.id].color }}
-          .colors
-            .color{ 'ng-repeat' => 'color in shirt.colors', 'ng-class' => '{ selected: shirt.color_id == color.id }', 'ng-click' => 'shirt.color_id = color.id' }
-              %div{ 'ng-style' => '{"background-color": color.hex_value}' }
-          %h5{ 'ng-show' => 'shirt.stock' } Quantity
-          .alert.error{ 'ng-show' => 'errors[shirt.id].quantity' }
-            %button.close{ 'hide-alert' => 'hide_shirt_alert(shirt, "quantity")', 'eat-click' => '' } &times;
-            {{ errors[shirt.id].quantity }}
-          = text_field_tag :quantity, nil, class: 'short', 'ng-model' => 'shirt.quantity', 'ng-show' => 'shirt.stock'
+          .tile-item-inner
+            %h5 Size
+            .alert.error{ 'ng-show' => 'errors[shirt.id].size' }
+              %button.close{ 'hide-alert' => 'hide_shirt_alert(shirt, "size")', 'eat-click' => '' } &times;
+              {{ errors[shirt.id].size }}
+            .sizes
+              %span{ 'ng-repeat' => 'size in shirt.sizes', 'ng-class' => '{ selected: shirt.size_id == size.id }', 'ng-click' => 'shirt.size_id = size.id' }
+                {{ size.size }}
+            %h5 Color
+            .alert.error{ 'ng-show' => 'errors[shirt.id].color' }
+              %button.close{ 'hide-alert' => 'hide_shirt_alert(shirt, "color")', 'eat-click' => '' } &times;
+              {{ errors[shirt.id].color }}
+            .colors
+              .color{ 'ng-repeat' => 'color in shirt.colors', 'ng-class' => '{ selected: shirt.color_id == color.id }', 'ng-click' => 'shirt.color_id = color.id' }
+                %div{ 'ng-style' => '{"background-color": color.hex_value}' }
+            %h5{ 'ng-show' => 'shirt.stock' } Quantity
+            .alert.error{ 'ng-show' => 'errors[shirt.id].quantity' }
+              %button.close{ 'hide-alert' => 'hide_shirt_alert(shirt, "quantity")', 'eat-click' => '' } &times;
+              {{ errors[shirt.id].quantity }}
+            = text_field_tag :quantity, nil, class: 'short', 'ng-model' => 'shirt.quantity', 'ng-show' => 'shirt.stock'
           = link_to 'Add to Cart', '', class: 'button add-to-cart', 'ng-click' => 'add_shirt(shirt)', 'ng-show' => 'shirt.stock'
           = link_to 'Added', '', class: 'button red add-to-cart ignore-margin', 'ng-hide' => 'true', 'fade-in-out' => 'shirt.saving', 'animation-duration' => '1000', 'fade-in-duration' => '50', 'ng-show' => 'shirt.stock'
           %h4.center.align-to-bottom{ 'ng-hide' => 'shirt.stock' } Out of stock

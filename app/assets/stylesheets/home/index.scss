@@ -13,12 +13,52 @@
   .tile-item {
     background: white;
     border: 1px solid #CCC;
+    padding: 0 !important;
+    height: 250px;
+    overflow: hidden;
+
+    &:hover {
+      @include transition(all 0.2s);
+      img {
+        @include transition(all 0.2s);
+        @include transform(scale(1.1));
+      }
+      .banner {
+        @include transition(all 0.2s);
+        @include transform(scale(1.2));
+        margin-left: 4px;
+        &:after { left: 99%; }
+      }
+    }
   }
   img {
     display: block;
-    margin: 20px auto 0;
-    height: 162px;
-    width: auto;
+    width: 100%;
+    @include transition(all 0.2s);
+  }
+
+  .banner {
+    $banner-color: #99C33D;
+    position: absolute;
+    left: 0;
+    bottom: $tile-padding;
+    padding: 10px;
+    background: $banner-color;
+    color: white;
+    font-size: 18px;
+    @include transition(all 0.2s);
+
+    &:after {
+      content: '';
+      height: 0;
+      width: 0;
+      border-left: 15px solid $banner-color;
+      border-top: 21px solid transparent;
+      border-bottom: 21px solid transparent;
+      position: absolute;
+      left: 100%;
+      top: 0;
+    }
   }
 }
 

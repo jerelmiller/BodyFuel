@@ -3,12 +3,12 @@
     %h2.center Shirts
     = link_to 'Create new shirt', new_admin_shirt_path, class: 'button new-shirt'
     %h3.center{ 'ng-show' => 'shirts.length == 0'} No shirts yet!
-    .tiles-4.shirts
+    .tiles-3.shirts
       .tile-item.padded{ 'ng-repeat' => 'shirt in shirts' }
         .product-box
-          %img.design{ 'ng-src' => '{{ shirt.design_normal }}', 'ng-show' => 'shirt.design_normal' }
-          %i.icon-tshirt.default-shirt{ 'ng-hide' => 'shirt.design_normal'}
-        .product-details
+          %img.design{ 'ng-src' => '{{ shirt.design_admin }}', 'ng-show' => 'shirt.design_admin' }
+          %i.icon-tshirt.default-shirt{ 'ng-hide' => 'shirt.design_admin' }
+        .product-details.tile-item-inner
           %h4.center {{ shirt.name }}
           .sizes
             %h5 Size

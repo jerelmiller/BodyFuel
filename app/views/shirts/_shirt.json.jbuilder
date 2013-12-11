@@ -7,7 +7,8 @@ json.(shirt,
 
 json.edit_link edit_admin_shirt_path(shirt) unless shirt.new_record?
 json.design_large shirt.design.url(:large)
-json.design_normal shirt.design.url(:normal)
+json.design_order shirt.design.url(:order)
+json.design_admin shirt.design.url(:admin)
 
 json.colors do
   json.partial! 'colors/colors', colors: shirt.colors

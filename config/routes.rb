@@ -1,9 +1,8 @@
 BodyFuel::Application.routes.draw do
   root to: 'home#index'
-  get '/about' => 'home#about'
-  get '/store' => 'home#store'
   get '/order' => 'home#order'
   get '/about' => 'home#about'
+  get '/menu' => 'home#menu'
   get '/contact' => 'home#contact'
   post '/contact' => 'home#contact_submit'
 

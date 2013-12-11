@@ -12,7 +12,7 @@ class Shirt < ActiveRecord::Base
 
   has_attached_file :design,
     storage: :dropbox,
-    styles: { normal: '150x150>', large: '500x500>' },
+    styles: { order: '303x145>', admin: '345x150>', large: '500x500>' },
     default_url: nil,
     dropbox_credentials: "#{Rails.root}/config/dropbox.yml",
     dropbox_options: { path: proc { |style| "bodyfuel/#{Rails.env}/designs/#{style}/#{id}/#{design.original_filename}"} }

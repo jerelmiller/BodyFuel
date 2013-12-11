@@ -68,9 +68,15 @@
   @include box-sizing;
 }
 
-.shirts, .meals {
-  margin-top: 40px;
+%common-tile-container { margin-top: 40px; }
+.shirts {
+ @extend %common-tile-container;
+  .tile-item {
+    padding: 0 !important;
+    img { width: 100%; }
+  }
 }
+.meals { @extend %common-tile-container; }
 
 .new-shirt, .new-meal {
   position: absolute;
