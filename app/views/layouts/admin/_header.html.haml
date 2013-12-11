@@ -1,20 +1,22 @@
 %header.admin
-  .container
-    = link_to image_tag('logo_admin.png', alt: 'BodyFuel'), admin_orders_path, class: 'logo'
+  .container.clearfix
     %nav
       %ul
-        %li= link_to "ORDERS (#{@order_count})", admin_orders_path
-        %li= link_to 'SHIRTS', admin_shirts_path
-        %li= link_to 'MEALS', admin_meals_path
-        %li.dropdown-menu
-          = link_to '#' do
-            .icon-user
-          %ul
-            %li
-              = link_to edit_admin_users_path do
-                %span.icon-edit
-                EDIT PROFILE
-            %li
-              = link_to logout_path do
-                %span.icon-exit
-                LOGOUT
+        = link_to image_tag('logo.png', alt: 'BodyFuel'), admin_orders_path, class: 'logo'
+        %li>
+          = link_to admin_orders_path do
+            = "Orders (#{@order_count})"
+            %i.icon-chevron-right
+        %li>
+          = link_to admin_shirts_path do
+            SHIRTS
+            %i.icon-chevron-right
+        %li>
+          = link_to admin_meals_path do
+            MEALS
+            %i.icon-chevron-right
+        %li.action-links>
+          = link_to edit_admin_users_path do
+            %i.icon-user
+          = link_to logout_path do
+            %i.icon-exit
