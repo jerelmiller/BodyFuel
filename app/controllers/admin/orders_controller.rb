@@ -10,7 +10,8 @@ class Admin::OrdersController < Admin::AdminController
     @order = Order.where(order_number: params[:id])
                   .includes(:customer)
                   .includes{ cart.cart_shirts.shirt }
-                  .includes{ cart.cart_shirts.color }
+                  .includes{ cart.cart_shirts.shirt_color }
+                  .includes{ cart.cart_shirts.text_color }
                   .includes{ cart.cart_shirts.size }
                   .first
     @order.read! unless @order.read?

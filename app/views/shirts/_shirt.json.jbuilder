@@ -10,8 +10,12 @@ json.design_large shirt.design.url(:large)
 json.design_order shirt.design.url(:order)
 json.design_admin shirt.design.url(:admin)
 
-json.colors do
-  json.partial! 'colors/colors', colors: shirt.colors
+json.shirt_colors do
+  json.partial! 'colors/colors', colors: shirt.shirt_colors
+end
+
+json.text_colors do
+  json.partial! 'colors/colors', colors: shirt.text_colors
 end
 
 json.sizes do

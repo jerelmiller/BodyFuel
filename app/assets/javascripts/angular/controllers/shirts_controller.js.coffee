@@ -1,35 +1,30 @@
 angular.module('shirts_controller', [])
 .controller 'ShirtsCtrl', ($scope, DataSeed, Shirt) ->
   DataSeed.then (data) ->
-    _.extend $scope, shirt: data.shirt
-    _.extend $scope, shirts: data.shirts
-    _.extend $scope, data.dependencies
+    angular.extend $scope, shirt: data.shirt
+    angular.extend $scope, shirts: data.shirts
+    angular.extend $scope, data.dependencies
 
     $scope.errors = {}
 
-  $scope.has_errors = ->
-    !_.isEmpty $scope.errors
+  hasAttr = (obj, attr) -> _.any $scope.shirt[attr], (c) -> c.id == obj.id
+  filterAttr = (obj, attr) -> $scope.shirt[attr] = _.filter $scope.shirt[attr], (c) -> c.id != obj.id
 
-  $scope.shirt_has_color = (color) ->
-    _.any $scope.shirt.colors, (c) ->
-      c.id == color.id
+  $scope.has_errors = -> !_.isEmpty $scope.errors
+  $scope.shirt_has_color = (color) -> hasAttr color, 'shirt_colors'
+  $scope.shirt_has_text_color = (color) -> hasAttr color, 'text_colors'
+  $scope.shirt_has_size = (size) -> hasAttr size, 'sizes'
 
-  $scope.shirt_has_size = (size) ->
-    _.any $scope.shirt.sizes, (s) ->
-      s.id == size.id
+  $scope.toggle_shirt_color = (color) ->
+    return filterAttr color, 'shirt_colors' if $scope.shirt_has_color(color)
+    $scope.shirt.shirt_colors.push color
 
-  $scope.toggle_color = (color) ->
-    if $scope.shirt_has_color(color)
-      return $scope.shirt.colors = _.filter $scope.shirt.colors, (c) ->
-        c.id != color.id
-
-    $scope.shirt.colors.push color
+  $scope.toggle_text_color = (color) ->
+    return filterAttr color, 'text_colors' if $scope.shirt_has_text_color(color)
+    $scope.shirt.text_colors.push color
 
   $scope.toggle_size = (size) ->
-    if $scope.shirt_has_size(size)
-      return $scope.shirt.sizes = _.filter $scope.shirt.sizes, (s) ->
-        s.id != size.id
-
+    return filterAttr size, 'sizes' if $scope.shirt_has_size(size)
     $scope.shirt.sizes.push size
 
   $scope.error = (response) ->
@@ -41,7 +36,8 @@ angular.module('shirts_controller', [])
     $scope.errors.price = 'Price must be greater than or equal to 0' if parseInt($scope.shirt.price) < 0
     $scope.errors.price = 'Price is not a number' if !/^-?(\d|\.)+$/.test $scope.shirt.price.toString()
 
-    $scope.errors.colors = 'You must select at least one color' if _.isEmpty $scope.shirt.colors
+    $scope.errors.shirt_colors = 'You must select at least one color' if _.isEmpty $scope.shirt.shirt_colors
+    $scope.errors.text_colors = 'You must select at least one color' if _.isEmpty $scope.shirt.text_colors
     $scope.errors.sizes = 'You must select at least one size' if _.isEmpty $scope.shirt.sizes
 
   $scope.is_valid = ->

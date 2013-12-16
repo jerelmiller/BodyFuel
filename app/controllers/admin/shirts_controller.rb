@@ -3,13 +3,14 @@ class Admin::ShirtsController < Admin::AdminController
   before_filter :get_shirt, only: [:edit, :update, :destroy]
 
   def index
-    @shirts = Shirt.includes(:colors).includes(:sizes).not_deleted.most_recent
+    @shirts = Shirt.includes(:shirt_colors).includes(:sizes).includes(:text_colors).not_deleted.most_recent
   end
 
   def update
     Shirt.transaction do
       if @shirt.update_attributes params[:shirt]
-        @shirt.colors = filtered_colors
+        @shirt.shirt_colors = filtered_shirt_colors
+        @shirt.text_colors = filtered_text_colors
         @shirt.sizes = filtered_sizes
       else
         return render json: { errors: model_errors(@shirt) }, status: :unprocessable_entity
@@ -29,7 +30,8 @@ class Admin::ShirtsController < Admin::AdminController
     @shirt = Shirt.new params[:shirt]
     Shirt.transaction do
       if @shirt.save
-        @shirt.colors = filtered_colors
+        @shirt.shirt_colors = filtered_shirt_colors
+        @shirt.text_colors = filtered_text_colors
         @shirt.sizes = filtered_sizes
       else
         return render json: { errors: model_errors(@shirt) }, status: :unprocessable_entity
@@ -48,8 +50,12 @@ class Admin::ShirtsController < Admin::AdminController
 
   private
 
-  def filtered_colors
-    Color.where(id: Array(JSON.parse(params[:colors])).map(&:with_indifferent_access).map{ |color| color[:id] }).all
+  def filtered_shirt_colors
+    ShirtColor.where(id: Array(JSON.parse(params[:shirt_colors])).map(&:with_indifferent_access).map{ |color| color[:id] }).all
+  end
+
+  def filtered_text_colors
+    TextColor.where(id: Array(JSON.parse(params[:text_colors])).map(&:with_indifferent_access).map{ |color| color[:id] }).all
   end
 
   def filtered_sizes
@@ -61,7 +67,8 @@ class Admin::ShirtsController < Admin::AdminController
   end
 
   def get_colors
-    @colors = Color.all
+    @shirt_colors = ShirtColor.all
+    @text_colors = TextColor.all
   end
 
   def get_sizes

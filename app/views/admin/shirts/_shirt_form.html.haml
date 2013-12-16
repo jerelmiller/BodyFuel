@@ -32,32 +32,59 @@
           %label.checkbox In Stock
           %i.icon-circleselection{ 'ng-hide' => 'shirt.stock', 'ng-click' => 'shirt.stock = true' }
           %i.icon-circleselect{ 'ng-show' => 'shirt.stock', 'ng-click' => 'shirt.stock = false' }
-        .angular-controller{ 'ng-controller' => 'ColorsCtrl'}
+        .angular-controller{ 'ng-controller' => 'ColorsCtrl', 'ng-init' => 'setColorType("shirt")' }
           .input
             %label
-              Colors
+              Shirt Colors
               %span.required *
-            .alert.error.short{ 'ng-show' => 'errors.colors' }
-              %button.close{ 'hide-alert' => 'errors.colors = ""', 'eat-click' => '' } &times;
-              {{ errors.colors }}
+            .alert.error.short{ 'ng-show' => 'errors.shirt_colors' }
+              %button.close{ 'hide-alert' => 'errors.shirt_colors = ""', 'eat-click' => '' } &times;
+              {{ errors.shirt_colors }}
             .colors
               .color-box
-                .color{ 'ng-repeat' => 'color in colors', 'ng-class' => '{ selected: shirt_has_color(color) }', 'ng-click' => 'toggle_color(color)' }
+                .color{ 'ng-repeat' => 'color in colors', 'ng-class' => '{ selected: shirt_has_color(color) }', 'ng-click' => 'toggle_shirt_color(color)' }
                   %div{ 'ng-style' => '{"background-color": format_color(color.hex_value)}' }
             = link_to '', 'ng-show' => '!is_editing_color', 'ng-click' => 'is_editing_color = true' do
               %i.icon-plus
               Offer new shirt color
 
           .input.keep-margin.clearfix{ 'ng-show' => 'is_editing_color' }
-            %h5 Please enter the color HEX value (e.g. #CCC )
-            %input.color-input.short{ type: 'text', id: 'color', 'ng-model' => 'new_color_value', 'ng-class' => '{ error: color_errors.hex_value }' }
+            %h5 Please enter the color HEX value (e.g. #CCC)
+            %input.color-input.short#shirt-color{ type: 'text', 'ng-model' => 'new_color_value', 'ng-class' => '{ error: color_errors.hex_value }' }
             .colors.no-margin
               .color.color-preview
                 %div{ 'ng-style' => '{"background-color": format_color(new_color_value)}' }
             .alert.error{ 'ng-show' => '!is_valid()' }
               %button.close{ 'hide-alert' => 'reset_errors()', 'eat-click' => '' } &times;
               {{ full_error_messages() }}
-            = link_to 'Save color', '', class: 'button save', 'ng-click' => 'save_color()'
+            = link_to 'Save color', '', class: 'button save', 'ng-click' => 'save_color("shirt")'
+
+        .angular-controller{ 'ng-controller' => 'ColorsCtrl', 'ng-init' => 'setColorType("text")' }
+          .input
+            %label
+              Text Colors
+              %span.required *
+            .alert.error.short{ 'ng-show' => 'errors.text_colors' }
+              %button.close{ 'hide-alert' => 'errors.text_colors = ""', 'eat-click' => true } &times;
+              {{ errors.text_colors }}
+            .colors
+              .color-box
+                .color{ 'ng-repeat' => 'color in colors', 'ng-class' => '{ selected: shirt_has_text_color(color) }', 'ng-click' => 'toggle_text_color(color)' }
+                  %div{ 'ng-style' => '{"background-color": format_color(color.hex_value)}' }
+            = link_to '', 'ng-show' => '!is_editing_color', 'ng-click' => 'is_editing_color = true' do
+              %i.icon-plus
+              Offer new text color
+
+          .input.keep-margin.clearfix{ 'ng-show' => 'is_editing_color' }
+            %h5 Please enter the color HEX value(e.g. #CCC)
+            %input.color-input.short#text-color{ type: 'text', 'ng-model' => 'new_color_value', 'ng-class' => '{ error: color_errors.hex_value }' }
+            .colors.no-margin
+              .color.color-preview
+                %div{ 'ng-style' => '{ "background-color": format_color(new_color_value) }' }
+            .alert.error{ 'ng-show' => '!is_valid()' }
+              %button.close{ 'hide-alert' => 'reset_errors()', 'eat-click' => true } &times;
+              {{ full_error_messages() }}
+            = link_to 'Save color', '', class: 'button save', 'ng-click' => 'save_color("text")'
 
         .angular-controller{ 'ng-controller' => 'SizesCtrl' }
           .input
@@ -85,7 +112,8 @@
         = f.hidden_field :name, 'hidden-value' => 'shirt.name'
         = f.hidden_field :price, 'hidden-value' => 'shirt.price'
         = f.hidden_field :stock, 'hidden-value' => 'shirt.stock'
-        = hidden_field_tag :colors, '', 'hidden-value' => 'shirt.colors'
+        = hidden_field_tag :shirt_colors, '', 'hidden-value' => 'shirt.shirt_colors'
+        = hidden_field_tag :text_colors, '', 'hidden-value' => 'shirt.text_colors'
         = hidden_field_tag :sizes, '', 'hidden-value' => 'shirt.sizes'
 
       .submit
@@ -98,7 +126,8 @@
   $(document).ready(function() {
     AngularDataSeed({
       shirt: #{render partial: 'shirts/shirt', locals: { shirt: @shirt }, formats: [:json]},
-      colors: #{render partial: 'colors/colors', locals: { colors: @colors }, formats: [:json]},
+      shirtColors: #{render partial: 'colors/colors', locals: { colors: @shirt_colors }, formats: [:json]},
+      textColors: #{render partial: 'colors/colors', locals: { colors: @text_colors }, formats: [:json]},
       sizes: #{render partial: 'sizes/sizes', locals: { sizes: @sizes }, formats: [:json]},
       dependencies: { authenticity_token: '#{form_authenticity_token}' }
     });

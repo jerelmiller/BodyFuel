@@ -12,6 +12,10 @@
       border: 0;
     }
   }
+
+  .alert {
+    ~ .button { margin-top: 10px; }
+  }
 }
 
 .confirmation-message {

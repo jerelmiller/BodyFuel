@@ -12,7 +12,10 @@
     %div{ style: 'margin-bottom: 15px;' }
       %div{ style: 'float: left; margin-right: 5px; ' }
         %div{ style: 'display: inline-block; border: 2px solid #EEE; margin-left: 5px; box-sizing: border-box;' }
-          %div{ style: "background-color: #{shirt.color.hex_value}; width: 28px; height: 28px; margin: 2px; box-sizing: border-box" }
+          %div{ style: "background-color: #{shirt.shirt_color.hex_value}; width: 28px; height: 28px; margin: 2px; box-sizing: border-box" }
+      %div{ style: 'float: left; margin-right: 5px; ' }
+        %div{ style: 'display: inline-block; border: 2px solid #EEE; margin-left: 5px; box-sizing: border-box;' }
+          %div{ style: "background-color: #{shirt.text_color.try(:hex_value)}; width: 28px; height: 28px; margin: 2px; box-sizing: border-box" }
       %div
         %span{ style: 'margin-left: 10px; line-height: 35px;' }= "#{shirt.quantity} of #{shirt.size.size} #{shirt.name} @ #{number_to_currency(shirt.price)}"
         %span{ style: 'float: right; font-weight: bold; line-height: 35px;' }= number_to_currency shirt.total

@@ -11,17 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910051133) do
+ActiveRecord::Schema.define(:version => 20131216052719) do
 
   create_table "cart_shirts", :force => true do |t|
-    t.integer  "cart_id",                                                   :null => false
-    t.integer  "shirt_id",                                                  :null => false
-    t.integer  "quantity",                                 :default => 0,   :null => false
-    t.integer  "color_id",                                                  :null => false
-    t.integer  "size_id",                                                   :null => false
-    t.datetime "created_at",                                                :null => false
-    t.datetime "updated_at",                                                :null => false
-    t.decimal  "price",      :precision => 6, :scale => 2, :default => 0.0, :null => false
+    t.integer  "cart_id",                                                       :null => false
+    t.integer  "shirt_id",                                                      :null => false
+    t.integer  "quantity",                                     :default => 0,   :null => false
+    t.integer  "shirt_color_id",                                                :null => false
+    t.integer  "size_id",                                                       :null => false
+    t.datetime "created_at",                                                    :null => false
+    t.datetime "updated_at",                                                    :null => false
+    t.decimal  "price",          :precision => 6, :scale => 2, :default => 0.0, :null => false
+    t.integer  "text_color_id"
   end
 
   create_table "carts", :force => true do |t|
@@ -32,9 +33,10 @@ ActiveRecord::Schema.define(:version => 20130910051133) do
   end
 
   create_table "colors", :force => true do |t|
-    t.string   "hex_value",  :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "hex_value",                            :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.string   "type",       :default => "ShirtColor", :null => false
   end
 
   create_table "colors_shirts", :id => false, :force => true do |t|

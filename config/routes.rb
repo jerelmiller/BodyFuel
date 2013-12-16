@@ -26,7 +26,8 @@ BodyFuel::Application.routes.draw do
         get :unfulfill
       end
     end
-    resources :colors, only: :create
+    resources :shirt_colors, only: :create
+    resources :text_colors, only: :create
     resources :sizes, only: :create
     resources :meals
     resources :shirts

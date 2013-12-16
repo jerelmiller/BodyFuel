@@ -22,7 +22,8 @@
           %tr
             %td.name Product
             %td Price
-            %td Color
+            %td Shirt Color
+            %td Text Color
             %td Size
             %td.quantity Quantity
         %tbody
@@ -37,7 +38,11 @@
               %td
                 .colors
                   .color
-                    %div{ style: "background-color: #{shirt.color.hex_value}" }
+                    %div{ style: "background-color: #{shirt.shirt_color.hex_value}" }
+              %td
+                .colors
+                  .color
+                    %div{ style: "background-color: #{shirt.text_color.try(:hex_value)}" }
               %td
                 .sizes
                   %span= shirt.size.size

@@ -27,13 +27,8 @@
     background: $red-background;
     @include hover-state($red-background);
   }
-  + .button {
-    margin-left: 10px;
-  }
-
-  &.ignore-margin {
-    margin-left: 0;
-  }
+  + .button { margin-left: 10px; }
+  &.ignore-margin { margin-left: 0; }
 
   &.edit-button {
     position: absolute;
@@ -47,6 +42,7 @@
     right: $tile-padding;
     width: 41%;
   }
+  &.disabled { cursor: not-allowed; }
 }
 
 a.button {

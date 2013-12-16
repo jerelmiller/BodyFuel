@@ -4,10 +4,12 @@ json.(cart_shirt,
   :shirt_id,
   :cart_id,
   :quantity,
-  :color_id,
+  :shirt_color_id,
+  :text_color_id,
   :size_id
 )
 
 json.name cart_shirt.shirt.name
-json.hex_value cart_shirt.color.hex_value
+json.shirt_color cart_shirt.shirt_color.hex_value
+json.text_color cart_shirt.text_color.try(:hex_value)
 json.size cart_shirt.size.size

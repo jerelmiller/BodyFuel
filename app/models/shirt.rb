@@ -2,7 +2,8 @@ class Shirt < ActiveRecord::Base
   has_one :product, as: :content
   has_many :color_shirts
   has_many :shirt_sizes
-  has_many :colors, through: :color_shirts
+  has_many :shirt_colors, through: :color_shirts
+  has_many :text_colors, through: :color_shirts
   has_many :sizes, through: :shirt_sizes
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }

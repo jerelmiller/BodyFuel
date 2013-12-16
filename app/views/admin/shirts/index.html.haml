@@ -14,8 +14,12 @@
             %h5 Size
             %span{ 'ng-repeat' => 'size in shirt.sizes' } {{ size.size }}
           .colors
-            %h5 Color
-            .color{ 'ng-repeat' => 'color in shirt.colors' }
+            %h5 Shirt Color
+            .color{ 'ng-repeat' => 'color in shirt.shirt_colors' }
+              %div{ 'ng-style' => '{ background: color.hex_value }' }
+          .colors
+            %h5 Text Color
+            .color{ 'ng-repeat' => 'color in shirt.text_colors' }
               %div{ 'ng-style' => '{ background: color.hex_value }' }
           %span {{ shirt.price | currency }}
           .shirt-meta

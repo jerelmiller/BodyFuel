@@ -35,12 +35,19 @@
             .sizes
               %span{ 'ng-repeat' => 'size in shirt.sizes', 'ng-class' => '{ selected: shirt.size_id == size.id }', 'ng-click' => 'shirt.size_id = size.id' }
                 {{ size.size }}
-            %h5 Color
-            .alert.error{ 'ng-show' => 'errors[shirt.id].color' }
-              %button.close{ 'hide-alert' => 'hide_shirt_alert(shirt, "color")', 'eat-click' => '' } &times;
-              {{ errors[shirt.id].color }}
+            %h5 Shirt Color
+            .alert.error{ 'ng-show' => 'errors[shirt.id].shirt_color' }
+              %button.close{ 'hide-alert' => 'hide_shirt_alert(shirt, "shirt_color")', 'eat-click' => '' } &times;
+              {{ errors[shirt.id].shirt_color }}
             .colors
-              .color{ 'ng-repeat' => 'color in shirt.colors', 'ng-class' => '{ selected: shirt.color_id == color.id }', 'ng-click' => 'shirt.color_id = color.id' }
+              .color{ 'ng-repeat' => 'color in shirt.shirt_colors', 'ng-class' => '{ selected: shirt.shirt_color_id == color.id }', 'ng-click' => 'shirt.shirt_color_id = color.id' }
+                %div{ 'ng-style' => '{"background-color": color.hex_value}' }
+            %h5 Text Color
+            .alert.error{ 'ng-show' => 'errors[shirt.id].text_color' }
+              %button.close{ 'hide-alert' => 'hide_shirt_alert(shirt, "text_color")', 'eat-click' => '' } &times;
+              {{ errors[shirt.id].text_color }}
+            .colors
+              .color{ 'ng-repeat' => 'color in shirt.text_colors', 'ng-class' => '{ selected: shirt.text_color_id == color.id }', 'ng-click' => 'shirt.text_color_id = color.id' }
                 %div{ 'ng-style' => '{"background-color": color.hex_value}' }
             %h5{ 'ng-show' => 'shirt.stock' } Quantity
             .alert.error{ 'ng-show' => 'errors[shirt.id].quantity' }

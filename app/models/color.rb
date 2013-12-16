@@ -1,7 +1,7 @@
 class Color < ActiveRecord::Base
   attr_accessible :hex_value
 
-  validates :hex_value, presence: true, uniqueness: true
+  validates :hex_value, presence: true
   validate :hex_value_is_valid_hex
 
   private
