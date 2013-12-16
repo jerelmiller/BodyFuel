@@ -76,9 +76,7 @@ label {
   outline: 0;
   font-size: $default-font-size;
   background: #F8F8F8;
-  &:focus {
-    background: white;
-  }
+  &:focus { background: white; }
 }
 
 input[type=text], input[type=password] {
@@ -115,4 +113,5 @@ input[type=text], input[type=password] {
 textarea {
   @extend %base-input-style;
   height: 150px;
+  max-width: 600px;
 }

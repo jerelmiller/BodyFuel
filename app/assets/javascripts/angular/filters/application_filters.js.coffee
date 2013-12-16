@@ -11,3 +11,6 @@ angular.module('application_filters', [])
   (count, word) ->
     return "#{count} #{word}s" unless parseInt(count) == 1
     "#{count} #{word}"
+
+.filter 'newlines', ->
+  (text) -> text?.replace /\n/g, "<br/>"

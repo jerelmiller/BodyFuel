@@ -1,6 +1,8 @@
 /*
 *= require_self
+*= require bootstrap
 *= require bootstrapper
+*= require overrides
 *= require main
 *= require admin
 *= require home

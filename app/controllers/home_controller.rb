@@ -8,4 +8,8 @@ class HomeController < ApplicationController
   def order
     @shirts = Shirt.not_deleted.includes(:shirt_colors).includes(:sizes).includes(:text_colors).most_recent
   end
+
+  def menu
+    @meals = Meal.all
+  end
 end

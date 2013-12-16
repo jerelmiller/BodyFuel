@@ -7,11 +7,8 @@ angular.module('meals_controller', [])
 
     $scope.errors = {}
 
-  $scope.has_errors = ->
-    !_.isEmpty $scope.errors
-
-  $scope.reset_errors = ->
-    $scope.errors = {}
+  $scope.has_errors = -> !_.isEmpty $scope.errors
+  $scope.reset_errors = -> $scope.errors = {}
 
   $scope.is_valid = ->
     $scope.reset_errors()
@@ -19,11 +16,8 @@ angular.module('meals_controller', [])
     $scope.$apply() unless $scope.$$phase
     !$scope.has_errors()
 
-  $scope.validate = ->
-    $scope.errors.name = "Name can't be blank" if _.isEmpty $scope.meal.name
-
-  $scope.redirect_callback = (response) ->
-    window.location = response.path
+  $scope.validate = -> $scope.errors.name = "Name can't be blank" if _.isEmpty $scope.meal.name
+  $scope.redirect_callback = (response) -> window.location = response.path
 
   $scope.delete = (meal, callback, should_confirm) ->
     confirmed = true unless should_confirm

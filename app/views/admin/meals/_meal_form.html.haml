@@ -20,7 +20,13 @@
             %button.close{ 'hide-alert' => 'errors.name = ""', 'eat-click' => '' } &times;
             {{ errors.name }}
 
+        .input
+          %label
+            Description
+          %textarea{ 'ng-model' => 'meal.description' }
+
         = f.hidden_field :name, 'hidden-value' => 'meal.name'
+        = f.hidden_field :description, 'hidden-value' => 'meal.description'
 
       .submit
         = link_to 'Cancel', request.referer, class: 'button grey'

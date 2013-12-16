@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131216052719) do
+ActiveRecord::Schema.define(:version => 20131216083955) do
 
   create_table "cart_shirts", :force => true do |t|
     t.integer  "cart_id",                                                       :null => false
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20131216052719) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.text     "description"
   end
 
   create_table "orders", :force => true do |t|

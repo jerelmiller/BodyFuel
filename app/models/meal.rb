@@ -2,11 +2,11 @@ class Meal < ActiveRecord::Base
   include Randomizer
   validates :name, :image, presence: true
 
-  attr_accessible :image, :name
+  attr_accessible :image, :name, :description
 
   has_attached_file :image,
     storage: :dropbox,
-    styles: { normal: '240x160>', large: '500x500>' },
+    styles: { normal: '240x160>', large: '500x500>', tile: '303x197>' },
     default_url: nil,
     dropbox_credentials: "#{Rails.root}/config/dropbox.yml",
     dropbox_options: { path: proc { |style| "bodyfuel/#{Rails.env}/meals/#{style}/#{id}/#{image.original_filename}"} }
