@@ -8,9 +8,12 @@
   3
 
 - content_for :cart_contents do
+  .alert.error{ 'ng-show' => 'error' }
+    %button.close{ 'hide-alert' => 'error = ""', 'eat-click' => true } &times;
+    {{ error }}
   %spin{ 'spin-on' => 'saving', 'dim' => '.checkout-inner', 'center' => '' }
-  %button.button{ 'ng-click' => 'stripe_checkout()', 'ng-hide' => 'stripe.card' } Enter Payment Info
-  %button.button.ignore-margin{ 'ng-click' => 'stripe_checkout()', 'ng-show' => 'stripe.card' } Renter Payment Info
+  %button.button.clear{ 'ng-click' => 'stripe_checkout()', 'ng-hide' => 'stripe.card' } Enter Payment Info
+  %button.button.ignore-margin.clear{ 'ng-click' => 'stripe_checkout()', 'ng-show' => 'stripe.card' } Renter Payment Info
   .tiles-2.customer-info
     .tile-item
       %h4.center Shipping Information
