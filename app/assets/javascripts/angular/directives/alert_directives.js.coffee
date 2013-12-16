@@ -4,7 +4,7 @@ alert_directives.directive 'hideAlert', ->
   restrict: 'A'
   link: (scope, element, attrs) ->
     element.bind 'click' , (e) ->
-      $(e.target).parents('.alert').animate { opacity: '0' },
+      element.parents('.alert').animate { opacity: '0' },
         duration: 300,
         complete: ->
           $(this).hide()

@@ -1,4 +1,4 @@
-angular.module('cart_payment_controller', ['stripe'])
+angular.module('cart_payment_controller', ['stripe', 'alert_directives'])
 .controller 'CartPaymentCtrl', ($scope, dollarsToCentsFilter, DataSeed, Order, StripeKey) ->
   DataSeed.then (data) ->
     _.extend $scope, data
@@ -28,3 +28,6 @@ angular.module('cart_payment_controller', ['stripe'])
       stripe_token: $scope.stripe.id
       authenticity_token: $scope.authenticity_token
       (data) -> window.location = data.path
+      (response) ->
+        $scope.saving = false
+        $scope.error = 'There was a problem submitting your order. Please try again.'
