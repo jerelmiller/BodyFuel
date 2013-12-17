@@ -30,7 +30,7 @@
 
 :javascript
   $(document).ready(function() {
-    Utils.adjustTileSize('.tiles-4');
+    Utils.adjustTileSize('.tiles-3');
     AngularDataSeed({
       shirts: #{render partial: 'shirts/shirts', locals: { shirts: @shirts }, formats: [:json]},
       dependencies: { authenticity_token: '#{form_authenticity_token}' }
