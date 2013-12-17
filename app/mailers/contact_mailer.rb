@@ -7,6 +7,6 @@ class ContactMailer < ActionMailer::Base
     @email = email
     @message = message
 
-    mail to: 'jerelmiller@gmail.com', subject: "New message from #{name}", from: 'bodyfuel2u@gmail.com', reply_to: 'bodyfuel2u@gmail.com'
+    mail to: 'jerelmiller@gmail.com', subject: "New message from #{name}", from: 'bodyfuel2u@gmail.com', reply_to: "#{name} <#{email}>"
   end
 end
