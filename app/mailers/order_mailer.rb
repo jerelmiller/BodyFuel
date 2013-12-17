@@ -4,11 +4,11 @@ class OrderMailer < ActionMailer::Base
 
   def send_confirmation_email(order)
     @order = order
-    mail to: 'jerelmiller@gmail.com', subject: "BodyFuel Order Confirmation", from: 'jerelmiller@gmail.com', reply_to: 'jerelmiller@gmail.com'
+    mail to: 'jerelmiller@gmail.com', subject: "BodyFuel Order Confirmation", from: 'bodyfuel2u@gmail.com', reply_to: 'bodyfuel2u@gmail.com'
   end
 
   def send_notification_email(order)
     @order = order
-    mail to: 'jerelmiller@gmail.com', subject: 'BodyFuel Order Notification', from: 'jerelmiller@gmail.com', reply_to: 'jerelmiller@gmail.com'
+    mail to: 'jerelmiller@gmail.com', subject: 'BodyFuel Order Notification', from: 'bodyfuel2u@gmail.com', reply_to: 'bodyfuel2u@gmail.com'
   end
 end
