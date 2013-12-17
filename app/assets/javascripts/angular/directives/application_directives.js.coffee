@@ -31,9 +31,6 @@ application_directives.directive 'imagePreview', ->
         reader = new FileReader()
         reader.readAsDataURL(this.files[0])
 
-        reader.onloadstart = ->
-          console.log 'loading'
-
         reader.onload = (e) ->
           $(scope.target).attr('src', e.target.result).show()
           $(scope.hide).hide()

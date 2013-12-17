@@ -6,7 +6,7 @@
       .tile-item.padded{ 'ng-repeat' => 'meal in meals | orderBy:"id":true' }
         .product-box
           %img.design{ 'ng-src' => '{{ meal.meal_normal }}' }
-        %h4.center {{ meal.name }}
+        %h4.center {{ meal.name | truncate:20 }}
         = link_to 'Edit', '{{ meal.edit_link }}', class: 'button edit-button'
         = link_to 'Delete', '', class: 'button red delete-button', 'fade-tile' => 'remove_meal(meal)'
 

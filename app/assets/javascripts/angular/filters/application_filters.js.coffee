@@ -14,3 +14,8 @@ angular.module('application_filters', [])
 
 .filter 'newlines', ->
   (text) -> text?.replace /\n/g, "<br/>"
+
+.filter 'truncate', ->
+  (text, length) ->
+    length ||= 30
+    _.str.truncate text, length

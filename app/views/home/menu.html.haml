@@ -21,7 +21,7 @@
       = link_to '', 'ng-repeat' => 'meal in meals | orderBy:"id":true', class: 'tile-item meal-tile', 'ng-click' => 'setModalInfo(meal)', 'data-toggle' => 'modal', 'data-target' => '#meals' do
         .meal-image
           %img{ 'ng-src' => '{{ meal.meal_tile }}' }
-        .meal-name {{ meal.name }}
+        .meal-name {{ meal.name | truncate }}
 
 
 :javascript
