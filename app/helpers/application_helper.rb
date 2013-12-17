@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def instagram_link
-    social_link 'http://www.instagram.com', 'icon-instagram'
+    social_link 'http://www.instagram.com/bodyfuelnation', 'icon-instagram'
   end
 
   def present(object, klass = nil)
