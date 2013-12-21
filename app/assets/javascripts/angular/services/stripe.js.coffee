@@ -1,2 +1,2 @@
 angular.module('stripe', [])
-.constant 'StripeKey', 'pk_test_5qAzmLP4muObc1uSHW35C6LF'
+.constant 'StripeKey', 'pk_live_t2oSZVULUn5RS67LGWIvE9W9'
