@@ -11,7 +11,7 @@
   .alert.error{ 'ng-show' => 'error' }
     %button.close{ 'hide-alert' => 'error = ""', 'eat-click' => true } &times;
     {{ error }}
-  %spin{ 'spin-on' => 'saving', 'dim' => '.checkout-inner', 'center' => '' }
+  %spin{ 'spin-on' => 'saving', 'dim' => '.checkout-inner', center: true }
   %button.button.clear{ 'ng-click' => 'stripe_checkout()', 'ng-hide' => 'stripe.card' } Enter Payment Info
   %button.button.ignore-margin.clear{ 'ng-click' => 'stripe_checkout()', 'ng-show' => 'stripe.card' } Renter Payment Info
   .tiles-2.customer-info

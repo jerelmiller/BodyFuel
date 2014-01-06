@@ -22,8 +22,9 @@
     .tiles-4.shirts.tab-section
       .tile-item.padded{ 'ng-repeat' => 'shirt in shirts' }
         .product-box
-          %img.design{ 'ng-src' => '{{ shirt.design_order }}', 'ng-show' => 'shirt.design_order' }
-          %i.icon-tshirt.default-shirt{ 'ng-hide' => 'shirt.design_order'}
+          %spin{ 'spin-on' => 'shirt.loading', center: true }
+          %img.design{ 'ng-src' => '{{ shirt.design }}', 'ng-show' => 'shirt.design' }
+          %i.icon-tshirt.default-shirt{ 'ng-hide' => 'shirt.design || shirt.loading'}
         .product-details
           %h4.center {{ shirt.name }}
           %span.price {{ shirt.price | currency }}

@@ -6,8 +6,9 @@
     .tiles-3.shirts
       .tile-item.padded{ 'ng-repeat' => 'shirt in shirts' }
         .product-box
-          %img.design{ 'ng-src' => '{{ shirt.design_admin }}', 'ng-show' => 'shirt.design_admin' }
-          %i.icon-tshirt.default-shirt{ 'ng-hide' => 'shirt.design_admin' }
+          %spin{ 'spin-on' => 'shirt.loading', center: true }
+          %img.design{ 'ng-src' => '{{ shirt.design }}', 'ng-show' => 'shirt.design' }
+          %i.icon-tshirt.default-shirt{ 'ng-hide' => 'shirt.design || shirt.loading' }
         .product-details.tile-item-inner
           %h4.center {{ shirt.name }}
           .sizes

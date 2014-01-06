@@ -6,9 +6,7 @@ json.(shirt,
 )
 
 json.edit_link edit_admin_shirt_path(shirt) unless shirt.new_record?
-json.design_large shirt.design.url(:large)
-json.design_order shirt.design.url(:order)
-json.design_admin shirt.design.url(:admin)
+json.design shirt.design.url(shirt_design) if defined?(shirt_design)
 
 json.shirt_colors do
   json.partial! 'colors/colors', colors: shirt.shirt_colors

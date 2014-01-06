@@ -1,9 +1,19 @@
 angular.module('shirts_controller', [])
-.controller 'ShirtsCtrl', ($scope, DataSeed, Shirt) ->
+.controller 'ShirtsCtrl', ($scope, $timeout, DataSeed, Shirt, ShirtDesign) ->
   DataSeed.then (data) ->
     angular.extend $scope, shirt: data.shirt
     angular.extend $scope, shirts: data.shirts
     angular.extend $scope, data.dependencies
+
+    angular.forEach $scope.shirts, (shirt) -> shirt.loading = true
+    $timeout ->
+      angular.forEach $scope.shirts, (shirt) ->
+        ShirtDesign.design id: shirt.id, style: 'admin'
+        , (response) ->
+          shirt.design = response.design
+          shirt.loading = false
+        , (response) -> shirt.loading = false
+    , 200
 
     $scope.errors = {}
 

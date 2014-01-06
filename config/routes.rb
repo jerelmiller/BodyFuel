@@ -19,6 +19,10 @@ BodyFuel::Application.routes.draw do
     get :confirmation, on: :member
   end
 
+  resources :shirts, only: :none do
+    get '/design/:style', to: 'shirts#design', on: :member
+  end
+
   namespace :admin do
     resources :orders, only: [:index, :show] do
       member do

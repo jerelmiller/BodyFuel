@@ -1,7 +1,17 @@
 angular.module('carts_controller', [])
-.controller 'CartsCtrl', ($scope, DataSeed, CartShirt) ->
+.controller 'CartsCtrl', ($scope, $timeout, DataSeed, CartShirt, ShirtDesign) ->
   DataSeed.then (data) ->
     _.extend $scope, data
+
+    angular.forEach $scope.shirts, (shirt) -> shirt.loading = true
+    $timeout ->
+      angular.forEach $scope.shirts, (shirt) ->
+        ShirtDesign.design id: shirt.id, style: 'order'
+        , (response) ->
+          shirt.design = response.design
+          shirt.loading = false
+        , (response) -> shirt.loading = false
+    , 200
 
   $scope.errors = {}
 

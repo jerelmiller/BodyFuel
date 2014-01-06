@@ -10,8 +10,8 @@
             = f.file_field :design, 'image-preview' => '', 'target' => '#preview', 'hide' => '.default-shirt'
             %button.button.upload-button{ 'eat-click' => '' } Choose Design
             .preview
-              %img#preview{ 'ng-src' => '{{ shirt.design_large }}', 'ng-show' => 'shirt.design_large' }
-              %i.icon-tshirt.default-shirt.default-preview{ 'ng-hide' => 'shirt.design_large' }
+              %img#preview{ 'ng-src' => '{{ shirt.design }}', 'ng-show' => 'shirt.design' }
+              %i.icon-tshirt.default-shirt.default-preview{ 'ng-hide' => 'shirt.design' }
         .input
           %label
             Name
@@ -125,7 +125,7 @@
 :javascript
   $(document).ready(function() {
     AngularDataSeed({
-      shirt: #{render partial: 'shirts/shirt', locals: { shirt: @shirt }, formats: [:json]},
+      shirt: #{render partial: 'shirts/shirt', locals: { shirt: @shirt, shirt_design: :large }, formats: [:json]},
       shirtColors: #{render partial: 'colors/colors', locals: { colors: @shirt_colors }, formats: [:json]},
       textColors: #{render partial: 'colors/colors', locals: { colors: @text_colors }, formats: [:json]},
       sizes: #{render partial: 'sizes/sizes', locals: { sizes: @sizes }, formats: [:json]},
