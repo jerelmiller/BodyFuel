@@ -21,7 +21,7 @@
           %td.total Total
           %td.trash
       %tbody
-        %tr{ 'ng-repeat' => 'shirt in cart.cart_shirts' }
+        %tr{ 'ng-repeat' => 'shirt in cart.cart_shirts | orderBy:"id"' }
           %td
             %i.icon-tshirt
             {{ shirt.name }}
