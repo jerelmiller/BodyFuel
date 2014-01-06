@@ -6,12 +6,13 @@
 
 .modal.fade#meals
   .modal-dialog
+    %spin{ 'spin-on' => 'modalInfo.loading', center: true }
     .modal-content
       .modal-header
         %button.close{ type: 'button', 'data-dismiss' => 'modal', 'aria-hidden' => 'true' } &times;
         %h4 {{ modalInfo.name }}
-      .modal-body
-        %img{ 'ng-src' => '{{ modalInfo.meal_large }}' }
+      .modal-body{ style: 'min-height: 250px;' }
+        %img{ 'ng-src' => '{{ modalInfo.image }}', 'ng-hide' => 'modalInfo.loading' }
         %p{ 'ng-bind-html-unsafe' => 'modalInfo.description | newlines' }
 
 %section
@@ -20,7 +21,8 @@
     .tiles-4.meals
       = link_to '', 'ng-repeat' => 'meal in meals | orderBy:"id":true', class: 'tile-item meal-tile', 'ng-click' => 'setModalInfo(meal)', 'data-toggle' => 'modal', 'data-target' => '#meals' do
         .meal-image
-          %img{ 'ng-src' => '{{ meal.meal_tile }}' }
+          %spin{ 'spin-on' => 'meal.loading', center: true }
+          %img{ 'ng-src' => '{{ meal.image }}', 'ng-hide' => 'meal.loading' }
         .meal-name {{ meal.name | truncate }}
 
 

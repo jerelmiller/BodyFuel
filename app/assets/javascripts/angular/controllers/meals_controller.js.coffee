@@ -1,9 +1,19 @@
 angular.module('meals_controller', [])
-.controller 'MealsCtrl', ($scope, DataSeed, Meal) ->
+.controller 'MealsCtrl', ($scope, $timeout, DataSeed, Meal, MealImage) ->
   DataSeed.then (data) ->
     _.extend $scope, meal: data.meal
     _.extend $scope, meals: data.meals
     _.extend $scope, data.dependencies
+
+    angular.forEach $scope.meals, (meal) -> meal.loading = true
+    $timeout ->
+      angular.forEach $scope.meals, (meal) ->
+        MealImage.fetch id: meal.id, style: 'normal'
+        , (response) ->
+          meal.image = response.image
+          meal.loading = false
+        , (response) -> meal.loading = false
+    , 200
 
     $scope.errors = {}
 

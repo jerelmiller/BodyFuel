@@ -117,6 +117,7 @@
 }
 
 .meal-image {
+  position: relative;
   img {
     @include transition(all 0.2s);
     width: 100%;

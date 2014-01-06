@@ -9,8 +9,8 @@
             = f.file_field :image, 'image-preview' => '', 'target' => '#preview', 'hide' => '.default-shirt'
             %button.button.upload-button{ 'eat-click' => '' } Choose Image
             .preview
-              %img#preview{ 'ng-src' => '{{ meal.meal_large }}', 'ng-show' => 'meal.meal_large' }
-              %i.icon-banana.default-shirt.default-preview{ 'ng-hide' => 'meal.meal_large' }
+              %img#preview{ 'ng-src' => '{{ meal.image }}', 'ng-show' => 'meal.image' }
+              %i.icon-banana.default-shirt.default-preview{ 'ng-hide' => 'meal.image' }
         .input
           %label
             Name
@@ -37,7 +37,7 @@
 :javascript
   $(document).ready(function() {
     AngularDataSeed({
-      meal: #{render partial: 'meals/meal', locals: { meal: @meal }, formats: [:json]},
+      meal: #{render partial: 'meals/meal', locals: { meal: @meal, image_size: :large }, formats: [:json]},
       dependencies: { authenticity_token: '#{form_authenticity_token}' }
     });
   })

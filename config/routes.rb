@@ -23,6 +23,10 @@ BodyFuel::Application.routes.draw do
     get '/design/:style', to: 'shirts#design', on: :member
   end
 
+  resources :meals, only: :none do
+    get '/image/:style', to: 'meals#image', on: :member
+  end
+
   namespace :admin do
     resources :orders, only: [:index, :show] do
       member do

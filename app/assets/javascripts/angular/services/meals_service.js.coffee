@@ -4,3 +4,7 @@ angular.module('meals_service', ['ngResource'])
     save: { method: 'POST' }
     update: { method: 'PUT' }
     delete: { method: 'DELETE' }
+
+.factory 'MealImage', ($resource) ->
+  $resource '/meals/:id/image/:style', { id: '@id' },
+    fetch: { method: 'GET' }
